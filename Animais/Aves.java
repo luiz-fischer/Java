@@ -7,7 +7,7 @@ public class Aves extends Animal {
 
     @Override
     public void Comer() {
-        System.out.println("Pic Pic!!");
+        System.out.println("Pic Pic Pic!!");
     }
 
 }
