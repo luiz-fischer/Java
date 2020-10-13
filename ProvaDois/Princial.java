@@ -1,4 +1,4 @@
-package Avaliacao.ProvaDois;
+package ProvaDois;
 
 public class Princial {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package Dinossauros;
 
-import Animais.Animal;
+import POO.Animal;
 
 public class Oviparos extends Animal {
     
