@@ -1,0 +1,23 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/user02/Transferências/**/*.jar"
+    ],
+    "maven.view": "hierarchical",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "projetojava",
+            "username": "root",
+            "password": "123",
+            "name": "MySql",
+            "connectionTimeout": 60
+        }
+    ]
+}

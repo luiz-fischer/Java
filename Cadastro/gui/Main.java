@@ -1,9 +1,12 @@
-package CadastroUsuario;
+package Cadastro.gui;
 
 // CLASSE DE CADASTRO DE USUARIOS...
 
 import java.util.List;
 import java.util.Scanner;
+
+import Cadastro.modelo.Usuario;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -51,10 +54,11 @@ public class Main {
 
 		while (cadastrando) {
 			System.out.println("Cadastro de Usuário");
-			Usuario d = new Usuario();			
+			Usuario d = new Usuario();						
 			d.setNome(textInput("Nome:"));
-			d.setLogin(textInput("Login: "));
-			d.setCargo(textInput("Cargo: "));
+			d.setCpf(textInput("Cpf: "));
+			d.setEmail(textInput("email: "));
+			d.setTelefone(textInput("telefone: "));
 
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
@@ -63,7 +67,7 @@ public class Main {
 			} else if (cadastrar.equalsIgnoreCase("n")){
 				System.out.println("Cadastro ignorado !!!");
 			} else {
-				System.out.println("\nOpção inválida seu noob, vou ignorar o cadastro só pra você ter que digitar denovo !!! \n");
+				System.out.println("\nOpção inválida, vou ignorar o cadastro só pra você ter que digitar denovo !!! \n");
 			}
 
 			String continua = textInput("Continuar cadastrando (S/N) ?");
@@ -72,7 +76,7 @@ public class Main {
 			} else if (continua.equalsIgnoreCase("s")){
 				// se for s sai do if e volta para o inicio do while
 			} else {
-				System.out.println("\nOpção inválida seu noob, eu vou sair só porque você não colabora !!! \n");
+				System.out.println("\nOpção inválida , eu vou sair só porque você não colabora !!! \n");
 				cadastrando = false;
 			}
 		}
@@ -87,8 +91,8 @@ public class Main {
 				Usuario d = usuarios.get(i);
 				System.out.println("Cadastro número: " + i);
 				System.out.println("\tNome: " + d.getNome());
-				System.out.println("\tLogin: " + d.getLogin());
-				System.out.println("\tCargo: " + d.getCargo() + "\n");
+				System.out.println("\tCPF: " + d.getCpf());
+				System.out.println("\temail: " + d.getEmail() + "\n");
 			}
 			System.out.println("\nFim da lista\n");
 		}

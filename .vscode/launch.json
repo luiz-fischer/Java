@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Cadastro.gui.Main",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestaConexao",
+            "request": "launch",
+            "mainClass": "Cadastro.factory.TestaConexao",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "com.teste.App",
+            "projectName": "maven-vscode"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestaConexao",
+            "request": "launch",
+            "mainClass": "Cadastro.MinhaAplicacao.factory.TestaConexao",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CadastraUsuarios",
+            "request": "launch",
+            "mainClass": "teste.CadastraUsuarios",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "teste.Main",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
