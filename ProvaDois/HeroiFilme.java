@@ -1,4 +1,4 @@
-package Avaliacao.ProvaDois;
+package ProvaDois;
 
 public class HeroiFilme {
     int idHeroi;

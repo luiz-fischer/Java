@@ -1,5 +1,4 @@
-package Avaliacao.ProvaDois;
-
+package ProvaDois;
 
 import java.util.ArrayList;
 
@@ -13,11 +12,11 @@ public class Franquia {
     public static ArrayList<Franquia> franquias = new ArrayList<>();
 
     /**
-     * 
-     * @param idFranquia
-     * @param nome
-     * @param apelido
-     * @param dataDeCriacao
+     * Construtor do Objeto da Franquia
+     * @param idFranquia Identificador unico da Franquia
+     * @param nome Nome da Franquia
+     * @param apelido Apelido da Franquia
+     * @param dataDeCriacao Data de criação da Franquia
      */
     public Franquia(int idFranquia, String nome, String apelido, String dataDeCriacao) {
         this.idFranquia = idFranquia;
@@ -29,6 +28,13 @@ public class Franquia {
         franquias.add(this);
     } 
 
+    public Franquia(int idFranquia, String nome) {
+        this(idFranquia, nome, "", "");
+    }
+
+    /**
+     * Imprimi os valores da Franquia
+     */
     public void imprimirFranquias() {
         System.out.println(
             "* A Franquia " + 

@@ -1,4 +1,5 @@
-package Avaliacao.ProvaDois;
+package ProvaDois;
+
 
 import java.util.ArrayList;
 
@@ -68,7 +69,7 @@ public class Filme {
         double total = 0;
 
         for (HeroiFilme heroiFilme : herois) {
-            total += heroiFilme.heroi.preco;
+            total += heroiFilme.heroi.precoCache;
         }
         return total;
     }

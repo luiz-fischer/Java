@@ -1,13 +1,10 @@
-package Avaliacao.ProvaDois;
+package ProvaDois;
 
 import java.util.ArrayList;
 
-public class Heroi {
-    int idHeroi;
-    int idFranquia;
-    String nome;
-    String localizacao;
-    double preco;   
+public class Heroi extends Pessoa{
+    public int idHeroi;
+    public int idFranquia;
     Franquia franquia;
     ArrayList<HeroiFilme> filmes;  
     
@@ -18,14 +15,15 @@ public class Heroi {
      * @param idHeroi
      * @param nome
      * @param localizacao
-     * @param preco
+     * @param precoCache
      * @param franquia
      */
-    public Heroi(int idHeroi, String nome, String localizacao, int preco, Franquia franquia) {
+    public Heroi(int idHeroi, String nome, String localizacao, int precoCache, Franquia franquia) {
         this.idHeroi = idHeroi;
-        this.nome = nome;
-        this.localizacao = localizacao;
-        this.preco = preco;
+        super.nome = nome;
+        super.localizacao = localizacao;
+        super.precoCache = precoCache;
+        this.franquia = franquia;
         
         this.filmes = new ArrayList<>();
 
@@ -36,7 +34,7 @@ public class Heroi {
     }  
            
     public double qtdInvestimento() {
-       double investimento = this.preco * this.filmes.size();
+       double investimento = this.precoCache * this.filmes.size();
        
        return investimento;
     }

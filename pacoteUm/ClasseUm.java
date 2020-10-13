@@ -11,6 +11,7 @@ public class ClasseUm {
     public void metodo1(){}
     private void metodo2(){}
     protected void metodo3(){}
+
     void metodo4(){}
     
 }
