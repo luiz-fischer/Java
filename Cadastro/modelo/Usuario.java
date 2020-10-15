@@ -1,49 +1,55 @@
 package Cadastro.modelo;
 
-public class Usuario {
-    Long id;
-    String nome;
-    String cpf;
-    String email;
-    String telefone;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
-    public String getCpf() {
+public class Usuario implements List<Usuario> {
+    static Long id;
+    static String nome;
+    static String cpf;
+    static String email;
+    static String telefone;
+
+    public static String getCpf() {
         return cpf;
     }
-    
+
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        Usuario.cpf = cpf;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
-        this.email = email;
+        Usuario.email = email;
     }
 
-    public String getNome() {
+    public static String getNome() {
         return nome;
     }
-    
+
     public void setNome(String nome) {
-        this.nome = nome;
+        Usuario.nome = nome;
     }
 
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
-        this.id = id;
+        Usuario.id = id;
     }
 
-    public String getTelefone() {
+    public static String getTelefone() {
         return telefone;
     }
-    
+
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        Usuario.telefone = telefone;
     }
+
 }

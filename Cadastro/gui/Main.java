@@ -1,13 +1,10 @@
 package Cadastro.gui;
 
-// CLASSE DE CADASTRO DE USUARIOS...
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import Cadastro.modelo.Usuario;
-
-import java.util.ArrayList;
 
 public class Main {
 
@@ -36,7 +33,7 @@ public class Main {
 			} else if (opcao.equalsIgnoreCase("x")) {
 				execute = false;
 			} else {
-				System.out.println("\nOpção Inválida seu noob !!! \n");
+				System.out.println("\nOpção Inválida !!! \n");
 			}
 		}
 	}
@@ -64,19 +61,20 @@ public class Main {
 			if (cadastrar.equalsIgnoreCase("s")) {
 				System.out.println("Cadastro adicionado !!!");
 				usuarios.add(d);
+				Cadastro.dao.UsuarioDAO.salvar(usuarios);
 			} else if (cadastrar.equalsIgnoreCase("n")){
 				System.out.println("Cadastro ignorado !!!");
 			} else {
-				System.out.println("\nOpção inválida, vou ignorar o cadastro só pra você ter que digitar denovo !!! \n");
+				System.out.println("\nOpção inválida!!! \n");
 			}
 
 			String continua = textInput("Continuar cadastrando (S/N) ?");
 			if (continua.equalsIgnoreCase("N")) {
 				cadastrando = false;
 			} else if (continua.equalsIgnoreCase("s")){
-				// se for s sai do if e volta para o inicio do while
+			
 			} else {
-				System.out.println("\nOpção inválida , eu vou sair só porque você não colabora !!! \n");
+				System.out.println("\nOpção inválida!! \n");
 				cadastrando = false;
 			}
 		}
@@ -102,4 +100,5 @@ public class Main {
 		System.out.println(label);
 		return l.nextLine();
 	}
+   
 }
