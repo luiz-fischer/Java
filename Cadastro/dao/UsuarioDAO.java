@@ -20,7 +20,6 @@ public class UsuarioDAO {
         String sql ="INSERT INTO usuario(nome, cpf, email, telefone) VALUES (?,?,?,?)";
          
         try{
-             
           insereSt = (PreparedStatement) conn.prepareStatement(sql);
           insereSt.setString(1, Cadastro.modelo.Usuario.getNome());
           insereSt.setString(2, Cadastro.modelo.Usuario.getCpf());
