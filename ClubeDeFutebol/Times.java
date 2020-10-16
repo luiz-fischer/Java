@@ -1,6 +1,10 @@
 package ClubeDeFutebol;
 
+import java.util.ArrayList;
+
 public class Times {
+    protected static ArrayList<Times> listaTimes = new ArrayList<>();
+
     private int id;
     private String nome;
     private String sigla;
@@ -9,19 +13,17 @@ public class Times {
     private double rendaMedia;
 	public Object equals;
 
-    public Times() {
-
-    }
-
+    // Construturos para a classe Times
     public Times(int id, String nome, String sigla, String descricaoEscudo, int anoDeFundacao, double rendaMedia) {
-        this.id = id;
-        this.nome = nome;
-        this.sigla = sigla;
-        this.anoDeFundacao = anoDeFundacao;
-        this.descricaoEscudo = descricaoEscudo;
-        this.rendaMedia = rendaMedia;
+    this.id = id;
+    this.nome = nome;
+    this.sigla = sigla;
+    this.anoDeFundacao = anoDeFundacao;
+    this.descricaoEscudo = descricaoEscudo;
+    this.rendaMedia = rendaMedia;
     }
 
+    // Metodos Sets e Gets
     public int getId() {
         return this.id;
     }
@@ -70,6 +72,7 @@ public class Times {
         this.rendaMedia = rendaMedia;
     }
 
+    // Metodo para impressao utilizando ToString
     @Override
 	public String toString() {
         return "\n++++++ Clube: " + this.nome + " ++++++\n" +
@@ -79,6 +82,7 @@ public class Times {
                "\n Renda Média: " + this.rendaMedia + "\n";
 	}
 
+    //Metodo equals para comparação de propriedades
     @Override
     public boolean equals(Object object) {
         if (object == this)
