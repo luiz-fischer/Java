@@ -26,7 +26,7 @@ public class Times {
         return this.id;
     }
     
-    public void setId(int i) {
+    public void setId(int id    ) {
         this.id = id;
     }
 
@@ -72,12 +72,11 @@ public class Times {
 
     @Override
 	public String toString() {
-        return "\nNome: " + this.nome + 
-        ", Sigla: " + this.sigla +
-        ", Brasão: " + this.descricaoEscudo + 
-        ", Fundado em: " + this.anoDeFundacao +
-        ", Renda Média: " + this.rendaMedia + 
-        "";
+        return "\n++++++ Clube: " + this.nome + " ++++++\n" +
+               "\n Sigla: " + this.sigla + 
+               "\n Brasão: " + this.descricaoEscudo + 
+               "\n Fundado em: " + this.anoDeFundacao + 
+               "\n Renda Média: " + this.rendaMedia + "\n";
 	}
 
     @Override
@@ -87,8 +86,8 @@ public class Times {
         if (!(object instanceof Times)) {
         return false;
         }
-    Times vizinho = (Times) object;
-    return hashCode() == vizinho.hashCode();
+    Times times = (Times) object;
+    return hashCode() == times.hashCode();
     }
 
 }
