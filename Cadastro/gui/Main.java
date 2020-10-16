@@ -3,7 +3,6 @@ package Cadastro.gui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Cadastro.modelo.Usuario;
 
 public class Main {
@@ -62,6 +61,7 @@ public class Main {
 				System.out.println("Cadastro adicionado !!!");
 				usuarios.add(d);
 				Cadastro.dao.UsuarioDAO.salvar(usuarios);
+				
 			} else if (cadastrar.equalsIgnoreCase("n")){
 				System.out.println("Cadastro ignorado !!!");
 			} else {
@@ -85,12 +85,14 @@ public class Main {
 			System.out.println("\nNão existem cadastros !!!\n");
 		} else {
 			System.out.println("\nLista de Cadastros\n");
+			
 			for (int i = 0; i < usuarios.size(); i++) {
-				Usuario d = usuarios.get(i);
+				// Usuario d = usuarios.get(i);
 				System.out.println("Cadastro número: " + i);
-				System.out.println("\tNome: " + d.getNome());
-				System.out.println("\tCPF: " + d.getCpf());
-				System.out.println("\temail: " + d.getEmail() + "\n");
+				System.out.println("\tNome: " + Usuario.getNome());
+				System.out.println("\tCPF: " + Usuario.getCpf());
+				System.out.println("\temail: " + Usuario.getEmail());
+				System.out.print("\tTelefone: " + Usuario.getTelefone() + "\n");
 			}
 			System.out.println("\nFim da lista\n");
 		}

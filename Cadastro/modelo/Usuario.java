@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Usuario implements List<Usuario> {
+public class Usuario {
     static Long id;
     static String nome;
     static String cpf;

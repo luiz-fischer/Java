@@ -16,30 +16,31 @@ public class UsuarioDAO {
 
     public static void salvar(List<Usuario> usuarios) {
         Connection conn = (Connection) Cadastro.factory.ConnectionFactory.getConnection();//metodo que pega a conexão;
-         PreparedStatement insereSt = null;
-         String sql ="INSERT INTO usuario(nome, cpf, email, telefone) VALUES (?,?,?,?)";
+        PreparedStatement insereSt = null;
+        String sql ="INSERT INTO usuario(nome, cpf, email, telefone) VALUES (?,?,?,?)";
          
-         try{
+        try{
              
-          insereSt = (PreparedStatement) conn.prepareStatement(sql);//erro nessa linha quando roda;
-          
+          insereSt = (PreparedStatement) conn.prepareStatement(sql);
           insereSt.setString(1, Cadastro.modelo.Usuario.getNome());
           insereSt.setString(2, Cadastro.modelo.Usuario.getCpf());
           insereSt.setString(3, Cadastro.modelo.Usuario.getEmail());
           insereSt.setString(4, Cadastro.modelo.Usuario.getTelefone());
           insereSt.executeUpdate();
           
-         }catch(SQLException e)
-         {System.out.println("erro ao incluir"+e.getMessage());}
-         
-         finally
-         {
-             try{
-                 insereSt.close();	
-             }catch(Throwable t)
-             {System.out.println("erro ao fechar st"+t.getMessage());}
+        }catch(SQLException e) {
+            System.out.println("erro ao incluir"+e.getMessage());
+
+        } finally {
+
+            try {
+                insereSt.close();
+
+            } catch(Throwable t) { 
+                System.out.println("erro ao fechar st"+t.getMessage());
+            }
              
-         }
-     }
+        }
+    }
     
 }
