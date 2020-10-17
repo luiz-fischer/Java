@@ -3,7 +3,7 @@
         "lib/**/*.jar",
         "/home/user02/Transferências/**/*.jar"
     ],
-    "maven.view": "hierarchical",
+    "maven.view": "flat",
     "sqltools.connections": [
         {
             "mysqlOptions": {
