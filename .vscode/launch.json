@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Brasileirao",
+            "request": "launch",
+            "mainClass": "ClubeDeFutebol.Brasileirao",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Princial",
+            "request": "launch",
+            "mainClass": "ProvaDois.Princial",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TelaCadastro",
+            "request": "launch",
+            "mainClass": "Interface.TelaCadastro",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Principal",
+            "request": "launch",
+            "mainClass": "Interface.Principal",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CBF",
+            "request": "launch",
+            "mainClass": "ClubeDeFutebol.CBF",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "Cadastro.gui.Main",
