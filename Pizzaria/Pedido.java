@@ -3,13 +3,14 @@ package Pizzaria;
 import java.util.ArrayList;
 
 public class Pedido {
-    private int id;
+    private int idPedido;
     private Cliente cliente;
     private ArrayList<Produto> produtos;
     private Pedido pedido;
+    private static int pedidoNumero = 0;
 
-    public Pedido(int id, Cliente cliente) {
-        this.id = id;
+    public Pedido(Cliente cliente) {
+        this.idPedido = pedidoNumero++;
         this.cliente = cliente;
 
         this.produtos = new ArrayList<>();
@@ -17,22 +18,26 @@ public class Pedido {
         cliente.setPedido(this);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int iidPedidod) {
+        this.idPedido = idPedido;
     }
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
     public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+            
+            for (int i = 1; i < produtos.size(); i++) {
+                pedidoNumero++;
+                this.pedido = pedido;
+            }
     }
     public void setProduto(Produto produto) {
         this.produtos.add(produto);
         produto.setPedido(this);
     }
 
-    public int getId() {
-        return this.id;
+    public int getIdPedido() {
+        return this.idPedido;
     }
     public Cliente getCliente() {
         return this.cliente;
@@ -46,7 +51,7 @@ public class Pedido {
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = "\nPedido Número : "  + cliente.getPedidoNumero();
+        String print = "\nPedido Número : "   + this.idPedido;
         print += "\n ======== SABORES ========" + "\n";
         for (Produto produto : produtos) {
             print += produto;
@@ -65,6 +70,6 @@ public class Pedido {
 
         Pedido pedido = (Pedido) object;
 
-        return this.getId() == pedido.getId();
+        return this.getIdPedido() == pedido.getIdPedido();
     }
 }

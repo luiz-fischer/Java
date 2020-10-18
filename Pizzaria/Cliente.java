@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Cliente {
     private int id;
     private String nome;
-    private int pedidoNumero;
+    // private int pedidoNumero;
     private ArrayList<Pedido> pedidos;
     private Cliente cliente;
 
-    public Cliente(int id, String nome, int pedidoNumero) {
+    public Cliente(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.pedidoNumero = pedidoNumero;
+        // this.pedidoNumero = pedidoNumero;
 
         this.pedidos = new ArrayList<>();
     }
@@ -24,9 +24,10 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public void setPedidoNumero(int pedidoNumero) {
-        this.pedidoNumero = pedidoNumero;
-    }
+    // public void setPedidoNumero(int pedidoNumero) {
+    //         this.pedidoNumero = pedidoNumero;
+    // }
+        
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -42,9 +43,9 @@ public class Cliente {
     public String getNome() {
         return this.nome;
     }
-    public int getPedidoNumero() {
-        return pedidoNumero;
-    }
+    // public int getPedidoNumero() {
+    //     return pedidoNumero;
+    // }
     public Cliente getCliente() {
         return this.cliente;
     }
