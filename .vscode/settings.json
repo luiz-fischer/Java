@@ -1,23 +1,9 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/user02/Transferências/**/*.jar"
-    ],
-    "maven.view": "flat",
-    "sqltools.connections": [
-        {
-            "mysqlOptions": {
-                "authProtocol": "default"
-            },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "database": "projetojava",
-            "username": "root",
-            "password": "123",
-            "name": "MySql",
-            "connectionTimeout": 60
-        }
-    ]
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "[markdown]": {
+
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false
+    },
+    "editor.wordWrap": "on"
 }
