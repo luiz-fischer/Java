@@ -5,7 +5,12 @@ public class Pedido {
     Cliente cliente;
     Produto produto;
     private static int pedidoNumero = 0;
-
+    /**
+     * 
+     * @param cliente Variável de entrada para cliente.
+     * @param produto Variável de entrada para produto.
+     * @param idPedido Variável para controle dos pedidos.
+     */
     public Pedido(Cliente cliente, Produto produto) {
         this.idPedido = pedidoNumero++;
         this.cliente = cliente;

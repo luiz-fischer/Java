@@ -1,20 +1,22 @@
 package Pizzaria;
 
-import java.util.ArrayList;
 public class Produto {
     private int id;
     private String sabor;
     private String ingredientes;
-    private ArrayList<Pedido> produtos;
     Pedido produto;
     Pedido pedido;
 
-    public Produto(String sabor, String ingredientes) {
+    /**
+     * 
+     * @param id Valor de identeficação para cada Produto
+     * @param sabor Define o sabor de cada Produto
+     * @param ingredientes Define os ingredientes
+     */
+    public Produto(int id, String sabor, String ingredientes) {
         this.id = id;
         this.ingredientes = ingredientes;
         this.sabor = sabor;
-        
-        this.produtos = new ArrayList<>();
 
     }
 
@@ -52,7 +54,6 @@ public class Produto {
         String print = "Sabor: " + this.sabor + "\nIngredientes: " +getIngredientes();
         return print;
     }
-    
 
     // ======== Método equals para comparação de propriedades ========
     @Override

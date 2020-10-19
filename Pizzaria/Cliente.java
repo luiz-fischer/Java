@@ -1,29 +1,34 @@
 package Pizzaria;
 
 import java.util.ArrayList;
+
 public class Cliente {
     private int id;
     private String nome;
-    private ArrayList<Pedido> clientes;
     private ArrayList<Pedido> produtos;
     private Cliente cliente;
-    private Pedido pedido;
 
+    /**
+     * 
+     * @param id   Id do Cliente
+     * @param nome Nome do Cliente
+     */
     public Cliente(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        
-        this.clientes = new ArrayList<>();
+
+        new ArrayList<>();
     }
 
     // ======== SETS ========
     public void setId(int id) {
         this.id = id;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-   
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -32,16 +37,18 @@ public class Cliente {
     public int getId() {
         return this.id;
     }
+
     public String getNome() {
         return this.nome;
     }
+
     public Cliente getCliente() {
         return this.cliente;
     }
+
     public ArrayList<Pedido> getPedido() {
         return this.produtos;
     }
-  
 
     // ======== Impressão ========
     @Override
