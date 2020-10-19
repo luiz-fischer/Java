@@ -5,29 +5,33 @@ public class Pedido {
     Cliente cliente;
     Produto produto;
     private static int pedidoNumero = 0;
+
     /**
      * 
-     * @param cliente Variável de entrada para cliente.
-     * @param produto Variável de entrada para produto.
+     * @param cliente  Variável de entrada para cliente.
+     * @param produto  Variável de entrada para produto.
      * @param idPedido Variável para controle dos pedidos.
      */
     public Pedido(Cliente cliente, Produto produto) {
         this.idPedido = pedidoNumero++;
         this.cliente = cliente;
         this.produto = produto;
-       
+
     }
 
     // ======== SETS ========
     public void setId(int idPedido) {
         this.idPedido = idPedido;
     }
+
     public void setCliente(Cliente cliente) {
         cliente.setCliente(cliente);
     }
+
     public void setProduto(Produto produto) {
         produto.setProduto(this);
     }
+
     public void setPedido(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -36,12 +40,15 @@ public class Pedido {
     public int getIdPedido() {
         return this.idPedido;
     }
+
     public Cliente getCliente() {
         return this.cliente;
     }
+
     public Produto getProduto() {
         return this.produto;
     }
+
     public Cliente getPedido() {
         return this.cliente;
     }
@@ -50,8 +57,8 @@ public class Pedido {
     @Override
     public String toString() {
         String print = "-------Ordem de Serviço-------" + "\nPedido Número : " + getIdPedido() + "\n";
-        print += getProduto() + "\n"; 
-        print += getCliente()+ "\n";
+        print += getProduto() + "\n";
+        print += getCliente() + "\n";
         return print;
     }
 

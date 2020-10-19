@@ -8,7 +8,14 @@ public class Jogo {
     private Time mandante;
     private Time visitante;
 
-    // ======== Construtor para a  Classe Jogo ========
+    /**
+     * 
+     * @param idJogo    Id do Jogo.
+     * @param data      Data do Jogo
+     * @param local     Local do Jogo.
+     * @param mandante  Mandante do Jogo
+     * @param visitante Visitante do Jogo
+     */
     public Jogo(int idJogo, String data, String local, Time mandante, Time visitante) {
         this.idJogo = idJogo;
         this.data = data;

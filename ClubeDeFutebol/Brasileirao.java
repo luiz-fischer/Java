@@ -19,7 +19,7 @@ public class Brasileirao {
         Jogador jogador2 = new Jogador(2, "Matheus Paqueta", "12 de março de 1995", "ATA", 2750.99, jec);
         Jogador jogador3 = new Jogador(3, "Romário de Souza ", "20 de Setembro de 1993", "ATA", 2500, jec);
         Jogador jogador4 = new Jogador(4, "Wellington Aleixo", "05 de Janeiro de 1985", "MEI", 1999.99, jec);
-        
+
         // Jogador do Mogi-Mirim
         Jogador jogador5 = new Jogador(5, "Osmar Aparecido", "27 de Março de 1980", "ATA", 150, mogiMirim);
         Jogador jogador6 = new Jogador(6, "Stefano Sean de Sousa", "18 de Setembro de 1998", "MEI", 300, mogiMirim);

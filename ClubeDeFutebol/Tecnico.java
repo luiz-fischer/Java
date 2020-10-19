@@ -7,7 +7,13 @@ public class Tecnico {
     private String estiloJogo;
     private Time time;
 
-    // ======== Construtor para a Classe Tecnico ========
+    /**
+     * 
+     * @param id         Id para o Técnico
+     * @param nome       Nome do Técnico
+     * @param estiloJogo Estilo de Jogo do Técnico
+     * @param time       Time no qual ele é Técnico
+     */
     public Tecnico(int id, String nome, String estiloJogo, Time time) {
         this.id = id;
         this.nome = nome;

@@ -16,7 +16,15 @@ public class Time {
     private ArrayList<Jogo> visitantes;
     private Time time;
 
-    // ======== Construtor para a Classe Time ========
+    /**
+     * 
+     * @param id              Id do Time
+     * @param nome            Nome do Time
+     * @param sigla           Sigla para o Time
+     * @param descricaoEscudo Descrição do escudo
+     * @param anoDeFundacao   Ano de fundação do Time
+     * @param rendaMedia      Renda Média do Time
+     */
     public Time(int id, String nome, String sigla, String descricaoEscudo, int anoDeFundacao, double rendaMedia) {
         this.id = id;
         this.nome = nome;
@@ -123,13 +131,9 @@ public class Time {
     // ======== Metodo para impressão utilizando ToString ========
     @Override
     public String toString() {
-        String print = "\n++++++ Clube: " + this.nome + " ++++++\n" + 
-                       "\nSigla: " + this.sigla + 
-                       "\nBrasão: " + this.descricaoEscudo + 
-                       "\nFundado em: " + this.anoDeFundacao + 
-                       "\nRenda Média: " + this.rendaMedia + 
-                       "\n" + 
-                       "\n ======= Técnico ======= " + "\n";
+        String print = "\n++++++ Clube: " + this.nome + " ++++++\n" + "\nSigla: " + this.sigla + "\nBrasão: "
+                + this.descricaoEscudo + "\nFundado em: " + this.anoDeFundacao + "\nRenda Média: " + this.rendaMedia
+                + "\n" + "\n ======= Técnico ======= " + "\n";
         for (Tecnico tecnico : tecnicos) {
             print += tecnico + "\n";
         }

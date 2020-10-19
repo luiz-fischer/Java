@@ -9,7 +9,15 @@ public class Jogador {
     private double salario;
     private Time time;
 
-    // ======== Construtor para a Classe Jogador ========
+    /**
+     * 
+     * @param id               Id para o Jogador
+     * @param nome             Nome do Jogador
+     * @param dataDeNascimento Data de Nascimento do Jogador
+     * @param posicao          Posição do Jogador
+     * @param salario          Salário do Jogador
+     * @param time             Time do jogador
+     */
     public Jogador(int id, String nome, String dataDeNascimento, String posicao, double salario, Time time) {
         this.id = id;
         this.nome = nome;

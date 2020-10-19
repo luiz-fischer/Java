@@ -9,8 +9,8 @@ public class Produto {
 
     /**
      * 
-     * @param id Valor de identeficação para cada Produto
-     * @param sabor Define o sabor de cada Produto
+     * @param id           Valor de identeficação para cada Produto
+     * @param sabor        Define o sabor de cada Produto
      * @param ingredientes Define os ingredientes
      */
     public Produto(int id, String sabor, String ingredientes) {
@@ -24,26 +24,32 @@ public class Produto {
     public void setId(int id) {
         this.id = id;
     }
+
     public void setSabor(String sabor) {
         this.sabor = sabor;
     }
+
     public void setIngrediente(String ingredientes) {
         this.ingredientes = ingredientes;
     }
+
     public void setProduto(Pedido produto) {
         this.produto = produto;
     }
+
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
- 
+
     // ======= GETS =======
     public int getId() {
         return this.id;
     }
+
     public String getSabor() {
         return this.sabor;
     }
+
     public String getIngredientes() {
         return this.ingredientes;
     }
@@ -51,7 +57,7 @@ public class Produto {
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = "Sabor: " + this.sabor + "\nIngredientes: " +getIngredientes();
+        String print = "Sabor: " + this.sabor + "\nIngredientes: " + getIngredientes();
         return print;
     }
 
