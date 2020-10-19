@@ -1,20 +1,19 @@
 package Pizzaria;
 
 import java.util.ArrayList;
-
 public class Cliente {
     private int id;
     private String nome;
-    // private int pedidoNumero;
-    private ArrayList<Pedido> pedidos;
+    private ArrayList<Pedido> clientes;
+    private ArrayList<Pedido> produtos;
     private Cliente cliente;
+    private Pedido pedido;
 
     public Cliente(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        // this.pedidoNumero = pedidoNumero;
-
-        this.pedidos = new ArrayList<>();
+        
+        this.clientes = new ArrayList<>();
     }
 
     // ======== SETS ========
@@ -24,16 +23,9 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    // public void setPedidoNumero(int pedidoNumero) {
-    //         this.pedidoNumero = pedidoNumero;
-    // }
-        
+   
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-    public void setPedido(Pedido pedido) {
-        this.pedidos.add(pedido);
-        pedido.setCliente(this);
     }
 
     // ======== GEST ========
@@ -43,24 +35,18 @@ public class Cliente {
     public String getNome() {
         return this.nome;
     }
-    // public int getPedidoNumero() {
-    //     return pedidoNumero;
-    // }
     public Cliente getCliente() {
         return this.cliente;
     }
     public ArrayList<Pedido> getPedido() {
-        return this.pedidos;
+        return this.produtos;
     }
+  
 
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = " >>>>>>>> CLIENTE <<<<<<<<\n" + getNome();
-        for (Pedido pedido : pedidos) {
-            print += pedido ;
-        }
-        
+        String print = "Cliente: " + getNome();
         return print;
     }
 

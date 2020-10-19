@@ -1,16 +1,20 @@
 package Pizzaria;
 
+import java.util.ArrayList;
 public class Produto {
     private int id;
     private String sabor;
-    private Pedido pedido;
+    private String ingredientes;
+    private ArrayList<Pedido> produtos;
+    Pedido produto;
+    Pedido pedido;
 
-    public Produto(int id, String sabor, Pedido pedido) {
+    public Produto(String sabor, String ingredientes) {
         this.id = id;
+        this.ingredientes = ingredientes;
         this.sabor = sabor;
-        this.pedido = pedido;
         
-        pedido.setProduto(this);
+        this.produtos = new ArrayList<>();
 
     }
 
@@ -21,10 +25,16 @@ public class Produto {
     public void setSabor(String sabor) {
         this.sabor = sabor;
     }
+    public void setIngrediente(String ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+    public void setProduto(Pedido produto) {
+        this.produto = produto;
+    }
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
-
+ 
     // ======= GETS =======
     public int getId() {
         return this.id;
@@ -32,15 +42,14 @@ public class Produto {
     public String getSabor() {
         return this.sabor;
     }
-    public Pedido getPedido() {
-        return this.pedido;
+    public String getIngredientes() {
+        return this.ingredientes;
     }
 
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = "\nSabor: "  + this.sabor;
-
+        String print = "Sabor: " + this.sabor + "\nIngredientes: " +getIngredientes();
         return print;
     }
     
@@ -57,4 +66,5 @@ public class Produto {
 
         return this.getId() == produto.getId();
     }
+
 }

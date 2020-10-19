@@ -1,62 +1,52 @@
 package Pizzaria;
 
-import java.util.ArrayList;
-
 public class Pedido {
     private int idPedido;
-    private Cliente cliente;
-    private ArrayList<Produto> produtos;
-    private Pedido pedido;
+    Cliente cliente;
+    Produto produto;
     private static int pedidoNumero = 0;
 
-    public Pedido(Cliente cliente) {
+    public Pedido(Cliente cliente, Produto produto) {
         this.idPedido = pedidoNumero++;
         this.cliente = cliente;
-
-        this.produtos = new ArrayList<>();
-
-        cliente.setPedido(this);
+        this.produto = produto;
+       
     }
 
-    public void setId(int iidPedidod) {
+    // ======== SETS ========
+    public void setId(int idPedido) {
         this.idPedido = idPedido;
     }
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-    public void setPedido(Pedido pedido) {
-            
-            for (int i = 1; i < produtos.size(); i++) {
-                pedidoNumero++;
-                this.pedido = pedido;
-            }
+        cliente.setCliente(cliente);
     }
     public void setProduto(Produto produto) {
-        this.produtos.add(produto);
-        produto.setPedido(this);
+        produto.setProduto(this);
+    }
+    public void setPedido(Cliente cliente) {
+        this.cliente = cliente;
     }
 
+    // ======== GETS ========
     public int getIdPedido() {
         return this.idPedido;
     }
     public Cliente getCliente() {
         return this.cliente;
     }
-    public Pedido getPedido() {
-        return this.pedido;
+    public Produto getProduto() {
+        return this.produto;
     }
-    public ArrayList<Produto> getProduto() {
-        return this.produtos;
+    public Cliente getPedido() {
+        return this.cliente;
     }
+
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = "\nPedido Número : "   + this.idPedido;
-        print += "\n ======== SABORES ========" + "\n";
-        for (Produto produto : produtos) {
-            print += produto;
-        }
-
+        String print = "-------Ordem de Serviço-------" + "\nPedido Número : " + getIdPedido() + "\n";
+        print += getProduto() + "\n"; 
+        print += getCliente()+ "\n";
         return print;
     }
 
