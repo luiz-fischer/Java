@@ -5,88 +5,121 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Java",
             "type": "java",
-            "name": "CodeLens (Launch) - Brasileirao",
             "request": "launch",
-            "mainClass": "ClubeDeFutebol.Brasileirao",
-            "projectName": "Java_e552e103"
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Princial",
+            "name": "Debug (Launch) - Current File",
             "request": "launch",
-            "mainClass": "ProvaDois.Princial",
-            "projectName": "Java_e552e103"
+            "mainClass": "${file}"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - TelaCadastro",
-            "request": "launch",
-            "mainClass": "Interface.TelaCadastro",
-            "projectName": "Java_e552e103"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Principal",
-            "request": "launch",
-            "mainClass": "Interface.Principal",
-            "projectName": "Java_e552e103"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - CBF",
-            "request": "launch",
-            "mainClass": "ClubeDeFutebol.CBF",
-            "projectName": "Java_e552e103"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Cadastro.gui.Main",
-            "projectName": "Java_e552e103"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - TestaConexao",
+            "name": "Debug (Launch)-TestaConexao<Java_e552e103>",
             "request": "launch",
             "mainClass": "Cadastro.factory.TestaConexao",
             "projectName": "Java_e552e103"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - App",
+            "name": "Debug (Launch)-Main<Java_e552e103>",
             "request": "launch",
-            "mainClass": "com.teste.App",
-            "projectName": "maven-vscode"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - TestaConexao",
-            "request": "launch",
-            "mainClass": "Cadastro.MinhaAplicacao.factory.TestaConexao",
+            "mainClass": "Cadastro.gui.Main",
             "projectName": "Java_e552e103"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - CadastraUsuarios",
+            "name": "Debug (Launch)-Main<Java_e552e103>(1)",
             "request": "launch",
-            "mainClass": "teste.CadastraUsuarios",
+            "mainClass": "CadastroUsuario.Main",
             "projectName": "Java_e552e103"
         },
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Main",
+            "name": "Debug (Launch)-Brasileirao<Java_e552e103>",
             "request": "launch",
-            "mainClass": "teste.Main",
+            "mainClass": "ClubeDeFutebol.Brasileirao",
             "projectName": "Java_e552e103"
         },
         {
-            "type": "pwa-chrome",
+            "type": "java",
+            "name": "Debug (Launch)-Principal<Java_e552e103>",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "mainClass": "Interface.Principal",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TelaCadastro<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "Interface.TelaCadastro",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TelaErro<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "Interface.TelaErro",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TelaSucesso<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "Interface.TelaSucesso",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-JurassicPark<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "POO.Dinossauros.JurassicPark",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Zoo<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "POO.Zoo",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Pizzaria<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "Pizzaria.Pizzaria",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Princial<Java_e552e103>",
+            "request": "launch",
+            "mainClass": "ProvaDois.Princial",
+            "projectName": "Java_e552e103"
         }
     ]
 }
