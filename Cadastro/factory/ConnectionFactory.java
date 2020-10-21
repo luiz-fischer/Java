@@ -1,19 +1,20 @@
 package Cadastro.factory;
 
 // faz as importações de classes necessárias para o funcionamento do programa 
-import java.sql.Connection; 
+import java.sql.Connection;
 // conexão SQL para Java 
-import java.sql.DriverManager; 
+import java.sql.DriverManager;
 // driver de conexão SQL para Java 
-import java.sql.SQLException; 
+import java.sql.SQLException;
+
 // classe para tratamento de exceções 
 public class ConnectionFactory {
-     public static Connection getConnection() {
-		 try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/projetojava","root","123");
-		 }         
-		 catch(SQLException excecao) {
+	
+	public static Connection getConnection() {
+		try {
+			return DriverManager.getConnection("jdbc:mysql://localhost/projetojava", "root", "123");
+		} catch (SQLException excecao) {
 			throw new RuntimeException(excecao);
-		 }
 		}
-   }
+	}
+}

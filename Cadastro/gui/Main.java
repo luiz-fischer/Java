@@ -1,5 +1,6 @@
 package Cadastro.gui;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,11 +12,11 @@ public class Main {
 	private boolean execute;
 	private List<Usuario> usuarios;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		new Main();
 	}
 
-	private Main() {
+	private Main() throws SQLException {
 		l = new Scanner(System.in);
 		execute = true;
 		usuarios = new ArrayList<Usuario>();
@@ -50,7 +51,7 @@ public class Main {
 
 		while (cadastrando) {
 			System.out.println("Cadastro de Usuário");
-			Usuario d = new Usuario();						
+			Usuario d = new Usuario();
 			d.setNome(textInput("Nome:"));
 			d.setCpf(textInput("Cpf: "));
 			d.setEmail(textInput("email: "));
@@ -61,8 +62,8 @@ public class Main {
 				System.out.println("Cadastro adicionado !!!");
 				usuarios.add(d);
 				Cadastro.dao.UsuarioDAO.salvar(usuarios);
-				
-			} else if (cadastrar.equalsIgnoreCase("n")){
+
+			} else if (cadastrar.equalsIgnoreCase("n")) {
 				System.out.println("Cadastro ignorado !!!");
 			} else {
 				System.out.println("\nOpção inválida!!! \n");
@@ -71,8 +72,8 @@ public class Main {
 			String continua = textInput("Continuar cadastrando (S/N) ?");
 			if (continua.equalsIgnoreCase("N")) {
 				cadastrando = false;
-			} else if (continua.equalsIgnoreCase("s")){
-			
+			} else if (continua.equalsIgnoreCase("s")) {
+
 			} else {
 				System.out.println("\nOpção inválida!! \n");
 				cadastrando = false;
@@ -80,22 +81,23 @@ public class Main {
 		}
 	}
 
-	private void listarCadastros() {
-		if (usuarios.size() == 0) {
-			System.out.println("\nNão existem cadastros !!!\n");
-		} else {
-			System.out.println("\nLista de Cadastros\n");
+	private void listarCadastros() throws SQLException {
+		// if (usuarios.size() == 0) {
+		// 	System.out.println("\nNão existem cadastros !!!\n");
+		// } else {
+		// 	System.out.println("\nLista de Cadastros\n");
 			
-			for (int i = 0; i < usuarios.size(); i++) {
-				// Usuario d = usuarios.get(i);
-				System.out.println("Cadastro número: " + i);
-				System.out.println("\tNome: " + Usuario.getNome());
-				System.out.println("\tCPF: " + Usuario.getCpf());
-				System.out.println("\temail: " + Usuario.getEmail());
-				System.out.print("\tTelefone: " + Usuario.getTelefone() + "\n");
-			}
-			System.out.println("\nFim da lista\n");
-		}
+		// 	for (int i = 0; i < usuarios.size(); i++) {
+		// 		// Usuario d = usuarios.get(i);
+		// 		System.out.println("Cadastro número: " + i);
+				Cadastro.dao.UsuarioDAO.consultar();
+		// 		System.out.println("\tNome: " + Usuario.getNome());
+		// 		System.out.println("\tCPF: " + Usuario.getCpf());
+		// 		System.out.println("\temail: " + Usuario.getEmail());
+		// 		System.out.print("\tTelefone: " + Usuario.getTelefone() + "\n");
+		// 	}
+		// 	System.out.println("\nFim da lista\n");
+		// }
 	}
 
 	private String textInput(String label) {

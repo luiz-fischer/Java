@@ -4,7 +4,8 @@ public class Pedido {
     private int idPedido;
     Cliente cliente;
     Produto produto;
-    private static int pedidoNumero = 0;
+    Bebida bebida;
+    private static int pedidoNumero = 1;
 
     /**
      * 
@@ -12,10 +13,11 @@ public class Pedido {
      * @param produto  Variável de entrada para produto.
      * @param idPedido Variável para controle dos pedidos.
      */
-    public Pedido(Cliente cliente, Produto produto) {
+    public Pedido(Cliente cliente, Produto produto, Bebida bebida) {
         this.idPedido = pedidoNumero++;
         this.cliente = cliente;
         this.produto = produto;
+        this.bebida = bebida;
 
     }
 
@@ -35,6 +37,9 @@ public class Pedido {
     public void setPedido(Cliente cliente) {
         this.cliente = cliente;
     }
+    public void setBebida(Bebida bebida) {
+        bebida.setBebida(bebida);
+    }
 
     // ======== GETS ========
     public int getIdPedido() {
@@ -52,6 +57,9 @@ public class Pedido {
     public Cliente getPedido() {
         return this.cliente;
     }
+    public Bebida getBebida() {
+        return this.bebida;
+    }
 
     // ======== Impressão ========
     @Override
@@ -59,6 +67,7 @@ public class Pedido {
         String print = "-------Ordem de Serviço-------" + "\nPedido Número : " + getIdPedido() + "\n";
         print += getProduto() + "\n";
         print += getCliente() + "\n";
+        print += getBebida() + "\n";
         return print;
     }
 

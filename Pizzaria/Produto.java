@@ -5,7 +5,6 @@ public class Produto {
     private String sabor;
     private String ingredientes;
     Pedido produto;
-    Pedido pedido;
 
     /**
      * 
@@ -37,9 +36,6 @@ public class Produto {
         this.produto = produto;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
 
     // ======= GETS =======
     public int getId() {

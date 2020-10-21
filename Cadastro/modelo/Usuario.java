@@ -7,44 +7,65 @@ public class Usuario {
     static String email;
     static String telefone;
 
-    public static String getCpf() {
-        return cpf;
+    // ========= SETS =========
+    public void setId(Long id) {
+        Usuario.id = id;
+    }
+
+    public void setTelefone(String telefone) {
+        Usuario.telefone = telefone;
     }
 
     public void setCpf(String cpf) {
         Usuario.cpf = cpf;
     }
 
-    public static String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         Usuario.email = email;
-    }
-
-    public static String getNome() {
-        return nome;
     }
 
     public void setNome(String nome) {
         Usuario.nome = nome;
     }
 
+    // ========= GETS =========
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        Usuario.id = id;
+    public static String getNome() {
+        return nome;
+    }
+
+    public static String getCpf() {
+        return cpf;
+    }
+
+    public static String getEmail() {
+        return email;
     }
 
     public static String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        Usuario.telefone = telefone;
+    // ======== Impressão ========
+    @Override
+    public String toString() {
+        return getId() + getNome();
+    }
+
+    // ======== Método equals para comparação de propriedades ========
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        if (!(object instanceof Usuario))
+            return false;
+
+        Usuario usuario = (Usuario) object;
+
+        return this.getId() == usuario.getId();
     }
 
 }

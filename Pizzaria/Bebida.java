@@ -1,51 +1,46 @@
 package Pizzaria;
 
-
-public class Cliente {
+public class Bebida {
     private int id;
     private String nome;
-    private Cliente cliente;
+    private Bebida bebida;
 
     /**
      * 
-     * @param id   Id do Cliente
-     * @param nome Nome do Cliente
+     * @param id
+     * @param nome
      */
-    public Cliente(int id, String nome) {
+    public Bebida(int id, String nome) {
         this.id = id;
         this.nome = nome;
-
     }
 
-    // ======== SETS ========
+    // SETS
     public void setId(int id) {
         this.id = id;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setBebida(Bebida bebida) {
+        this.bebida = bebida;
     }
 
-    // ======== GEST ========
+    // GETS
     public int getId() {
         return this.id;
     }
-
     public String getNome() {
         return this.nome;
     }
-
-
-   
+    public Bebida getBebida() {
+        return this.bebida;
+    }
 
     // ======== Impressão ========
     @Override
     public String toString() {
-        String print = "Cliente: " + getNome();
+        String print = "Bebida: " + getNome(); 
         return print;
     }
 
@@ -54,11 +49,12 @@ public class Cliente {
     public boolean equals(Object object) {
         if (object == this)
             return true;
-        if (!(object instanceof Cliente))
+        if (!(object instanceof Bebida))
             return false;
 
-        Cliente cliente = (Cliente) object;
+        Bebida bebida = (Bebida) object;
 
-        return this.getId() == cliente.getId();
+        return this.getId() == bebida.getId();
     }
+    
 }

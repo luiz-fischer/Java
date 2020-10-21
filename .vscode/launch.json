@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - ConnectionFactory",
+            "request": "launch",
+            "mainClass": "Cadastro.factory.ConnectionFactory",
+            "projectName": "Java_e552e103"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",
