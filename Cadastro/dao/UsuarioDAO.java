@@ -11,62 +11,98 @@ import Cadastro.modelo.Usuario;
 
 public class UsuarioDAO extends Cadastro.modelo.Usuario{
     // public static Connection connection;
-    Long id;
-    String nome;
-    String cpf;
-    String email;
-    String telefone;
+    public int id;
+    public String nome;
+    public String cpf;
+    public String email;
+    public String telefone;
+	// private List<Usuario> usuarios;
 
-    public static void salvar(List<Usuario> usuarios) {
+    public static void salvar(List<Usuario> usuarios) throws SQLException {
         Connection conn = (Connection) Cadastro.factory.ConnectionFactory.getConnection();
 
         // Método que faz a conexão
         PreparedStatement insereSt = null;
-        String sql = "INSERT INTO usuario(nome, cpf, email, telefone) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO usuario(id, nome, cpf, email, telefone) VALUES (?,?,?,?,?)";
 
         try {
             insereSt = (PreparedStatement) conn.prepareStatement(sql);
-            insereSt.setString(1, getNome());
-            insereSt.setString(2, getCpf());
-            insereSt.setString(3, getEmail());
-            insereSt.setString(4, getTelefone());
+            insereSt.setString(1, getId());
+            insereSt.setString(2, getNome());
+            insereSt.setString(3, getCpf());
+            insereSt.setString(4, getEmail());
+            insereSt.setString(5, getTelefone());
             insereSt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("erro ao incluir" + e.getMessage());
+            System.out.println("Erro ao incluir: " + e.getMessage());
 
         } finally {
-
-            try {
-                insereSt.close();
-
-            } catch (Throwable t) {
-                System.out.println("erro ao fechar st" + t.getMessage());
-            }
+            insereSt.close();
 
         }
     }
 
-    public static void consultar() throws SQLException {
-        // pega a conexão e o Statement
-Connection con = DriverManager.getConnection(
-    "jdbc:mysql://localhost/projetojava", "root", "123");
+    public static  void listarTodosCadastros() throws SQLException {
+        Connection conn = (Connection) Cadastro.factory.ConnectionFactory.getConnection();
 
-PreparedStatement stmt = con.prepareStatement("select * from usuario");
+        String sql = "SELECT * FROM usuario";
+        // ========= Método que faz a conexão =========
+        PreparedStatement stmt = conn.prepareStatement(sql);
 
-// executa um select
-ResultSet rs = stmt.executeQuery();
+        // ========= Executar o select =========
+        ResultSet rs = stmt.executeQuery();
 
-// itera no ResultSet
-while (rs.next()) {
-  String nome = rs.getString("nome");
-  String email = rs.getString("email");
+        while (rs.next()) {
+            
+            int id = rs.getInt("id");
+            String nome = rs.getString("nome");
+            String cpf = rs.getString("cpf");
+            String email = rs.getString("email");
+            String telefone = rs.getString("telefone");
 
-  System.out.println(nome + " :: " + email);
-}
+            System.out.println("Id :" + id + "\n" + 
+                               "Nome :" + nome + "\n" + 
+                               "Cpf :" + cpf + "\n" + 
+                               "Email :" + email + "\n" + 
+                               "Telefone :" + telefone + "\n"
+            );
+        }
 
-stmt.close();
-con.close();
+        stmt.close();
+        conn.close();
+    }
+
+    public static List<Usuario> pesquisar(String nome) throws SQLException { 
+
+        String sql = "SELECT * FROM usuario WHERE nome like ?"; 
+        
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/projetojava", "root", "123");
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome + "%"); 
+
+            ResultSet rs = stmt.executeQuery();
+
+            List<Usuario> lista = new ArrayList<>();
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario(); 
+
+                usuario.setId(rs.getString("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setTelefone(rs.getString("telefone"));
+
+                lista.add(usuario); 
+
+            }
+            stmt.close();
+            for (Usuario usuario : lista) {
+                System.out.println(usuario);
+            }
+        return (lista);
+       
     }
 
 }

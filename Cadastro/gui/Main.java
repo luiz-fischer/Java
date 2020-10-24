@@ -2,25 +2,24 @@ package Cadastro.gui;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import Cadastro.modelo.Usuario;
 
 public class Main {
 
-	private Scanner l;
+	private Scanner entrada;
 	private boolean execute;
-	private List<Usuario> usuarios;
+	private ArrayList<Usuario> usuarios;
 
 	public static void main(String[] args) throws SQLException {
 		new Main();
 	}
 
+	// =========== Painel principal , decisão das escolhas ===========
 	private Main() throws SQLException {
-		l = new Scanner(System.in);
+		entrada = new Scanner(System.in);
 		execute = true;
 		usuarios = new ArrayList<Usuario>();
-
 		System.out.println("BEM VINDO AO CADASTRO DE USUÁRIOS");
 
 		while (execute) {
@@ -32,35 +31,41 @@ public class Main {
 				listarCadastros();
 			} else if (opcao.equalsIgnoreCase("x")) {
 				execute = false;
+			} else if (opcao.equalsIgnoreCase("p")) {
+				pesquisar();
 			} else {
 				System.out.println("\nOpção Inválida !!! \n");
 			}
 		}
 	}
 
+	// =========== Método para o menu principal===========
 	private String menu() {
 		System.out.println("Selecione a opção:");
 		System.out.println("N - Novo cadastro");
 		System.out.println("L - Listar cadastros");
+		System.out.println("P - Pesquisar nome");
 		System.out.println("X - Sair");
-		return l.nextLine();
+		return entrada.nextLine();
 	}
 
-	private void cadastrar() {
-		boolean cadastrando = true;
+	// =========== Método para cadastrar novos Usuarios ===========
+	private void cadastrar() throws SQLException {
+		boolean efetuarCadastro = true;
 
-		while (cadastrando) {
+		while (efetuarCadastro) {
 			System.out.println("Cadastro de Usuário");
-			Usuario d = new Usuario();
-			d.setNome(textInput("Nome:"));
-			d.setCpf(textInput("Cpf: "));
-			d.setEmail(textInput("email: "));
-			d.setTelefone(textInput("telefone: "));
+			Usuario dados = new Usuario();
+			dados.setId(textInput("Id:"));
+			dados.setNome(textInput("Nome:"));
+			dados.setCpf(textInput("Cpf: "));
+			dados.setEmail(textInput("email: "));
+			dados.setTelefone(textInput("telefone: "));
 
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
 				System.out.println("Cadastro adicionado !!!");
-				usuarios.add(d);
+				usuarios.add(dados);
 				Cadastro.dao.UsuarioDAO.salvar(usuarios);
 
 			} else if (cadastrar.equalsIgnoreCase("n")) {
@@ -69,40 +74,42 @@ public class Main {
 				System.out.println("\nOpção inválida!!! \n");
 			}
 
-			String continua = textInput("Continuar cadastrando (S/N) ?");
-			if (continua.equalsIgnoreCase("N")) {
-				cadastrando = false;
-			} else if (continua.equalsIgnoreCase("s")) {
+			String continuarCadastro = textInput("Continuar cadastrando (S/N) ?");
+			if (continuarCadastro.equalsIgnoreCase("N")) {
+				efetuarCadastro = false;
+			} else if (continuarCadastro.equalsIgnoreCase("s")) {
 
 			} else {
 				System.out.println("\nOpção inválida!! \n");
-				cadastrando = false;
+				efetuarCadastro = false;
 			}
 		}
 	}
 
-	private void listarCadastros() throws SQLException {
-		// if (usuarios.size() == 0) {
-		// 	System.out.println("\nNão existem cadastros !!!\n");
-		// } else {
-		// 	System.out.println("\nLista de Cadastros\n");
-			
-		// 	for (int i = 0; i < usuarios.size(); i++) {
-		// 		// Usuario d = usuarios.get(i);
-		// 		System.out.println("Cadastro número: " + i);
-				Cadastro.dao.UsuarioDAO.consultar();
-		// 		System.out.println("\tNome: " + Usuario.getNome());
-		// 		System.out.println("\tCPF: " + Usuario.getCpf());
-		// 		System.out.println("\temail: " + Usuario.getEmail());
-		// 		System.out.print("\tTelefone: " + Usuario.getTelefone() + "\n");
-		// 	}
-		// 	System.out.println("\nFim da lista\n");
-		// }
+	// =========== Método para listar todos os Usuários Cadastrados ===========
+	private void listarCadastros()  {
+		try {
+			Cadastro.dao.UsuarioDAO.listarTodosCadastros();
+		} catch (SQLException e) {
+			System.out.println("Erro Lista: " + e);
+			e.printStackTrace();
+		}
+
 	}
 
-	private String textInput(String label) {
-		System.out.println(label);
-		return l.nextLine();
+	// =========== Método para pesquisar Usuários pelo nome ===========
+	private void pesquisar() throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Pesquisar por nome: ");
+		String nome = sc.nextLine();
+		
+		Cadastro.dao.UsuarioDAO.pesquisar(nome);
 	}
-   
+
+	// =========== Método para inserção ===========
+	private String textInput(String texto) {
+		System.out.println(texto);
+		return entrada.nextLine();
+	}
+
 }

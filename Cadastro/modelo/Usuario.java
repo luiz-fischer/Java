@@ -1,14 +1,14 @@
 package Cadastro.modelo;
 
 public class Usuario {
-    static Long id;
-    static String nome;
-    static String cpf;
-    static String email;
-    static String telefone;
+    private static String id;
+    private static String nome;
+    private static String cpf;
+    private static String email;
+    private static String telefone;
 
     // ========= SETS =========
-    public void setId(Long id) {
+    public void setId(String id) {
         Usuario.id = id;
     }
 
@@ -29,7 +29,7 @@ public class Usuario {
     }
 
     // ========= GETS =========
-    public Long getId() {
+    public static String getId() {
         return id;
     }
 
@@ -49,10 +49,15 @@ public class Usuario {
         return telefone;
     }
 
-    // ======== Impressão ========
+   // ======== Impressão ========
     @Override
     public String toString() {
-        return getId() + getNome();
+        String print =  "Id: " + getId() + "\n"+
+                        "Nome: " + getNome() + "\n"+
+                        "CPF: " + getCpf() + "\n"+
+                        "E-mail: " + getEmail()  + "\n"+
+                        "Telefone: " + getTelefone();
+        return print;
     }
 
     // ======== Método equals para comparação de propriedades ========
@@ -65,7 +70,7 @@ public class Usuario {
 
         Usuario usuario = (Usuario) object;
 
-        return this.getId() == usuario.getId();
+        return getId() == getId();
     }
 
 }
