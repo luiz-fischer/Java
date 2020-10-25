@@ -16,26 +16,33 @@ public class Main {
 	}
 
 	// =========== Painel principal , decisão das escolhas ===========
-	private Main() throws SQLException {
+	private Main() {
 		entrada = new Scanner(System.in);
 		execute = true;
 		usuarios = new ArrayList<Usuario>();
 		System.out.println("BEM VINDO AO CADASTRO DE USUÁRIOS");
 
-		while (execute) {
-			String opcao = menu();
+		try {
+			while (execute) {
+				String opcao = menu();
 
-			if (opcao.equalsIgnoreCase("n")) {
-				cadastrar();
-			} else if (opcao.equalsIgnoreCase("l")) {
-				listarCadastros();
-			} else if (opcao.equalsIgnoreCase("x")) {
-				execute = false;
-			} else if (opcao.equalsIgnoreCase("p")) {
-				pesquisar();
-			} else {
-				System.out.println("\nOpção Inválida !!! \n");
+				if (opcao.equalsIgnoreCase("n")) {
+					cadastrar();
+				} else if (opcao.equalsIgnoreCase("l")) {
+					listarCadastros();
+				} else if (opcao.equalsIgnoreCase("x")) {
+					execute = false;
+				} else if (opcao.equalsIgnoreCase("p")) {
+					pesquisar();
+				} else if (opcao.equalsIgnoreCase("d")) {
+					deletar();
+				} else {
+					System.out.println("\nOpção Inválida !!! \n");
+				}
 			}
+
+		} catch (SQLException exception) {
+			System.out.println("Erro: " + exception);
 		}
 	}
 
@@ -45,6 +52,7 @@ public class Main {
 		System.out.println("N - Novo cadastro");
 		System.out.println("L - Listar cadastros");
 		System.out.println("P - Pesquisar nome");
+		System.out.println("D - Deletar por Id");
 		System.out.println("X - Sair");
 		return entrada.nextLine();
 	}
@@ -56,7 +64,7 @@ public class Main {
 		while (efetuarCadastro) {
 			System.out.println("Cadastro de Usuário");
 			Usuario dados = new Usuario();
-			dados.setId(textInput("Id:"));
+			// dados.setId(textInput("Id:"));
 			dados.setNome(textInput("Nome:"));
 			dados.setCpf(textInput("Cpf: "));
 			dados.setEmail(textInput("email: "));
@@ -64,7 +72,7 @@ public class Main {
 
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
-				System.out.println("Cadastro adicionado !!!");
+				// System.out.println("Cadastro adicionado !!!");
 				usuarios.add(dados);
 				Cadastro.dao.UsuarioDAO.salvar(usuarios);
 
@@ -87,23 +95,45 @@ public class Main {
 	}
 
 	// =========== Método para listar todos os Usuários Cadastrados ===========
-	private void listarCadastros()  {
+	private void listarCadastros() {
 		try {
 			Cadastro.dao.UsuarioDAO.listarTodosCadastros();
-		} catch (SQLException e) {
-			System.out.println("Erro Lista: " + e);
-			e.printStackTrace();
+		} catch (SQLException exception) {
+			System.out.println("Erro ao listar: " + exception);
+			exception.printStackTrace();
 		}
 
 	}
 
 	// =========== Método para pesquisar Usuários pelo nome ===========
-	private void pesquisar() throws SQLException {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Pesquisar por nome: ");
-		String nome = sc.nextLine();
-		
-		Cadastro.dao.UsuarioDAO.pesquisar(nome);
+	private void pesquisar() {
+		try {
+			Scanner entrada = new Scanner(System.in);
+			System.out.print("Pesquisar por nome: ");
+			String nome = entrada.nextLine();
+
+			Cadastro.dao.UsuarioDAO.pesquisar(nome);
+			for (Usuario usuario : usuarios) {
+				System.out.println(usuario);
+			}
+		} catch (SQLException exception) {
+			System.out.println("Erro ao Pesquisar: " + exception);
+		}
+	}
+
+	// =========== Método para deletar um usuario pelo Id ===========
+	private void deletar() {
+		try {
+			Scanner entrada = new Scanner(System.in);
+			System.out.print("Digite o id para ser deletado: ");
+			String id = entrada.nextLine();
+
+			Cadastro.dao.UsuarioDAO.deletar(id);
+
+		} catch (SQLException exception) {
+			System.out.println("Erro ao Deletar: " + exception);
+
+		}
 	}
 
 	// =========== Método para inserção ===========

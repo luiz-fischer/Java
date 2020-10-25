@@ -1,11 +1,12 @@
 package Cadastro.modelo;
 
 public class Usuario {
-    private static String id;
-    private static String nome;
-    private static String cpf;
-    private static String email;
-    private static String telefone;
+    protected static String id;
+    protected static String nome;
+    protected static String cpf;
+    protected static String email;
+    protected static String telefone;
+    Usuario usuario;
 
     // ========= SETS =========
     public void setId(String id) {
@@ -49,14 +50,14 @@ public class Usuario {
         return telefone;
     }
 
-   // ======== Impressão ========
+    // ======== Impressão ========
     @Override
     public String toString() {
-        String print =  "Id: " + getId() + "\n"+
-                        "Nome: " + getNome() + "\n"+
-                        "CPF: " + getCpf() + "\n"+
-                        "E-mail: " + getEmail()  + "\n"+
-                        "Telefone: " + getTelefone();
+        String print = "Id: " + getId() + "\n" + 
+                       "Nome: " + getNome() + "\n" +
+                       "CPF: " + getCpf() + "\n" + 
+                       "E-mail: " + getEmail() + "\n" + 
+                       "Telefone: " + getTelefone() + "\n"; 
         return print;
     }
 
