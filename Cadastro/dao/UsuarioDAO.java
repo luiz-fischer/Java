@@ -34,7 +34,7 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
             insereSt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso", 
-                                          "Added Successful",
+                                          "Mensagem do Sistema",
                                           JOptionPane.WARNING_MESSAGE
                                         );
 
@@ -90,6 +90,7 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
 
         List<Usuario> lista = new ArrayList<>();
         try {
+            
             while (rs.next()) {
                 Usuario usuario = new Usuario();
 
@@ -126,7 +127,7 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
             stmt.executeUpdate(sql);
             stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Deletado com Sucesso", "Delete Successful",
+            JOptionPane.showMessageDialog(null, "Deletado com Sucesso", "Mensagem do Sistema",
                                           JOptionPane.WARNING_MESSAGE
                                         );
 

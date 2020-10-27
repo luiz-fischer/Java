@@ -1,11 +1,11 @@
 package Cadastro.modelo;
 
 public class Usuario {
-    protected static String id;
-    protected static String nome;
-    protected static String cpf;
-    protected static String email;
-    protected static String telefone;
+    private static String id;
+    private static String nome;
+    private static String cpf;
+    private static String email;
+    private static String telefone;
     Usuario usuario;
 
     // ========= SETS =========
