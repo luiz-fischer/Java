@@ -1,8 +1,8 @@
 package Vendas;
 
 public class Funcionario extends Usuario{
-    private String setor;
-    private double salario;
+    protected String setor;
+    protected double salario;
 
     public Funcionario(
         String nome,
@@ -38,8 +38,7 @@ public class Funcionario extends Usuario{
   // ======== Impressão ========
   @Override
   public String toString() {
-      String print = this.salario + super.nome;
-      return print;
+      return this.salario + super.nome;
   }
     
 }

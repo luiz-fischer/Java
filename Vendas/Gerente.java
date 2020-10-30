@@ -1,16 +1,22 @@
 package Vendas;
 
-public class Gerente  {
+public class Gerente extends Usuario{
     public String setor;
     public double orcamento;
 
-    public Gerente(String setor, double orcamento) {
+    public Gerente(
+        String nome,
+        String senha,
+        String setor, 
+        double orcamento
+    ) {
+        super(nome, senha);
         this.setor = setor;
         this.orcamento = orcamento;
 
     }
-    public Gerente(String setor, String orcamento) {
-        this(setor, 0);
+    public Gerente(String nome, String senha) {
+        this(nome, senha, "", 0);
     }
 
     // ======= SETS =======
