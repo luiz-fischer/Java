@@ -12,7 +12,10 @@ public class ConnectionFactory {
 	
 	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/projetojava", "root", "123");
+			String url = "jdbc:mysql://localhost/projetojava";
+			String login = "root";
+			String password = "123";
+			return DriverManager.getConnection(url, login, password);
 		} catch (SQLException excecao) {
 			throw new RuntimeException(excecao);
 		}

@@ -26,7 +26,7 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
 
         try {
             insereSt = (PreparedStatement) conn.prepareStatement(sql);
-            // insereSt.setString(1, getId());
+            // insereSt.setString(1, getId()); // AUTO INCREMENTO
             insereSt.setString(1, getNome());
             insereSt.setString(2, getCpf());
             insereSt.setString(3, getEmail());
@@ -79,10 +79,12 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
     }
 
     public static List<Usuario> pesquisar(String nome) throws SQLException {
-
+        String url = "jdbc:mysql://localhost/projetojava";
+        String login = "root";
+        String password = "123";
         String sql = "SELECT * FROM usuario WHERE nome like ?";
 
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/projetojava", "root", "123");
+        Connection con = DriverManager.getConnection(url, login, password);
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, nome + "%");
 
@@ -117,9 +119,12 @@ public class UsuarioDAO extends Cadastro.modelo.Usuario {
     }
 
     public static void deletar(String id) throws SQLException {
+        String url = "jdbc:mysql://localhost/projetojava";
+        String login = "root";
+        String password = "123";
         String sql = "DELETE FROM usuario WHERE id = " + id + " ";
 
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/projetojava", "root", "123");
+        Connection con = DriverManager.getConnection(url, login, password);
         PreparedStatement stmt = con.prepareStatement(sql);
 
         // ===== Executa o SQL para apagar um registro =====

@@ -1,0 +1,285 @@
+body {
+    background-image: url("../img/fundo.png");
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    ;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.icone {
+    width: 120px;
+    margin: 0px 28px;
+}
+
+.btn-secondary:hover {
+    color: black;
+    background-color: black;
+    border-color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    font-size: 15px;
+}
+
+.linkNavIco {
+    width: 30px;
+    margin: 0px 10px;
+}
+
+.bg-dark {
+    background-color: rgb(20, 20, 20) !important;
+    height: 70px;
+}
+
+#navbar {
+    background-color: #333;
+    /* Black background color */
+    position: fixed;
+    /* Make it stick/fixed */
+    top: 0;
+    /* Stay on top */
+    width: 100%;
+    /* Full width */
+    transition: top 0.5s;
+    /* Transition effect when sliding down (and up) */
+}
+
+.collapse {
+    margin-right: 33px;
+}
+
+#avatar {
+    border-radius: 5px;
+    width: 33px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #000000b8;
+    top: 130%;
+    left: -127px;
+    width: 200px;
+    height: 235px;
+    margin: 0px 2px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    list-style: none;
+}
+
+.dropdown-toggle::after {
+    margin-left: -6px;
+    vertical-align: 0.100em;
+}
+
+.dropdown-item {
+    color: white;
+    font-size: 12px;
+    margin-left: -16px;
+    margin-top: 1px;
+}
+
+#gerenciar {
+    margin-top: 10px;
+}
+
+hr {
+    border-color: #808080a6;
+    margin-top: 9px;
+}
+
+.avatarPerfil {
+    border-radius: 3px;
+    width: 30px;
+    margin: 3px 8px;
+}
+
+#lupa {
+    width: 26px;
+}
+
+#sino {
+    width: 28px;
+    height: 32px;
+}
+
+#altura {
+    height: 1400px;
+}
+
+.main {
+    margin-top: 160px;
+    margin-left: 40px;
+}
+
+#tituloFundo {
+    width: 35%;
+}
+
+#iconeMain {
+    width: 35px;
+    height: 30px;
+}
+
+h4 {
+    font-size: 19px;
+    color: #fcfefb;
+    width: 36%;
+    margin-left: 1%;
+}
+
+.btnMain>#assistir {
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px 9px;
+    background-color: #fcfffc;
+    color: black;
+    padding: 8px 0px;
+}
+
+.btnMain img {
+    width: 23px;
+    margin-bottom: 3px;
+}
+
+.btnMain>#infos {
+    width: 208px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px -1px;
+    background-color: #7d7c77d1;
+    color: white;
+    padding: 8px 0px;
+}
+
+.btn:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    color: #fff;
+}
+
+.btn:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    color: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.tituloCarrossel {
+    margin-bottom: -7px;
+}
+
+#populares {
+    margin-top: 80px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+}
+
+.serieImg {
+    width: 250px;
+    margin-left: 2px;
+    border-radius: 5px;
+}
+
+#alta {
+    margin-top: 40px;
+    margin-left: 4px;
+}
+
+#novamente {
+    margin-top: 40px;
+    margin-left: 4px;
+}
+
+.seriesCarrossel1 {
+    margin-bottom: 20px;
+}
+
+/* Mudança de eventos do Bootstrap */
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff00;
+    border-color: #007bff00;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #007bff00;
+    border-color: #007bff00;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d00;
+    border-color: #6c757d00;
+}
+
+.btn-secondary:hover {
+    color: #fafafb;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a626800;
+    border-color: #545b6200;
+}
+
+.btn-secondary.focus, .btn-secondary:focus {
+    color: #fff;
+    background-color: #5a626800;
+    border-color: #545b6200;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0);
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a626800;
+    border-color: #545b6200;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgb(130 138 145 / 0%);
+}
+
+secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #545b6200;
+    border-color: #4e555b00;
+}

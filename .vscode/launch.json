@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Vendas.Main",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Principal",
+            "request": "launch",
+            "mainClass": "Cadastro.gui.Principal",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ConnectionFactory",
             "request": "launch",
             "mainClass": "Cadastro.factory.ConnectionFactory",
