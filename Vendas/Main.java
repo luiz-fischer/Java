@@ -12,8 +12,6 @@ public class Main {
 
     Gerente gerente1 = new Gerente("Teodoro", "senha3", "Compras", 10000);
     System.out.println(gerente1);
-
-    
         
     }
 

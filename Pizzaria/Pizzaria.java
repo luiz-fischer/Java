@@ -14,7 +14,7 @@ public class Pizzaria {
         Produto frangoBacon = new Produto(3, "Frango com Bacon",
                 "Frango desfiado, Bacon, Mussarela, Molho de Tomate e Oregano");
         // Criação dos valores para a classe bebida
-        Bebida semBebida = new Bebida(1, "Sem Bebida");
+        Bebida semBebida = new Bebida(1, null);
         Bebida bebida1 = new Bebida(2, "Coca Cola Lata 350ml");
         Bebida bebida2 = new Bebida(3, "Fanta Sabor Uva Lata 350ml");
         Bebida bebida3 = new Bebida(4, "Água Sem Gás 1,5L");
