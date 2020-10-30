@@ -1,21 +1,20 @@
 package Vendas;
 
 public class Usuario {
-    protected String nome;
-    protected String senha;
-    protected Usuario usuario;
+    protected  String nome;
+    protected  String senha;
+    // protected Usuario usuario;
     
     public Usuario(
         String nome, 
         String senha
     ) { 
+        
         this.nome = nome;
         this.senha = senha;
     } 
 
-    // public Usuario(String nome) {
-    //     this(nome, "");
-	// }
+   
 
 	// ======= SETS =======
     public void setNome(String nome) {
@@ -24,9 +23,9 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+    // public void setUsuario(Usuario usuario) {
+    //     this.usuario = usuario;
+    // }
 
     // ======= GETS =======
     public String getNome() {
@@ -35,10 +34,6 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-    
 
   // ======== Impressão ========
   @Override

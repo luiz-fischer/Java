@@ -1,3 +1,5 @@
+package heranca;
+
 /**
  * Biblioteca Matemática
  */

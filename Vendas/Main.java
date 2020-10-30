@@ -3,25 +3,16 @@ package Vendas;
 public class Main {
     public static void main(String[] args) {
 
-    Usuario usuario1 = new Usuario("Luiz", "senha1");
-    // Usuario usuario2 = new Usuario("Pedro", "senha2");
-
-    Cliente cliente = new Cliente(usuario1, "45345", "Rua Boitagazes", 10, 3124124);
-    // Cliente cliente = new Cliente("45345", "Rua Boitagazes", "99", 10, 3124124);
     
+    Cliente cliente1 = new Cliente("Luiz", "senha1", "45345", "Rua Boitagazes", 10, 3124124);
+    System.out.println(cliente1);
 
-    // Funcionario funcionario = (Funcionario) usuario1;
-    // funcionario.salario = 10000;
-    // funcionario.setor = "Gerente Operações";
-    
-    // Cliente cliente = (Cliente) usuario1;
-    // cliente.cep = "43553";
-    // cliente.endereco = "Rua dos Boitacazes";
-    // cliente.numero = 10;
-    // cliente.telefone = 434342;
+    Funcionario funcionario1 = new Funcionario("Pedro", "senha2", "Vendedor", 2000);
+    System.out.println(funcionario1);
 
-    // System.out.println(usuario1);
-    System.out.println(cliente);
+    Gerente gerente1 = new Gerente("Teodoro", "senha3", "Compras", 10000);
+    System.out.println(gerente1);
+
     
         
     }

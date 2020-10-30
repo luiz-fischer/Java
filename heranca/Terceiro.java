@@ -7,14 +7,13 @@ public class Terceiro extends Pessoa {
         String nome, 
         String dtNascimento, 
         String cpf,
-        String tipoResp,
         String empresa
     ) {
-        super(nome, dtNascimento, cpf, tipoResp);
+        super(nome, dtNascimento, cpf);
         this.empresa = empresa;
     }
 
     public Terceiro(String nome, String dtNascimento) {
-        this(nome, dtNascimento, "", "", "");
+        this(nome, dtNascimento,  "", "");
     }
 }

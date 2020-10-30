@@ -1,8 +1,8 @@
 package Vendas;
 
 public class Gerente extends Usuario{
-    public String setor;
-    public double orcamento;
+    private String setor;
+    private double orcamento;
 
     public Gerente(
         String nome,
@@ -15,10 +15,7 @@ public class Gerente extends Usuario{
         this.orcamento = orcamento;
 
     }
-    public Gerente(String nome, String senha) {
-        this(nome, senha, "", 0);
-    }
-
+   
     // ======= SETS =======
     public void setSetor(String setor) {
         this.setor = setor;
@@ -28,17 +25,21 @@ public class Gerente extends Usuario{
     }
 
     // ======= GETS =======
-    public String getSetor() {
-        return setor;
-    }
-    public double getOrcamento() {
-        return orcamento;
-    }
+    // public String getSetor() {
+    //     return setor;
+    // }
+    // public double getOrcamento() {
+    //     return orcamento;
+    // }
 
   // ======== Impressão ========
   @Override
   public String toString() {
-      String print = "Setor: " + getSetor() + "Orçamento: " + getOrcamento();
-      return print;
+      super.toString();
+    String print = "========== GERENTE ==========" + "\n" +
+                   "Usuario: " + super.nome + "\n" +
+                   "Setor: " + this.setor + "\n" +
+                   "Salário R$:  " + this.orcamento + "\n" ;
+    return print;
   }
 }
