@@ -27,13 +27,9 @@ public class Mamifero extends Animal {
 // ======== Impressão ========
   @Override
   public String toString() {
-    String print = "\n\n========== Mamíferos ==========" + "\n" +
-                   "Nome: " + getNome() + "\n" +
-                   "Comprimento: " + getComprimento() +  "\n" +
-                   "Quantidade de Patas:  " + getQtdPatas() + "\n" +
-                   "Cor:  " + getCor() + "\n" +
-                   "Ambiente:  " + getAmbiente() + "\n" +
-                   "Alimentação:  " + getAlimento() + "\n";
+    String print = "\n\n========== Mamíferos ==========" + "\n";
+           print += toString();
+           print += "Alimentação:  " + getAlimento() + "\n";
     return print;
   }
     

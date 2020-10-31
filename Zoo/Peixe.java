@@ -27,13 +27,9 @@ public class Peixe extends Animal {
 // ======== Impressão ========
   @Override
   public String toString() {
-    String print = "\n\n========== Peixes ==========" + "\n" +
-                   "Nome: " + getNome() + "\n" +
-                   "Comprimento: " + getComprimento() +  "\n" +
-                   "Quantidade de Patas:  " + getQtdPatas() + "\n" +
-                   "Cor:  " + getCor() + "\n" +
-                   "Ambiente:  " + getAmbiente() + "\n" +
-                   "Tem escamas?:  " + isEscamas() + "\n";
+    String print = "\n\n========== Peixes ==========" + "\n";
+           print += toString();
+           print += "Tem escamas?:  " + isEscamas() + "\n";
     return print;
   }
     
