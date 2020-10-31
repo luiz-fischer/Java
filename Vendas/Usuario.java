@@ -3,7 +3,6 @@ package Vendas;
 public class Usuario {
     protected  String nome;
     protected  String senha;
-    // protected Usuario usuario;
     
     public Usuario(
         String nome, 

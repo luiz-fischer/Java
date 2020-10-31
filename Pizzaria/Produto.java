@@ -1,5 +1,6 @@
 package Pizzaria;
 
+
 public class Produto {
     private int id;
     private String sabor;
@@ -16,6 +17,7 @@ public class Produto {
         this.id = id;
         this.ingredientes = ingredientes;
         this.sabor = sabor;
+        
 
     }
 

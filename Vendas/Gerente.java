@@ -25,21 +25,21 @@ public class Gerente extends Usuario{
     }
 
     // ======= GETS =======
-    // public String getSetor() {
-    //     return setor;
-    // }
-    // public double getOrcamento() {
-    //     return orcamento;
-    // }
+    public String getSetor() {
+        return this.setor;
+    }
+    public double getOrcamento() {
+        return this.orcamento;
+    }
 
   // ======== Impressão ========
   @Override
   public String toString() {
       super.toString();
     String print = "========== GERENTE ==========" + "\n" +
-                   "Usuario: " + super.nome + "\n" +
-                   "Setor: " + this.setor + "\n" +
-                   "Salário R$:  " + this.orcamento + "\n" ;
+                   "Usuario: " + getNome() + "\n" +
+                   "Setor: " + getSetor() +  "\n" +
+                   "Salário R$:  " + getOrcamento() + "\n" ;
     return print;
   }
 }

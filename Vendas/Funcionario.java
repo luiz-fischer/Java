@@ -24,22 +24,22 @@ public class Funcionario extends Usuario{
         this.salario = salario;
     }
 
-    // // ======= GETS =======
-    // public String getSetor() {
-    //     return setor;
-    // }
-    // public double getSalario() {
-    //     return salario;
-    // }
+    // ======= GETS =======
+    public String getSetor() {
+        return this.setor;
+    }
+    public double getSalario() {
+        return this.salario;
+    }
 
    // ======== Impressão ========
    @Override
    public String toString() {
        super.toString();
      String print = "========== FUNCIONÁRIO ==========" + "\n" +
-                    "Usuario: " + super.nome + "\n" +
-                    "Setor: " + this.setor + "\n" +
-                    "Salário R$:  " + this.salario + "\n" ;
+                    "Usuario: " + getNome() + "\n" +
+                    "Setor: " + getSetor() + "\n" +
+                    "Salário R$:  " + getSalario() + "\n" ;
      return print;
    }
     

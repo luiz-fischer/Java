@@ -38,29 +38,29 @@ public class Cliente extends Usuario {
     }
 
    // ======= GETS =======
-    // public String getCep() {
-    //     return cep;
-    // }
-    // public String getEndereco() {
-    //     return endereco;
-    // }
-    // public int getNumero() {
-    //     return numero;
-    // }
-    // public int getTelefone() {
-    //     return telefone;
-    // }
-
+    public String getCep() {
+        return this.cep;
+    }
+    public String getEndereco() {
+        return this.endereco;
+    }
+    public int getNumero() {
+        return this.numero;
+    }
+    public int getTelefone() {
+        return this.telefone;
+    }
+    
   // ======== Impressão ========
   @Override
   public String toString() {
       super.toString();
     String print = "========== CLIENTE ==========" + "\n" +
-                   "Usuario: " + super.nome + "\n" +
-                   "Endereço: " + this.endereco + "\n" +
-                   "Cep: " + this.cep + "\n" +
-                   "Numero: " + this.numero + "\n"+
-                   "Telefone: " + this.telefone + "\n";
+                   "Usuario: " + getNome() + "\n" +
+                   "Endereço: " + getEndereco() + "\n" +
+                   "Cep: " + getCep() + "\n" +
+                   "Numero: " + getNumero() + "\n" +
+                   "Telefone: " + getTelefone() + "\n";
     return print;
   }
 }

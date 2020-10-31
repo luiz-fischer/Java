@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
     
-    Cliente cliente1 = new Cliente("Luiz", "senha1", "45345", "Rua Boitagazes", 10, 3124124);
+    Cliente cliente1 = new Cliente("Luiz", "senha1", "89500-552", "Rua Boitagazes", 10, 987456224);
     System.out.println(cliente1);
 
     Funcionario funcionario1 = new Funcionario("Pedro", "senha2", "Vendedor", 2000);
