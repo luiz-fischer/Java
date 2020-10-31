@@ -28,7 +28,7 @@ public class Mamifero extends Animal {
   @Override
   public String toString() {
     String print = "\n\n========== Mamíferos ==========" + "\n";
-           print += toString();
+           print += super.toString();
            print += "Alimentação:  " + getAlimento() + "\n";
     return print;
   }

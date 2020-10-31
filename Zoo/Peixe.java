@@ -28,7 +28,7 @@ public class Peixe extends Animal {
   @Override
   public String toString() {
     String print = "\n\n========== Peixes ==========" + "\n";
-           print += toString();
+           print += super.toString();
            print += "Tem escamas?:  " + isEscamas() + "\n";
     return print;
   }
