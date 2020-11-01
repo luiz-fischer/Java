@@ -46,3 +46,73 @@ def myFunc():
 
 myFunc()
 
+x = "awesome"
+
+def myfunc():
+  x = "fantastic"
+  print("Python is " + x)
+
+myfunc()
+
+print("Python is " + x) 
+#The global Keyword
+def myfunc():
+  global x
+  x = "fantastic"
+
+myfunc()
+
+print("Python is " + x) 
+
+x = "awesome"
+
+def myfunc():
+  global x
+  x = "fantastic"
+
+myfunc()
+
+print("Python is " + x) 
+x = 35
+y = "Luiz"
+z = -87.7e100
+
+print(type(x))
+print(type(y))
+print(type(z)) 
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+
+#convert from int to float:
+a = float(x)
+
+#convert from float to int:
+b = int(y)
+
+#convert from int to complex:
+c = complex(x)
+
+print(a)
+print(b)
+print(c)
+
+print(type(a))
+print(type(b))
+print(type(c))
+#RANDOM
+import random
+
+print(random.randrange(1, 10))
+#Strings are Arrays
+
+a = "Hello, World!"
+print(a[1])
+#SLICING 
+b = "Hello, World!"
+print(b[2:5]) 
+a = "Hello, World!"
+print(len(a))
+txt = "The rain in Spain stays mainly in the plain"
+x = "ain" in txt
+print(x)
