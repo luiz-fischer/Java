@@ -1,5 +1,6 @@
 package Zoo;
 
+
 public class Animal {
     protected String nome;
     protected double comprimento;
@@ -7,7 +8,15 @@ public class Animal {
     protected String cor;
     protected String ambiente;
 
-    public Animal(
+/**
+ * 
+ * @param nome Valor para o nome do objeto animal.
+ * @param comprimento Valor para o comprimento do objeto animal.
+ * @param qtdPatas Quantidade de patas do objeto animal.
+ * @param cor Valor para a cor do objeto animal.
+ * @param ambiente Valor para o ambiente que habita o objeto animal.
+ */
+    protected Animal(
         String nome, 
         double comprimento, 
         int qtdPatas, 
@@ -66,10 +75,18 @@ public class Animal {
 
     }
 
+// ======== Métodos ========
+    public void darComida() {
+        System.out.println("Alimentou!");
+    }
+    public void respiracao() {
+        System.out.println("Respira com Ar!");
+    }
+
 // ======== Impressão ========
-  @Override
-  public String toString() {
-    String print = "========== Animais ==========" + "\n" +
+    @Override
+    public String toString() {
+        String print = "========== Animais ==========" + "\n" +
                    "Nome: " + getNome() + "\n" +
                    "Comprimento: " + getComprimento() +  "\n" +
                    "Quantidade de Patas:  " + getQtdPatas() + "\n" +
