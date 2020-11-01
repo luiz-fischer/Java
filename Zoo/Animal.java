@@ -1,6 +1,5 @@
 package Zoo;
 
-
 public class Animal {
     protected String nome;
     protected double comprimento;
