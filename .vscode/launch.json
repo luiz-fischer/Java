@@ -8,6 +8,27 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "Zoo.Main",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Aplicacao",
+            "request": "launch",
+            "mainClass": "Veiculo.Aplicacao",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "heranca.Main",
+            "projectName": "Java_e552e103"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "Vendas.Main",
             "projectName": "Java_e552e103"
         },

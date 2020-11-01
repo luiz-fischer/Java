@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "MySql",
+				"database": "projetojava",
+				"username": "root",
+				"password": "123"
+			}
+		],
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"/home/user02/Java/**/*.jar"
+		]
+	}
+}
