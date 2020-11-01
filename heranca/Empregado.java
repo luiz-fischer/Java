@@ -7,15 +7,14 @@ public class Empregado extends Pessoa {
         String nome, 
         String dtNascimento, 
         String cpf, 
-        String tipoResp,
         double salario
     ) {
-        super(nome, dtNascimento, cpf, tipoResp);
+        super(nome, dtNascimento, cpf);
         this.salario = salario;
     }
 
     public Empregado(String nome, String dtNascimento) {
-        this(nome, dtNascimento, "", "", 0);
+        this(nome, dtNascimento,  "", 0);
     }
 
     public String toString() {
