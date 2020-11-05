@@ -1,9 +1,0 @@
-{
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "[markdown]": {
-
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": false
-    },
-    "editor.wordWrap": "on"
-}

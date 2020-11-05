@@ -1,9 +1,5 @@
 package Zoo;
-/**
- * License Copyright: Luiz Otávio Fischer.
-   License License: Open-source.
-   License Contact: luiz.fischer@alunos.sc.senac.br
-*/
+
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +13,7 @@ public class Main {
         girafa.respiracao();
         System.out.println(peixePalhaco);
         peixePalhaco.darComida();
-        peixePalhaco.darComida();
+        peixePalhaco.respiracao();
+    
     }
 }
