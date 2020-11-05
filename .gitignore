@@ -1,15 +1,7 @@
-/Cadastro/Projeto/nbproject/private/
-/Cadastro/Projeto/build/
-/Cadastro/Cadastro/nbproject/private/
-/Cadastro/Cadastro/build/
-/NovoCadastro/nbproject/private/
-/NovoCadastro/build/
-/CadastroGUI/build/
-/CadastroGUI/nbproject/private/
 
 #Todos os arquivos e sub-pastas
-CadastroGUI/
-CadastroUsuario/
+/CadastroGUI/
+/CadastroUsuario/
 #Pizzaria/
-..vscode/
-mysql-connector-java-5.1.18/
+/.vscode/
+/mysql-connector-java-5.1.18/
