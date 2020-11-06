@@ -81,6 +81,10 @@ public class Animal {
     public void respiracao() {
         System.out.println("Respira com Ar!");
     }
+    public void emitirSom() {
+        System.out.println("Som Desconhecido!");
+    }
+
 
 // ======== Impressão ========
     @Override
