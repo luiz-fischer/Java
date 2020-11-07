@@ -2,37 +2,37 @@ package ProvaDois;
 
 import java.util.ArrayList;
 
-public class Heroi extends Pessoa{
-    public int idHeroi;
-    public int idFranquia;
+public class Heroi extends Pessoa {
+    protected int idHeroi;
+    protected int idFranquia;
     Franquia franquia;
-    ArrayList<HeroiFilme> filmes;  
+    ArrayList<HeroiFilme> filmes;
     
+
     public static ArrayList<Heroi> herois = new ArrayList<>();
 
     /**
      * 
-     * @param idHeroi
-     * @param nome
-     * @param localizacao
-     * @param precoCache
-     * @param franquia
+     * @param idHeroi     Valor para o idHeroi do Objeto Heroi.
+     * @param nome        Valor para o nome do Objeto Heroi.
+     * @param localizacao Valor para o localizacao do Objeto Heroi.
+     * @param precoCache  Valor para o precoCache do Objeto Heroi.
+     * @param franquia    Valor para o franquia do Objeto Heroi.
      */
-    public Heroi(int idHeroi, String nome, String localizacao, int precoCache, Franquia franquia) {
+    public Heroi(int idHeroi, String nome, String localizacao, double precoCache, int anoDeNascimento,
+            Franquia franquia) {
+        super(nome, localizacao, precoCache, anoDeNascimento);
         this.idHeroi = idHeroi;
-        super.nome = nome;
-        super.localizacao = localizacao;
-        super.precoCache = precoCache;
+
         this.franquia = franquia;
-        
         this.filmes = new ArrayList<>();
 
         franquia.herois.add(this);
-
         herois.add(this);
-        
-    }  
-           
+
+    }
+
+   
     public double qtdInvestimento() {
        double investimento = this.precoCache * this.filmes.size();
        
@@ -54,6 +54,7 @@ public class Heroi extends Pessoa{
             this.nome + 
             " participou " + 
             this.filmes.size()
+            
         );
     }
     

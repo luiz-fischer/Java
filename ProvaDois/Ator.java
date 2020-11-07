@@ -1,70 +1,60 @@
 package ProvaDois;
 
+import java.util.ArrayList;
 
 public class Ator extends Pessoa {
-    private int id;
-    private int anoDeNascimento;
-
-    public Ator() {
-
-    }
-
-    public Ator(int id,String nome, String localizacao, double precoCache, int anoDeNascimento) {
-        this.id = id;
-        this.anoDeNascimento = anoDeNascimento;
-        this.nome = nome;
-        this.localizacao = localizacao;
-        this.precoCache = precoCache;
-    }
-
-    public String getNome() {
-        return super.nome;
-    }
-
-    public void setNome() {
-        super.nome = nome;
-    }
-
-    public String getLocalizacao() {
-        return super.localizacao;
-    }
-
-    public void setLocalizacao() {
-        super.localizacao = localizacao;
-    }
-
-    public double getPrecoCache() {
-        return super.precoCache;
-    }
-
-    public void setPrecoCache() {
-        super.precoCache = precoCache;
-    }
+    protected int id;
+    protected int nivelFama;
+  
     
-
-    public int getId() {
-        return this.id;
+    /**
+     * 
+     * @param id Valor para o id do objeto Ator.
+     * @param nome Valor para o nome do objeto Ator.
+     * @param localizacao Valor para o localizacao do objeto Ator.
+     * @param precoCache Valor para o precoCache do objeto Ator.
+     * @param anoDeNascimento Valor para o anoDeNascimento do objeto Ator.
+     * @param nivelFama Valor para o nivelFama do objeto Ator.
+     */
+    public Ator(
+        int id,
+        String nome, 
+        String localizacao, 
+        double precoCache,
+        int anoDeNascimento, 
+        int nivelFama
+    ) {
+        super(nome, localizacao, precoCache, anoDeNascimento);
+        this.id = id;
+        this.nivelFama = nivelFama;
+        
+        
     }
 
+    // ======= SETS =======
     public void setId(int id) { 
         this.id = id;
     }
 
-    public Ator id(int id) {
-        this.setId(id);
-        return this;
+    public void setNivelFama(int nivelFama) {
+        this.nivelFama = nivelFama;
     }
 
-    public int getAnoDeNascimento() {
-        return this.anoDeNascimento;
+    // ======= GETS =======
+    public int getId() {
+        return this.id;
     }
 
-    public void setAnoDeNascimento(int anoDeNascimento) {
-        this.anoDeNascimento = anoDeNascimento;
+    public int getNivelFama() {
+        return this.nivelFama;
     }
     
+    // ======== Impressão ========
     @Override
     public String toString() {
-        return "teste" + super.nome;
+        String print = super.toString() + "\n" +
+                    "========== Famômetro ==========" + "\n" +
+                    "Nível da Fama: " + getNivelFama() + "\n";
+        return print;
     }
 }
