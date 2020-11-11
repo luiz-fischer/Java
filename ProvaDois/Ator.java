@@ -1,7 +1,5 @@
 package ProvaDois;
 
-import java.util.ArrayList;
-
 public class Ator extends Pessoa {
     protected int id;
     protected int nivelFama;
@@ -27,8 +25,6 @@ public class Ator extends Pessoa {
         super(nome, localizacao, precoCache, anoDeNascimento);
         this.id = id;
         this.nivelFama = nivelFama;
-        
-        
     }
 
     // ======= SETS =======
@@ -48,6 +44,18 @@ public class Ator extends Pessoa {
     public int getNivelFama() {
         return this.nivelFama;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        if (!(object instanceof Ator))
+            return false;
+
+        Ator ator = (Ator) object;
+        return id == ator.id;
+    }
+
     
     // ======== Impressão ========
     @Override

@@ -14,10 +14,10 @@ public class Filme {
 
     /**
      * 
-     * @param idFilme
-     * @param nome
-     * @param dataLancamento
-     * @param previsaoInvestimento
+     * @param idFilme Valor para o idFilme do objeto Filme.
+     * @param nome Valor para o nome do objeto Filme.
+     * @param dataLancamento Valor para o dataLancamento do objeto Filme.
+     * @param previsaoInvestimento Valor para o previsaoInvestimento do objeto Filme. 
      */
     public Filme (int idFilme, String nome, String dataLancamento, double previsaoInvestimento) {
         this.idFilme = idFilme;
@@ -30,9 +30,10 @@ public class Filme {
     }	
 
     public void addHeroi(Heroi heroi) {
+        
         HeroiFilme heroiFilme = new HeroiFilme(this, heroi);
-        heroi.filmes.add(heroiFilme);
         this.herois.add(heroiFilme); 
+        heroi.filmes.add(heroiFilme);
                         
     }   
     
@@ -69,7 +70,7 @@ public class Filme {
         double total = 0;
 
         for (HeroiFilme heroiFilme : herois) {
-            total += heroiFilme.heroi.precoCache;
+            total += heroiFilme.heroi.getPrecoCache();
         }
         return total;
     }

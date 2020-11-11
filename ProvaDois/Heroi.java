@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Heroi extends Pessoa {
     protected int idHeroi;
-    protected int idFranquia;
     Franquia franquia;
     ArrayList<HeroiFilme> filmes;
     
@@ -19,8 +18,14 @@ public class Heroi extends Pessoa {
      * @param precoCache  Valor para o precoCache do Objeto Heroi.
      * @param franquia    Valor para o franquia do Objeto Heroi.
      */
-    public Heroi(int idHeroi, String nome, String localizacao, double precoCache, int anoDeNascimento,
-            Franquia franquia) {
+    public Heroi(
+        int idHeroi, 
+        String nome, 
+        String localizacao,
+        double precoCache,
+        int anoDeNascimento,
+        Franquia franquia
+    ) {
         super(nome, localizacao, precoCache, anoDeNascimento);
         this.idHeroi = idHeroi;
 
@@ -28,13 +33,37 @@ public class Heroi extends Pessoa {
         this.filmes = new ArrayList<>();
 
         franquia.herois.add(this);
-        herois.add(this);
+        // herois.add(this);
 
     }
 
+  
+
+    // ====== SETS ======
+    public void setIdHeroi(int idHeroi) {
+        this.idHeroi = idHeroi;
+    }
+    public void setFranquia(Franquia franquia) {
+        this.franquia = franquia;
+    }
+    public void setFilme(Filme filme) {
+        this.filmes.add(filme);
+    }
+
+    // ====== GETS ======
+    public int getIdHeroi() {
+        return this.idHeroi;
+    }
+    public Franquia getFranquia() {
+        return this.franquia;
+    }
+
+    public ArrayList<HeroiFilme> getFilmes() {
+        return this.filmes;
+    }
    
     public double qtdInvestimento() {
-       double investimento = this.precoCache * this.filmes.size();
+       double investimento = super.getPrecoCache() * this.filmes.size();
        
        return investimento;
     }
@@ -57,5 +86,27 @@ public class Heroi extends Pessoa {
             
         );
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        if (!(object instanceof Heroi))
+            return false;
+
+        Heroi heroi = (Heroi) object;
+
+        return idHeroi == heroi.idHeroi;
+    }
+
+     @Override
+     public String toString() {
+         String print = super.toString() + "\n" +
+                    "========== Dados Heroi ==========" + "\n" +
+                    "Franquia: " + this.franquia.nome + "\n" +
+                    "Quantidade de Filmes: " + this.filmes.size() + "\n" +
+                    "Investimento: " + this.qtdInvestimento();
+         return print;
+     }
     
 }
