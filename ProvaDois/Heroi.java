@@ -2,10 +2,10 @@ package ProvaDois;
 
 import java.util.ArrayList;
 
-public class Heroi extends Pessoa {
+public class Heroi extends Pessoa implements Orcamento {
     protected int idHeroi;
     Franquia franquia;
-    ArrayList<HeroiFilme> filmes;
+    ArrayList<Filme> filmes;
     
 
     public static ArrayList<Heroi> herois = new ArrayList<>();
@@ -36,7 +36,6 @@ public class Heroi extends Pessoa {
         // herois.add(this);
 
     }
-
   
 
     // ====== SETS ======
@@ -58,7 +57,7 @@ public class Heroi extends Pessoa {
         return this.franquia;
     }
 
-    public ArrayList<HeroiFilme> getFilmes() {
+    public ArrayList<Filme> getFilmes() {
         return this.filmes;
     }
    

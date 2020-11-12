@@ -1,8 +1,11 @@
 package ProvaDois;
 
-public class Ator extends Pessoa {
+import java.util.ArrayList;
+
+public class Ator extends Pessoa implements Orcamento {
     protected int id;
     protected int nivelFama;
+    ArrayList<Filme> filmes;
   
     
     /**
@@ -25,6 +28,7 @@ public class Ator extends Pessoa {
         super(nome, localizacao, precoCache, anoDeNascimento);
         this.id = id;
         this.nivelFama = nivelFama;
+        this.filmes = new ArrayList<>();
     }
 
     // ======= SETS =======
@@ -36,6 +40,10 @@ public class Ator extends Pessoa {
         this.nivelFama = nivelFama;
     }
 
+    public void setFilme(Filme filme) {
+        this.filmes.add(filme);
+    }
+
     // ======= GETS =======
     public int getId() {
         return this.id;
@@ -43,6 +51,10 @@ public class Ator extends Pessoa {
 
     public int getNivelFama() {
         return this.nivelFama;
+    }
+
+    public ArrayList<Filme> getFilmes() {
+        return this.filmes;
     }
 
     @Override
@@ -55,14 +67,22 @@ public class Ator extends Pessoa {
         Ator ator = (Ator) object;
         return id == ator.id;
     }
-
     
+    public double qtdInvestimento() {
+        double investimento = super.getPrecoCache() * this.filmes.size();
+
+        return investimento;
+    }
+
     // ======== Impressão ========
     @Override
     public String toString() {
         String print = super.toString() + "\n" +
                     "========== Famômetro ==========" + "\n" +
-                    "Nível da Fama: " + getNivelFama() + "\n";
+                    "Nível da Fama: " + getNivelFama() + "\n" + "\n" +
+                    "Investimento: " + this.qtdInvestimento();
         return print;
     }
+
+   
 }

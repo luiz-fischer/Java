@@ -8,7 +8,7 @@ public class Filme {
     String nome;
     String dataLancamento;
     double previsaoInvestimento;   
-    ArrayList<HeroiFilme> herois;
+    ArrayList<Filme> herois;
     
     public static ArrayList<Filme> filmes = new ArrayList<>();
 
@@ -68,7 +68,6 @@ public class Filme {
 
     public double totalInvestido() {
         double total = 0;
-
         for (HeroiFilme heroiFilme : herois) {
             total += heroiFilme.heroi.getPrecoCache();
         }

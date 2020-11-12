@@ -1,7 +1,7 @@
 package Zoo;
 
-public class Ovelha extends Animal {
-    protected String corDaLa;
+public class Ovelha extends Animal  {
+    private String corDaLa;
 
     /**
      * 

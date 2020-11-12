@@ -133,7 +133,7 @@ public class Main {
 		} catch (SQLException exception) {
 			System.out.println("Erro ao Deletar: " + exception);
 
-		}
+		} 
 	}
 
 	// =========== Método para inserção ===========

@@ -1,6 +1,8 @@
 package ProvaDois;
 
-public class Pessoa {
+import java.util.ArrayList;
+
+public abstract class Pessoa {
     protected String nome;
     protected String localizacao;
     protected double precoCache;
@@ -54,6 +56,10 @@ public class Pessoa {
     public int getAnoDeNascimento() {
         return this.anoDeNascimento;
     }
+
+    abstract ArrayList<Filme> getFilmes();
+
+    abstract void setFilme(Filme filme);
 
     // ======== Impressão ========
     @Override
