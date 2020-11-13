@@ -2,14 +2,15 @@ package LocaCar;
 
 import java.util.ArrayList;
 
-public class VeiculoPesado {
+public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     protected int idVeiculoPesado;
     protected String restricao;
     ArrayList<VeiculosLocados> VeiculosLocados;
 
     public static ArrayList<VeiculoPesado> veiculosPesados = new ArrayList<>();
 
-    public VeiculoPesado(int idVeiculoPesado, String restricao) {
+    public VeiculoPesado(int idVeiculoPesado, String restricao, String marca, String modelo, int ano, double valorLocacao) {
+        super(marca, modelo, ano, valorLocacao);
         this.idVeiculoPesado = idVeiculoPesado;
         this.restricao = restricao;
 
@@ -52,7 +53,10 @@ public class VeiculoPesado {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = "teste" ; 
+        String print = super.toString() + "\n" +
+                    "=> Modelo Pesado =======>" + "\n" +
+                    "   ====> Restrição: " + getRestricao() + "\n";
         return print;
     }
+
 }

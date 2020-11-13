@@ -1,19 +1,18 @@
 package LocaCar;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class Cliente {
     protected int idCliente;
     protected String nome;
-    protected Date dataDeNascimento;
+    protected String dataDeNascimento;
     protected String cpf;
     protected int diasParaDevolucao;
     ArrayList<Locacao> locacoes;
 
     public static ArrayList<Cliente> clientes = new ArrayList<>();
 
-    public Cliente(int idCliente, String nome, Date dataDeNascimento, String cpf, int diasParaDevolucao) {
+    public Cliente(int idCliente, String nome, String dataDeNascimento, String cpf, int diasParaDevolucao) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
@@ -35,7 +34,7 @@ public class Cliente {
         this.nome = nome;
 
     }
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
 
     }
@@ -53,11 +52,11 @@ public class Cliente {
         return this.idCliente;
 
     }
-    public String setNome() {
+    public String getNome() {
         return this.nome;
 
     }
-    public Date getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return this.dataDeNascimento;
 
     }
@@ -71,8 +70,16 @@ public class Cliente {
     }
 
     // ====== MÉTODOS ======
-    public void qtdVeiculosLocados() {
+    public int qtdVeiculosLocados() {
+        int veiculosLocados = this.locacoes.size();
+        return veiculosLocados;
+    }
 
+    public void imprimirLocacoes() {
+        System.out.println(
+            " * O Cliente " + this.nome + 
+            "\nPossui um total de Locações de:  " + this.qtdVeiculosLocados()
+        );
     }
 
     // ====== EQUALS ====== 
@@ -91,7 +98,12 @@ public class Cliente {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = "teste" ; 
+        String print = "++ Dados do Cliente ++" + "\n" + 
+                    "Nome: " + getNome() + "\n" +
+                    "Data de Nascimento" + getDataDeNascimento() + "\n" +
+                    "CPF: " + getCpf() + "\n" +
+                    "Dias para Devolução: " + getDataDeNascimento() + 
+                    "------------------------------------------------";
         return print;
     }
 }

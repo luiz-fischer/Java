@@ -1,19 +1,18 @@
 package LocaCar;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class Locacao {
     protected int idLocacao;
     protected int idCliente;
-    protected Date dataDeLocacao;
-    protected Date dataDeDevolucao;
+    protected int dataDeLocacao;
+    protected int dataDeDevolucao;
     Cliente cliente;
     ArrayList<VeiculosLocados> veiculosLocados;
 
     public static ArrayList<Locacao> locacoes = new ArrayList<>();
 
-    public Locacao(int idLocacao, int idCliente, Date dataDeLocacao, Date dataDeDevolucao, Cliente cliente) {
+    public Locacao(int idLocacao, int idCliente, int dataDeLocacao, int dataDeDevolucao, Cliente cliente) {
         this.idLocacao = idLocacao;
         this.idCliente = idCliente;
         this.dataDeLocacao = dataDeLocacao;
@@ -34,11 +33,11 @@ public class Locacao {
         this.idCliente = idCliente;
 
     }
-    public void setDataDeLocacao(Date dataDeLocacao) {
+    public void setDataDeLocacao(int dataDeLocacao) {
         this.dataDeLocacao = dataDeLocacao;
 
     }
-    public void setDataDeDevolucao(Date dataDeDevolucao) {
+    public void setDataDeDevolucao(int dataDeDevolucao) {
         this.dataDeDevolucao = dataDeDevolucao;
 
     }
@@ -56,11 +55,11 @@ public class Locacao {
         return this.idCliente;
 
     }
-    public Date getDataDeLocacao() {
+    public int getDataDeLocacao() {
         return this.dataDeLocacao;
 
     }
-    public Date getDataDeDevolucao() {
+    public int getDataDeDevolucao() {
         return this.dataDeDevolucao;
 
     }

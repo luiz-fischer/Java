@@ -12,10 +12,13 @@ public class VeiculosLocados {
 
     public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
-    public VeiculosLocados(int idLocacao, int idVeiculoLeve, int idVeiculoPesado, Locacao locacao, VeiculoLeve veiculoLeve, VeiculoPesado veiculoPesado) {
-        this.idLocacao = idLocacao;
-        this.idVeiculoLeve = idVeiculoLeve;
-        this.idVeiculoPesado = idVeiculoPesado;
+    public VeiculosLocados(Locacao locacao, VeiculoLeve veiculoLeve, VeiculoPesado veiculoPesado) {
+        this.idLocacao = locacao.idLocacao;
+        this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
+        this.idVeiculoPesado = veiculoPesado.idVeiculoPesado;
+        this.locacao = locacao;
+        this.veiculoLeve = veiculoLeve;
+        this.veiculoPesado = veiculoPesado;
 
         veiculoPesado.VeiculosLocados.add(this);
         veiculoLeve.VeiculosLocados.add(this);
@@ -25,18 +28,18 @@ public class VeiculosLocados {
     }
 
     // ======== SETS ========
-    public void setIdLocacao(int idLocacao) {
-        this.idLocacao = idLocacao;
+    // public void setIdLocacao(int idLocacao) {
+    //     this.idLocacao = locacao.idLocacao;
 
-    }
-    public void setIdVeiculoLeve(int idVeiculoLeve) {
-        this.idVeiculoLeve = idVeiculoLeve;
+    // }
+    // public void setIdVeiculoLeve(int idVeiculoLeve) {
+    //     this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
 
-    }
-    public void setIdveiculoPesado(int idVeiculoPesado) {
-        this.idVeiculoPesado = idVeiculoPesado;
+    // }
+    // public void setIdveiculoPesado(int idVeiculoPesado) {
+    //     this.idVeiculoPesado = veiculoPesado.idVeiculoPesado;
 
-    }
+    // }
     public void setLocacao(Locacao locacao) {
         this.locacao = locacao;
     }
@@ -48,18 +51,18 @@ public class VeiculosLocados {
     }
 
     // ======== GETS ========
-    public int getIdLocacao() {
-        return this.idLocacao;
+    // public int getIdLocacao() {
+    //     return this.idLocacao;
 
-    }
-    public int getIdVeiculoLeve() {
-        return this.idVeiculoLeve;
+    // }
+    // public int getIdVeiculoLeve() {
+    //     return this.idVeiculoLeve;
 
-    }
-    public int getIdVeiculoPesado() {
-        return this.idVeiculoPesado;
+    // }
+    // public int getIdVeiculoPesado() {
+    //     return this.idVeiculoPesado;
 
-    }
+    // }
    public Locacao getLocacao() {
        return this.locacao;
    }

@@ -2,20 +2,25 @@ package LocaCar;
 
 import java.util.ArrayList;
 
-public class VeiculoLeve {
+public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     protected int idVeiculoLeve;
     protected String cor;
     ArrayList<VeiculosLocados> VeiculosLocados;
 
     public static ArrayList<VeiculoLeve> veiculosLeves = new ArrayList<>();
 
-    public VeiculoLeve(int idVeiculoLeve, String cor) {
+    public VeiculoLeve(int idVeiculoLeve, String cor, String marca, String modelo, int ano, double valorLocacao) {
+        super(marca, modelo, ano, valorLocacao);
         this.idVeiculoLeve = idVeiculoLeve;
         this.cor = cor;
 
         this.VeiculosLocados = new ArrayList<>();
 
         veiculosLeves.add(this);
+    }
+
+    public VeiculoLeve() {
+        this(0, "", "", "", 0, 0f);
     }
 
      // ======== SETS ========
@@ -54,7 +59,17 @@ public class VeiculoLeve {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = "teste" ; 
+        String print = super.toString() + "\n" +
+                    "=> Modelo Leve =======>" + "\n" +
+                    "   ====> Cor: " + getCor() + "\n";
         return print;
     }
+
+    // @Override
+    // public String seloDaEmpresa() {
+    //     String print = "Selo Veículos Leves: ";
+    //     BaseVeiculo.super.seloDaEmpresa();
+    //     return print;
+    // }
+
 }

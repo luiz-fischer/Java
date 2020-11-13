@@ -44,11 +44,12 @@ A classe Veículos trata-se de uma classe abstrata e não deve ser instânciada.
 
 Deverá ser criada uma interface no qual Veículos Leves e Veículos Pessados serão implementados. Esta interface se chamará BaseVeiculo e possuirá os seguintes métodos:
 
-abstract: Quantidade de Locações Realizadas
-abstract default: Selo da Empresa
+public: Quantidade de Locações Realizadas
+public default: Selo da Empresa
+
 Cada arquivo fonte de objeto deverá conter, minimamente:
 
-Cliente
+Cliente 
 Método com a Quantidade de Veículos locados.
 
 Locação
@@ -64,7 +65,9 @@ Deverá ser criado um arquivo principal para gerenciamento das informações dos
 5 - Listar Veículos
 6 - Listar Locações
 
-Ao selecionar as opções de cadastro, deverão ser solicitadas as informações necessárias para registro de cada entidade via terminal, criando ao final o objeto. Para a opção cadastrar Veículo, deverá ser questionado se o cadastro é de 1 - Veículo Leve ou 2 - Veículo Pesado.
+Ao selecionar as opções de cadastro, deverão ser solicitadas as informações necessárias para registro de cada entidade via terminal, criando ao final o objeto. Para a opção cadastrar Veículo, deverá ser questionado se o cadastro é de 
+1 - Veículo Leve
+2 - Veículo Pesado.
 
 Ao selecionar as opções de listar, deverão ser impressas as informações de cada entidade, sendo que:
 

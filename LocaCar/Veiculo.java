@@ -2,10 +2,10 @@ package LocaCar;
 
 
 public abstract class Veiculo {
-   protected String marca;
-   protected String modelo;
-   protected int ano;
-   protected double valorLocacao;
+   private String marca;
+   private String modelo;
+   private int ano;
+   private double valorLocacao;
 
     public Veiculo(String marca, String modelo, int ano, double valorLocacao) {
         this.marca = marca;
@@ -14,6 +14,7 @@ public abstract class Veiculo {
         this.valorLocacao = valorLocacao;
 
     }
+
 
     // ======== SETS ========
     public void setMarca(String marca) {
@@ -54,7 +55,11 @@ public abstract class Veiculo {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = "teste" ; 
+        String print = "*********** Veículo  ***********" + "\n" +
+                    "Marca: " + getMarca() + "\n" +
+                    "Modelo: " + getModelo() + "\n" +
+                    "Ano: " + getAno() + "\n" +
+                    "Valor para Locação: " + getValorLocacao() + "\n";
         return print;
     }
 }
