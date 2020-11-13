@@ -7,6 +7,7 @@ public class Locacao {
     protected int idCliente;
     protected int dataDeLocacao;
     protected int dataDeDevolucao;
+    private Locacao locacao;
     Cliente cliente;
     ArrayList<VeiculosLocados> veiculosLocados;
 
@@ -41,9 +42,10 @@ public class Locacao {
         this.dataDeDevolucao = dataDeDevolucao;
 
     }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
     }
+   
    
 
     // ======== GETS ========
@@ -69,8 +71,17 @@ public class Locacao {
    
 
     // ====== MÉTODOS ======
-    public void valorTotalLocacao() {
+    public double valorTotalLocacao() {
+        double total = 0;
+        for (VeiculosLocados veiculosLocados : veiculosLocados) {
+            total += veiculosLocados.veiculoLeve.getValorLocacao();
+            total += veiculosLocados.veiculoPesado.getValorLocacao();
 
+        }
+        return total;
+    }
+    public void imprimirValorTotal() {
+        System.out.println("Valor Total das Locações: " + valorTotalLocacao());
     }
     public void qtdVeiculosLocados() {
 

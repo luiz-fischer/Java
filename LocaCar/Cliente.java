@@ -78,7 +78,7 @@ public class Cliente {
     public void imprimirLocacoes() {
         System.out.println(
             " * O Cliente " + this.nome + 
-            "\nPossui um total de Locações de:  " + this.qtdVeiculosLocados()
+            "\nPossui o total de Locações de:  " + this.qtdVeiculosLocados()
         );
     }
 

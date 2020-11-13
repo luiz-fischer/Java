@@ -13,6 +13,8 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
         super(marca, modelo, ano, valorLocacao);
         this.idVeiculoPesado = idVeiculoPesado;
         this.restricao = restricao;
+        
+        this.VeiculosLocados = new ArrayList<>();
 
         veiculosPesados.add(this);
     }

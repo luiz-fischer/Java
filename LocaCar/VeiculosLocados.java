@@ -27,6 +27,8 @@ public class VeiculosLocados {
        
     }
 
+    
+
     // ======== SETS ========
     // public void setIdLocacao(int idLocacao) {
     //     this.idLocacao = locacao.idLocacao;
@@ -41,7 +43,7 @@ public class VeiculosLocados {
 
     // }
     public void setLocacao(Locacao locacao) {
-        this.locacao = locacao;
+        locacao.setLocacao(locacao);
     }
     public void setVeiculoLeve(VeiculoLeve veiculoLeve) {
         this.veiculoLeve = veiculoLeve;
