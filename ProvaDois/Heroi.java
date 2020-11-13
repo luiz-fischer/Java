@@ -2,39 +2,67 @@ package ProvaDois;
 
 import java.util.ArrayList;
 
-public class Heroi extends Pessoa{
-    public int idHeroi;
-    public int idFranquia;
+public class Heroi extends Pessoa implements Orcamento {
+    protected int idHeroi;
     Franquia franquia;
-    ArrayList<HeroiFilme> filmes;  
+    ArrayList<Filme> filmes;
     
+
     public static ArrayList<Heroi> herois = new ArrayList<>();
 
     /**
      * 
-     * @param idHeroi
-     * @param nome
-     * @param localizacao
-     * @param precoCache
-     * @param franquia
+     * @param idHeroi     Valor para o idHeroi do Objeto Heroi.
+     * @param nome        Valor para o nome do Objeto Heroi.
+     * @param localizacao Valor para o localizacao do Objeto Heroi.
+     * @param precoCache  Valor para o precoCache do Objeto Heroi.
+     * @param franquia    Valor para o franquia do Objeto Heroi.
      */
-    public Heroi(int idHeroi, String nome, String localizacao, int precoCache, Franquia franquia) {
+    public Heroi(
+        int idHeroi, 
+        String nome, 
+        String localizacao,
+        double precoCache,
+        int anoDeNascimento,
+        Franquia franquia
+    ) {
+        super(nome, localizacao, precoCache, anoDeNascimento);
         this.idHeroi = idHeroi;
-        super.nome = nome;
-        super.localizacao = localizacao;
-        super.precoCache = precoCache;
+
         this.franquia = franquia;
-        
         this.filmes = new ArrayList<>();
 
         franquia.herois.add(this);
+        // herois.add(this);
 
-        herois.add(this);
-        
-    }  
-           
+    }
+  
+
+    // ====== SETS ======
+    public void setIdHeroi(int idHeroi) {
+        this.idHeroi = idHeroi;
+    }
+    public void setFranquia(Franquia franquia) {
+        this.franquia = franquia;
+    }
+    public void setFilme(Filme filme) {
+        this.filmes.add(filme);
+    }
+
+    // ====== GETS ======
+    public int getIdHeroi() {
+        return this.idHeroi;
+    }
+    public Franquia getFranquia() {
+        return this.franquia;
+    }
+
+    public ArrayList<Filme> getFilmes() {
+        return this.filmes;
+    }
+   
     public double qtdInvestimento() {
-       double investimento = this.precoCache * this.filmes.size();
+       double investimento = super.getPrecoCache() * this.filmes.size();
        
        return investimento;
     }
@@ -54,7 +82,30 @@ public class Heroi extends Pessoa{
             this.nome + 
             " participou " + 
             this.filmes.size()
+            
         );
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        if (!(object instanceof Heroi))
+            return false;
+
+        Heroi heroi = (Heroi) object;
+
+        return idHeroi == heroi.idHeroi;
+    }
+
+     @Override
+     public String toString() {
+         String print = super.toString() + "\n" +
+                    "========== Dados Heroi ==========" + "\n" +
+                    "Franquia: " + this.franquia.nome + "\n" +
+                    "Quantidade de Filmes: " + this.filmes.size() + "\n" +
+                    "Investimento: " + this.qtdInvestimento();
+         return print;
+     }
     
 }
