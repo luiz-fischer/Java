@@ -20,7 +20,7 @@ public class Teste {
             cliente.imprimirLocacoes();
             
         }
-        for (Locacao locacao : Locacao.locacoes) {
+a        for (Locacao locacao : Locacao.locacoes) {
             locacao.imprimirValorTotal();
         }
     }
