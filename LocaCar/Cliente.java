@@ -1,5 +1,6 @@
 package LocaCar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -9,17 +10,28 @@ public class Cliente {
     protected String cpf;
     protected int diasParaDevolucao;
     ArrayList<Locacao> locacoes;
+    private static int pedidoNumero = 1;
 
     public static ArrayList<Cliente> clientes = new ArrayList<>();
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Cliente(int idCliente, String nome, String dataDeNascimento, String cpf, int diasParaDevolucao) {
+    public Cliente() {
+
+    }
+
+    public Cliente(int idCliente, String nome, String dataDeNascimento, String cpf) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
         this.cpf = cpf;
-        this.diasParaDevolucao = diasParaDevolucao;
 
         this.locacoes = new ArrayList<>();
+
+        // LocalDate datetime = LocalDate.parse(dataDeNascimento,
+        // DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        // String newstring =
+        // datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        // this.dataDeNascimento = newstring;
 
         clientes.add(this);
 
@@ -28,23 +40,39 @@ public class Cliente {
     // ======== SETS ========
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-
+        // if(idCliente == 0) {
+        // this.idCliente = 1;
+        // } else {
+        // this.idCliente = idCliente;
+        // }
     }
+
     public void setNome(String nome) {
         this.nome = nome;
 
     }
+
     public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
 
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
 
     }
+
     public void setDiasParaDevolucao(int diasParaDevolucao) {
         this.diasParaDevolucao = diasParaDevolucao;
 
+    }
+
+    public ArrayList<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(ArrayList<Locacao> locacoes) {
+        this.locacoes = locacoes;
     }
 
     // ======== GETS ========
@@ -75,12 +103,13 @@ public class Cliente {
         return veiculosLocados;
     }
 
-    public void imprimirLocacoes() {
-        System.out.println(
-            " * O Cliente " + this.nome + 
-            "\nPossui o total de Locações de:  " + this.qtdVeiculosLocados()
-        );
+    public String imprimirLocacoes() {
+        String print = " * O Cliente " + this.nome + 
+                 "\nPossui o total de Locações de:  " + this.qtdVeiculosLocados();
+        return print;
     }
+
+
 
     // ====== EQUALS ====== 
     @Override
@@ -92,18 +121,19 @@ public class Cliente {
 
         Cliente cliente = (Cliente) object;
 
-        return idCliente == cliente.idCliente;
+        return idCliente == this.idCliente;
     }
 
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
         String print = "++ Dados do Cliente ++" + "\n" + 
+                    "Id do CLiente: " + getIdCliente() + "\n" +
                     "Nome: " + getNome() + "\n" +
-                    "Data de Nascimento" + getDataDeNascimento() + "\n" +
+                    "Data de Nascimento: " + getDataDeNascimento() + "\n" + 
                     "CPF: " + getCpf() + "\n" +
-                    "Dias para Devolução: " + getDataDeNascimento() + 
-                    "------------------------------------------------";
+                    "Dias para Devolução: " +
+                    "\n------------------------------------------------";
         return print;
     }
 }

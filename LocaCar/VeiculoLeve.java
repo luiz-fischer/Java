@@ -4,24 +4,26 @@ import java.util.ArrayList;
 
 public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     protected int idVeiculoLeve;
-    protected String cor;
+    protected static String cor;
     ArrayList<VeiculosLocados> VeiculosLocados;
 
     public static ArrayList<VeiculoLeve> veiculosLeves = new ArrayList<>();
 
+    public VeiculoLeve() {
+        this(0, cor, "", "", 0, 0f);
+    }
+
     public VeiculoLeve(int idVeiculoLeve, String cor, String marca, String modelo, int ano, double valorLocacao) {
         super(marca, modelo, ano, valorLocacao);
         this.idVeiculoLeve = idVeiculoLeve;
-        this.cor = cor;
+        VeiculoLeve.cor = cor;
 
         this.VeiculosLocados = new ArrayList<>();
 
         veiculosLeves.add(this);
     }
 
-    public VeiculoLeve() {
-        this(0, "", "", "", 0, 0f);
-    }
+    
 
      // ======== SETS ========
      public void setIdVeiculoLeve(int idVeiculoLeve) {
@@ -29,7 +31,7 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
 
     }
     public void setCor(String cor) {
-        this.cor = cor;
+        VeiculoLeve.cor = cor;
 
     }
 
@@ -39,7 +41,7 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
 
     }
     public String getCor() {
-        return this.cor;
+        return VeiculoLeve.cor;
 
     }
 

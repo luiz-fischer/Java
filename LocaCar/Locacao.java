@@ -1,23 +1,48 @@
 package LocaCar;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Locacao {
     protected int idLocacao;
     protected int idCliente;
-    protected int dataDeLocacao;
-    protected int dataDeDevolucao;
+    protected String dataDeLocacao;
+    protected String dataDeDevolucao;
     private Locacao locacao;
     Cliente cliente;
     ArrayList<VeiculosLocados> veiculosLocados;
 
     public static ArrayList<Locacao> locacoes = new ArrayList<>();
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Locacao(int idLocacao, int idCliente, int dataDeLocacao, int dataDeDevolucao, Cliente cliente) {
+    public Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao, Cliente cliente) {
+
         this.idLocacao = idLocacao;
         this.idCliente = idCliente;
         this.dataDeLocacao = dataDeLocacao;
+
+        try {
+            // Date date = formatter.parse(dataDeLocacao);
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            Date date = (Date)formatter.parse(this.dataDeLocacao); 
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         this.dataDeDevolucao = dataDeDevolucao;
+        try {
+            // Date date = formatter.parse(dataDeDevolucao);
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            Date date = (Date)formatter.parse(this.dataDeDevolucao); 
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         this.veiculosLocados = new ArrayList<>();
 
@@ -34,19 +59,17 @@ public class Locacao {
         this.idCliente = idCliente;
 
     }
-    public void setDataDeLocacao(int dataDeLocacao) {
+    public void setDataDeLocacao(String dataDeLocacao) {
         this.dataDeLocacao = dataDeLocacao;
 
     }
-    public void setDataDeDevolucao(int dataDeDevolucao) {
+    public void setDataDeDevolucao(String dataDeDevolucao) {
         this.dataDeDevolucao = dataDeDevolucao;
 
     }
     public void setLocacao(Locacao locacao) {
         this.locacao = locacao;
-    }
-   
-   
+    }   
 
     // ======== GETS ========
     public int getIdLocacao() {
@@ -57,11 +80,11 @@ public class Locacao {
         return this.idCliente;
 
     }
-    public int getDataDeLocacao() {
+    public String getDataDeLocacao() {
         return this.dataDeLocacao;
 
     }
-    public int getDataDeDevolucao() {
+    public String getDataDeDevolucao() {
         return this.dataDeDevolucao;
 
     }
@@ -84,12 +107,10 @@ public class Locacao {
         System.out.println("Valor Total das Locações: " + valorTotalLocacao());
     }
     public void qtdVeiculosLocados() {
-
+        System.out.println("Quantidade de Veículos Locados no momento: " + veiculosLocados.size());
     }
-    public void dataDeDevolucao() {
-
-    }
-
+   
+    
     // ====== EQUALS ====== 
     @Override
     public boolean equals(Object object) {
@@ -106,7 +127,8 @@ public class Locacao {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = "teste" ;
+        String print = "Data de Locação: " + getDataDeLocacao() + "\n" +
+                    "Data de Devolução: " + getDataDeLocacao();
         return print;
     }
     

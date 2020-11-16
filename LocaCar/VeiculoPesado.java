@@ -9,6 +9,10 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
 
     public static ArrayList<VeiculoPesado> veiculosPesados = new ArrayList<>();
 
+    public VeiculoPesado() {
+        this(0, "", "", "", 0, 0f);
+    }
+
     public VeiculoPesado(int idVeiculoPesado, String restricao, String marca, String modelo, int ano, double valorLocacao) {
         super(marca, modelo, ano, valorLocacao);
         this.idVeiculoPesado = idVeiculoPesado;
@@ -18,6 +22,7 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
 
         veiculosPesados.add(this);
     }
+
 
      // ======== SETS ========
      public void setIdVeiculoPesado(int idVeiculoPesado) {
