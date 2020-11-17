@@ -1,6 +1,7 @@
 package LocaCar;
 
 import java.util.ArrayList;
+import java.util.List;
  
 public class VeiculosLocados {
     protected int idLocacao;
@@ -10,7 +11,19 @@ public class VeiculosLocados {
     VeiculoLeve veiculoLeve;
     VeiculoPesado veiculoPesado;
 
-    public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
+    public static List<VeiculosLocados> veiculosLocados = new ArrayList<>();
+
+    public VeiculosLocados(int idLocacao, int idVeiculoLeve, int idVeiculoPesado) {
+        this.idLocacao = locacao.idLocacao;
+        this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
+        this.idVeiculoPesado = veiculoPesado.idVeiculoPesado;
+
+
+        veiculoPesado.VeiculosLocados.add(this);
+        veiculoLeve.VeiculosLocados.add(this);
+        locacao.veiculosLocados.add(this);
+        veiculosLocados.add(this);
+    }
 
     public VeiculosLocados(Locacao locacao, VeiculoLeve veiculoLeve, VeiculoPesado veiculoPesado) {
         this.idLocacao = locacao.idLocacao;

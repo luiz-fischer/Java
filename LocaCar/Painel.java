@@ -2,14 +2,11 @@ package LocaCar;
 
 
 import java.util.Scanner;
-import bibliotecas.Teclado;
 
 public class Painel {
 
 	private Scanner entrada;
 	private boolean execute;
-    // private ArrayList<Usuario> usuarios;
-    // private ArrayList<Cliente> clientes;
 
 	public static void main(String[] args) {
 		new Painel();
@@ -53,8 +50,8 @@ public class Painel {
                             break;
                     }
 				} else if (opcao.equalsIgnoreCase("3")) {
-                    // ADICIONAR LOCACAO
-                } else if (opcao.equalsIgnoreCase("4")) {
+					Cliente.pesquisar();
+				} else if (opcao.equalsIgnoreCase("4")) {
                     listarCadastros();
 				} else if (opcao.equalsIgnoreCase("5")) {
 					int op;
@@ -69,12 +66,12 @@ public class Painel {
                             break;
 
                         case 2:
-                        listarVeiculosPesados();
+                        	listarVeiculosPesados();
                             break;
                         
                         default:
-                        System.out.println("Digite SOMENTE números entre 1 e 2");
-                        cadastrarVeiculoPesado();
+                        	System.out.println("Digite SOMENTE números entre 1 e 2");
+                        	cadastrarVeiculoPesado();
                             break;
                     }
 				}  else if (opcao.equalsIgnoreCase("6")) {
@@ -111,12 +108,10 @@ public class Painel {
 			System.out.println("Cadastro de Cliente");
             Cliente dados = new Cliente();
             dados.setIdCliente(Cliente.clientes.size()+1);
-            System.out.print("Nome: ");
-            dados.setNome(Teclado.StringInput());
-            System.out.print("Cpf: ");
-            dados.setCpf(Teclado.StringInput());
-            System.out.print("Data de Nascimento: ");
-			dados.setDataDeNascimento(Teclado.StringInput());
+            dados.setNome(textInput("Nome: "));
+            dados.setCpf(textInput("Cpf: "));
+            System.out.print("Formato da Data De Nascimento - dd/MM/aaaa \n");
+			dados.setDataDeNascimento(textInput("Data De Nascimento: "));
 
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
@@ -141,24 +136,18 @@ public class Painel {
 		}
     }
     
-    // =========== Método para cadastrar novos Veículos Leves ===========
+    // =========== Método para cadastrar Veículos Leves ===========
 	private void cadastrarVeiculoLeve()  {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
 			VeiculoLeve dados = new VeiculoLeve();
             dados.setIdVeiculoLeve(VeiculoLeve.veiculosLeves.size()+1);
-            System.out.print("Marca: ");
-            dados.setMarca(Teclado.StringInput());
-            System.out.print("Modelo: ");
-            dados.setModelo(Teclado.StringInput());
-            // System.out.print("Ano: ");
+            dados.setMarca(textInput("Marca: "));
+            dados.setModelo(textInput("Modelo: "));
             dados.setAno(intInput("Ano: "));
-            // dados.setAno(Teclado.IntInput());
-            System.out.print("Diária: ");
-            dados.setValorLocacao(Teclado.DoubleInput());
-            System.out.print("Cor: ");
-			dados.setCor(Teclado.StringInput());
+            dados.setValorLocacao(doubleInput("Diária: "));
+			dados.setCor(textInput("Cor: "));
             
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
@@ -183,7 +172,7 @@ public class Painel {
 		}
     }
     
-     // =========== Método para cadastrar novos Veículos Pesados  ===========
+     // =========== Método para cadastrar  Veículos Pesados  ===========
 	private void cadastrarVeiculoPesado()  {
 		boolean efetuarCadastro = true;
 
@@ -191,16 +180,11 @@ public class Painel {
 			System.out.println("Cadastro de Veículo Pesado");
 			VeiculoPesado dados = new VeiculoPesado();
             dados.setIdVeiculoPesado(VeiculoPesado.veiculosPesados.size()+1);
-            System.out.print("Marca: ");
-            dados.setMarca(Teclado.StringInput());
-            System.out.print("Modelo: ");
-            dados.setModelo(Teclado.StringInput());
-            System.out.print("Ano: ");
-            dados.setAno(Teclado.IntInput());
-            System.out.print("Diária: ");
-            dados.setValorLocacao(Teclado.DoubleInput());
-            System.out.print("Restrição: ");
-			dados.setRestricao(Teclado.StringInput());
+			dados.setMarca(textInput("Marca: "));
+            dados.setModelo(textInput("Modelo: "));
+            dados.setAno(intInput("Ano: "));
+            dados.setValorLocacao(doubleInput("Diária: "));
+			dados.setRestricao(textInput("Restrição: "));
 
 			String cadastrar = textInput("Adicionar cadastro (S/N) ?");
 			if (cadastrar.equalsIgnoreCase("s")) {
@@ -247,7 +231,8 @@ public class Painel {
         try {
             System.out.println("Lista de Veículos Leves");
             for (VeiculoLeve veiculoLeve : VeiculoLeve.veiculosLeves) {
-                System.out.println(VeiculoLeve.veiculosLeves);
+				System.out.println(VeiculoLeve.veiculosLeves);
+				System.out.println(veiculoLeve);
             }
         } catch (Exception exception) {
             System.out.println("Erro ao listar: " + exception);
@@ -263,7 +248,8 @@ public class Painel {
         try {
             System.out.println("Lista de Veículos Pesados");
             for (VeiculoPesado veiculoPesado : VeiculoPesado.veiculosPesados) {
-                System.out.println(VeiculoPesado.veiculosPesados);
+				System.out.println(VeiculoPesado.veiculosPesados);
+				System.out.println(veiculoPesado);
             }
         } catch (Exception exception) {
             System.out.println("Erro ao listar: " + exception);
@@ -279,5 +265,9 @@ public class Painel {
     private int intInput(String texto) {
 		System.out.print(texto);
 		return entrada.nextInt();
+    }
+    private double doubleInput(String texto) {
+		System.out.print(texto);
+		return entrada.nextDouble();
 	}
 }

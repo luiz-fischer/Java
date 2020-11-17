@@ -23,8 +23,6 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
         veiculosLeves.add(this);
     }
 
-    
-
      // ======== SETS ========
      public void setIdVeiculoLeve(int idVeiculoLeve) {
         this.idVeiculoLeve = idVeiculoLeve;
@@ -61,17 +59,11 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = super.toString() + "\n" +
+        String print = seloDaEmpresa() + "\n\n\n" +
+                    super.toString() + "\n" +
                     "=> Modelo Leve =======>" + "\n" +
                     "   ====> Cor: " + getCor() + "\n";
         return print;
     }
-
-    // @Override
-    // public String seloDaEmpresa() {
-    //     String print = "Selo Veículos Leves: ";
-    //     BaseVeiculo.super.seloDaEmpresa();
-    //     return print;
-    // }
 
 }

@@ -2,6 +2,8 @@ package LocaCar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Cliente {
     protected int idCliente;
@@ -10,13 +12,11 @@ public class Cliente {
     protected String cpf;
     protected int diasParaDevolucao;
     ArrayList<Locacao> locacoes;
-    private static int pedidoNumero = 1;
 
-    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static List<Cliente> clientes = new ArrayList<>();
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
+    
     public Cliente() {
-
     }
 
     public Cliente(int idCliente, String nome, String dataDeNascimento, String cpf) {
@@ -26,12 +26,6 @@ public class Cliente {
         this.cpf = cpf;
 
         this.locacoes = new ArrayList<>();
-
-        // LocalDate datetime = LocalDate.parse(dataDeNascimento,
-        // DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        // String newstring =
-        // datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        // this.dataDeNascimento = newstring;
 
         clientes.add(this);
 
@@ -108,7 +102,45 @@ public class Cliente {
                  "\nPossui o total de Locações de:  " + this.qtdVeiculosLocados();
         return print;
     }
+    
+    public static void pesquisar(){
+        Scanner entrada = new Scanner( System.in );
+        try { if (clientes.isEmpty() == true) 
+        {
+            System.out.println("Não há Clientes cadastradas!");
+        } else {
+            System.out.print("Digite o número do I.D. Do Cliente: ");
+            int nmrConta = entrada.nextInt();
+            nmrConta--; //pq ao invés de começar o for de zero, começamos de 1, mas guardamos no elemento 0 do array
 
+            Cliente auxiliar = clientes.get(nmrConta);
+            System.out.println("Nome do Cliente:" + auxiliar.nome);
+            System.out.println("I.D. Do Cliente:" +auxiliar.idCliente);
+        }   
+        } catch (Exception exception) {
+                System.out.println(exception);
+
+        } finally {
+            entrada.close();
+        }
+    }
+    
+
+    
+    public void buscaCliente() {
+        Cliente str1 = clientes.get(0);
+        System.out.println(str1);
+    }
+
+
+    public static boolean verifica(int id) {
+        for(Cliente u : clientes) {
+           if (u.getIdCliente() == id) {
+              return true;
+           }
+        }
+        return false;
+     }
 
 
     // ====== EQUALS ====== 

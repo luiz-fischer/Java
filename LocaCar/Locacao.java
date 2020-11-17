@@ -1,11 +1,7 @@
 package LocaCar;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 public class Locacao {
     protected int idLocacao;
@@ -16,33 +12,14 @@ public class Locacao {
     Cliente cliente;
     ArrayList<VeiculosLocados> veiculosLocados;
 
-    public static ArrayList<Locacao> locacoes = new ArrayList<>();
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    public static List<Locacao> locacoes = new ArrayList<>();
 
     public Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao, Cliente cliente) {
 
         this.idLocacao = idLocacao;
         this.idCliente = idCliente;
         this.dataDeLocacao = dataDeLocacao;
-
-        try {
-            // Date date = formatter.parse(dataDeLocacao);
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-            Date date = (Date)formatter.parse(this.dataDeLocacao); 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
         this.dataDeDevolucao = dataDeDevolucao;
-        try {
-            // Date date = formatter.parse(dataDeDevolucao);
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-            Date date = (Date)formatter.parse(this.dataDeDevolucao); 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         
         this.veiculosLocados = new ArrayList<>();
 
@@ -97,8 +74,7 @@ public class Locacao {
     public double valorTotalLocacao() {
         double total = 0;
         for (VeiculosLocados veiculosLocados : veiculosLocados) {
-            total += veiculosLocados.veiculoLeve.getValorLocacao();
-            total += veiculosLocados.veiculoPesado.getValorLocacao();
+            total += veiculosLocados.veiculoLeve.getValorLocacao() + veiculosLocados.veiculoPesado.getValorLocacao();
 
         }
         return total;
@@ -127,8 +103,10 @@ public class Locacao {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
+        int diasLocados = Data.diffDays(this.dataDeLocacao, this.dataDeDevolucao);
         String print = "Data de Locação: " + getDataDeLocacao() + "\n" +
-                    "Data de Devolução: " + getDataDeLocacao();
+                       "Data de Devolução: " + getDataDeDevolucao() + "\n" +
+                       "Total de dias: " + diasLocados + "\n";
         return print;
     }
     

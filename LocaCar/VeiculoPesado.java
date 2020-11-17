@@ -60,8 +60,9 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
-        String print = super.toString() + "\n" +
-                    "=> Modelo Pesado =======>" + "\n" +
+        String print = seloDaEmpresa() + "\n\n\n" +
+                    super.toString() + "\n" +
+                    "=> Modelo Pesado =======>" + this.getModelo() + "\n" +
                     "   ====> Restrição: " + getRestricao() + "\n";
         return print;
     }
