@@ -1,16 +1,16 @@
 package LocaCar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     protected int idVeiculoPesado;
     protected String restricao;
-    ArrayList<VeiculosLocados> VeiculosLocados;
+    ArrayList<VeiculosLocados> veiculosLocados;
 
-    public static ArrayList<VeiculoPesado> veiculosPesados = new ArrayList<>();
+    public static List<VeiculoPesado> veiculosPesados = new ArrayList<>();
 
     public VeiculoPesado() {
-        this(0, "", "", "", 0, 0f);
     }
 
     public VeiculoPesado(int idVeiculoPesado, String restricao, String marca, String modelo, int ano, double valorLocacao) {
@@ -18,7 +18,7 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
         this.idVeiculoPesado = idVeiculoPesado;
         this.restricao = restricao;
         
-        this.VeiculosLocados = new ArrayList<>();
+        this.veiculosLocados = new ArrayList<>();
 
         veiculosPesados.add(this);
     }
@@ -33,6 +33,9 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
         this.restricao = restricao;
 
     }
+    public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
+        this.veiculosLocados = veiculosLocados;
+    }
 
     // ======== GETS ========
     public int getIdVeiculoPesado() {
@@ -42,6 +45,10 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     public String getRestricao() {
         return this.restricao;
 
+    }
+
+    public ArrayList<VeiculosLocados> getVeiculosLocados() {
+        return veiculosLocados;
     }
 
     // ====== EQUALS ====== 
@@ -65,6 +72,12 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
                     "=> Modelo Pesado =======>" + this.getModelo() + "\n" +
                     "   ====> Restrição: " + getRestricao() + "\n";
         return print;
+    }
+
+    @Override
+    public Veiculo getVeiculo(int id) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

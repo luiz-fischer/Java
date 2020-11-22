@@ -5,25 +5,29 @@ import java.util.List;
 
 public class Locacao {
     protected int idLocacao;
-    protected int idCliente;
-    protected String dataDeLocacao;
-    protected String dataDeDevolucao;
-    private Locacao locacao;
-    Cliente cliente;
-    ArrayList<VeiculosLocados> veiculosLocados;
+    protected static int idCliente;
+    protected static String dataDeLocacao;
+    protected static String dataDeDevolucao;
+    static Cliente cliente;
+    ArrayList<Locacao> veiculosLocados;
 
-    public static List<Locacao> locacoes = new ArrayList<>();
+    public static ArrayList<Locacao> locacoes = new ArrayList<>();
 
-    public Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao, Cliente cliente) {
+    public Locacao() {
+
+    }
+
+    protected Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao) {
 
         this.idLocacao = idLocacao;
-        this.idCliente = idCliente;
-        this.dataDeLocacao = dataDeLocacao;
-        this.dataDeDevolucao = dataDeDevolucao;
-        
+        Locacao.idCliente = idCliente;
+        Locacao.dataDeLocacao = dataDeLocacao;
+        Locacao.dataDeDevolucao = dataDeDevolucao;
+
         this.veiculosLocados = new ArrayList<>();
 
         cliente.locacoes.add(this);
+
         locacoes.add(this);
     }
 
@@ -32,62 +36,81 @@ public class Locacao {
         this.idLocacao = idLocacao;
 
     }
+
+    public void setCliente(Cliente cliente) {
+        Locacao.cliente = cliente;
+    }
+
     public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+        Locacao.idCliente = idCliente;
 
     }
+
+    public void setVeiculosLocados(ArrayList<Locacao> veiculosLocados) {
+        this.veiculosLocados = veiculosLocados;
+    }
+
     public void setDataDeLocacao(String dataDeLocacao) {
-        this.dataDeLocacao = dataDeLocacao;
+        Locacao.dataDeLocacao = dataDeLocacao;
 
     }
+
     public void setDataDeDevolucao(String dataDeDevolucao) {
-        this.dataDeDevolucao = dataDeDevolucao;
+        Locacao.dataDeDevolucao = dataDeDevolucao;
 
     }
-    public void setLocacao(Locacao locacao) {
-        this.locacao = locacao;
-    }   
 
     // ======== GETS ========
     public int getIdLocacao() {
         return this.idLocacao;
 
     }
+
+    public ArrayList<Locacao> getVeiculosLocados() {
+        return veiculosLocados;
+    }
+
     public int getIdCliente() {
-        return this.idCliente;
+        return Locacao.idCliente;
 
     }
+
     public String getDataDeLocacao() {
-        return this.dataDeLocacao;
+        return Locacao.dataDeLocacao;
 
     }
+
     public String getDataDeDevolucao() {
-        return this.dataDeDevolucao;
+        return Locacao.dataDeDevolucao;
 
     }
-    public Cliente getCliente() {
-        return this.cliente;
+
+    public static Cliente getCliente() {
+        return Locacao.cliente;
     }
-   
 
     // ====== MÉTODOS ======
-    public double valorTotalLocacao() {
-        double total = 0;
-        for (VeiculosLocados veiculosLocados : veiculosLocados) {
-            total += veiculosLocados.veiculoLeve.getValorLocacao() + veiculosLocados.veiculoPesado.getValorLocacao();
-
-        }
+    public static double valorTotalLocacao() {
+        double total = 0.0;
+        total = qtdDiasLocados() * Veiculo.valorLocacao;
+        
         return total;
     }
+
     public void imprimirValorTotal() {
         System.out.println("Valor Total das Locações: " + valorTotalLocacao());
     }
+
     public void qtdVeiculosLocados() {
-        System.out.println("Quantidade de Veículos Locados no momento: " + veiculosLocados.size());
+        System.out.println("Veiculos Locados: " + locacoes.size());
     }
-   
-    
-    // ====== EQUALS ====== 
+
+    public static int qtdDiasLocados() {
+        int diasLocados = Data.diffDays(Locacao.dataDeLocacao, Locacao.dataDeDevolucao);
+        return diasLocados;
+    }
+
+    // ====== EQUALS ======
     @Override
     public boolean equals(Object object) {
         if (object == this)
@@ -100,14 +123,15 @@ public class Locacao {
         return idLocacao == locacao.idLocacao;
     }
 
-    // ====== IMPRESSÃO ====== 
+    // ====== IMPRESSÃO ======
     @Override
     public String toString() {
-        int diasLocados = Data.diffDays(this.dataDeLocacao, this.dataDeDevolucao);
-        String print = "Data de Locação: " + getDataDeLocacao() + "\n" +
-                       "Data de Devolução: " + getDataDeDevolucao() + "\n" +
-                       "Total de dias: " + diasLocados + "\n";
+        String print = "Classe Locacao" + "\n" +
+                       "Data de Locação: " + getDataDeLocacao() + "\n" + 
+                        "Data de Devolução: " + getDataDeDevolucao() + "\n" +
+                         "Total de dias: " + qtdDiasLocados()
+                + "\n" + "Valor Total da Locação: " + valorTotalLocacao();
         return print;
     }
-    
+
 }

@@ -1,8 +1,6 @@
 package LocaCar;
 
-    
 import java.util.ArrayList;
-
 public class BancoDeDados<T> {
 
     private ArrayList<T> banco = new ArrayList<>();
@@ -17,7 +15,12 @@ public class BancoDeDados<T> {
         return this.banco.get(index);
     }
 
-    public ArrayList<T> getList() {
+    public List<T> getList() {
         return this.banco;
     }
-}​​​​​​​​
+
+    public int sizeList() {
+        return this.banco.size();
+    }
+
+}

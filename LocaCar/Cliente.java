@@ -1,6 +1,5 @@
 package LocaCar;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,10 +10,13 @@ public class Cliente {
     protected String dataDeNascimento;
     protected String cpf;
     protected int diasParaDevolucao;
-    ArrayList<Locacao> locacoes;
+    List<Locacao> locacoes;
 
-    public static List<Cliente> clientes = new ArrayList<>();
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    // public static List<Cliente> clientes = new ArrayList<>();
+    public static BancoDeDados<Cliente> clientes = new BancoDeDados<>();
+
+
+    // SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     
     public Cliente() {
     }
@@ -27,18 +29,14 @@ public class Cliente {
 
         this.locacoes = new ArrayList<>();
 
-        clientes.add(this);
+        clientes.insertValue(this);
+        // clientes.add(this);
 
     }
 
     // ======== SETS ========
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-        // if(idCliente == 0) {
-        // this.idCliente = 1;
-        // } else {
-        // this.idCliente = idCliente;
-        // }
     }
 
     public void setNome(String nome) {
@@ -61,11 +59,11 @@ public class Cliente {
 
     }
 
-    public ArrayList<Locacao> getLocacoes() {
+    public List<Locacao> getLocacoes() {
         return locacoes;
     }
 
-    public void setLocacoes(ArrayList<Locacao> locacoes) {
+    public void setLocacoes(List<Locacao> locacoes) {
         this.locacoes = locacoes;
     }
 
@@ -105,15 +103,15 @@ public class Cliente {
     
     public static void pesquisar(){
         Scanner entrada = new Scanner( System.in );
-        try { if (clientes.isEmpty() == true) 
+        try { if (clientes.sizeList() == 0) 
         {
-            System.out.println("Não há Clientes cadastradas!");
+            System.out.println("Não há Clientes cadastrados!");
         } else {
             System.out.print("Digite o número do I.D. Do Cliente: ");
             int nmrConta = entrada.nextInt();
             nmrConta--; //pq ao invés de começar o for de zero, começamos de 1, mas guardamos no elemento 0 do array
 
-            Cliente auxiliar = clientes.get(nmrConta);
+            Cliente auxiliar = clientes.getValor(nmrConta);
             System.out.println("Nome do Cliente:" + auxiliar.nome);
             System.out.println("I.D. Do Cliente:" +auxiliar.idCliente);
         }   
@@ -124,24 +122,6 @@ public class Cliente {
             entrada.close();
         }
     }
-    
-
-    
-    public void buscaCliente() {
-        Cliente str1 = clientes.get(0);
-        System.out.println(str1);
-    }
-
-
-    public static boolean verifica(int id) {
-        for(Cliente u : clientes) {
-           if (u.getIdCliente() == id) {
-              return true;
-           }
-        }
-        return false;
-     }
-
 
     // ====== EQUALS ====== 
     @Override

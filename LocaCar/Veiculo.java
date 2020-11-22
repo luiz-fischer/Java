@@ -2,16 +2,20 @@ package LocaCar;
 
 
 public abstract class Veiculo {
-   private String marca;
-   private String modelo;
-   private int ano;
-   private double valorLocacao;
+   protected String marca;
+   protected String modelo;
+   protected int ano;
+   protected static double valorLocacao;
 
-    public Veiculo(String marca, String modelo, int ano, double valorLocacao) {
+   protected Veiculo() {
+
+   }
+
+    protected Veiculo(String marca, String modelo, int ano, double valorLocacao) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
-        this.valorLocacao = valorLocacao;
+        Veiculo.valorLocacao = valorLocacao;
 
     }
 
@@ -30,7 +34,7 @@ public abstract class Veiculo {
 
     }
     public void setValorLocacao(double valorLocacao) {
-        this.valorLocacao = valorLocacao;
+        Veiculo.valorLocacao = valorLocacao;
 
     }
 
@@ -48,17 +52,19 @@ public abstract class Veiculo {
 
     }
     public double getValorLocacao() {
-        return this.valorLocacao;
+        return Veiculo.valorLocacao;
 
     }
+
+    public abstract Veiculo getVeiculo(int id) throws Exception;
 
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
         String print = "*********** Veículo  ***********" + "\n" +
-                    "Marca: " + getMarca() + "\n" +
-                    "Modelo: " + getModelo() + "\n" +
-                    "Ano: " + getAno() + "\n" +
+                    "Marca: "              + getMarca() + "\n" +
+                    "Modelo: "             + getModelo() + "\n" +
+                    "Ano: "                + getAno() + "\n" +
                     "Valor para Locação: " + getValorLocacao() + "\n";
         return print;
     }

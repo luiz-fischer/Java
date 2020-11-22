@@ -1,49 +1,89 @@
 package LocaCar;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     protected int idVeiculoLeve;
-    protected static String cor;
-    ArrayList<VeiculosLocados> VeiculosLocados;
+    protected String cor;
+    ArrayList<VeiculosLocados> veiculosLocados;
 
     public static ArrayList<VeiculoLeve> veiculosLeves = new ArrayList<>();
 
     public VeiculoLeve() {
-        this(0, cor, "", "", 0, 0f);
     }
 
     public VeiculoLeve(int idVeiculoLeve, String cor, String marca, String modelo, int ano, double valorLocacao) {
         super(marca, modelo, ano, valorLocacao);
         this.idVeiculoLeve = idVeiculoLeve;
-        VeiculoLeve.cor = cor;
+        this.cor = cor;
 
-        this.VeiculosLocados = new ArrayList<>();
+        this.veiculosLocados = new ArrayList<>();
+        
 
         veiculosLeves.add(this);
     }
 
-     // ======== SETS ========
-     public void setIdVeiculoLeve(int idVeiculoLeve) {
+    public static void pesquisar(int valorId) {
+        // Scanner entrada = new Scanner(System.in);
+        try {
+            if (veiculosLeves.size() == 0) {
+                System.out.println("Não há Veiculos Cadastrados!");
+            } else {
+                // int valorId = entrada.nextInt();
+                valorId--; // pq ao invés de começar o for de zero, começamos de 1, mas guardamos no
+                           // elemento 0 do array
+
+                VeiculoLeve aux = veiculosLeves.get(valorId);
+                System.out.println("Modelo e Cor:" + aux.getModelo() + "\n" + aux.getCor());
+                System.out.print("\nI.D. Do Veiculo:" + aux.getIdVeiculoLeve());
+            }
+        } catch (Exception exception) {
+            System.out.println(exception);
+
+        } finally {
+            // entrada.close();
+        }
+    }
+
+    // ======== SETS ========
+    public void setIdVeiculoLeve(int idVeiculoLeve) {
         this.idVeiculoLeve = idVeiculoLeve;
 
     }
     public void setCor(String cor) {
-        VeiculoLeve.cor = cor;
-
+        this.cor = cor;
     }
+
+    public VeiculoLeve getVeiculo(int id) throws Exception {
+        return veiculosLeves.get(id);
+    }
+
+    public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
+        this.veiculosLocados = veiculosLocados;
+    }
+
+
+    // public void setVeiculoLeve(VeiculoLeve veiculoLeve) {
+    // this.veiculoLeve = veiculoLeve;
+    // }
 
     // ======== GETS ========
     public int getIdVeiculoLeve() {
         return this.idVeiculoLeve;
 
     }
+
     public String getCor() {
-        return VeiculoLeve.cor;
+        return this.cor;
 
     }
 
-    // ====== EQUALS ====== 
+  public ArrayList<VeiculosLocados> getVeiculosLocados() {
+        return veiculosLocados;
+    }
+    // ====== EQUALS ======
     @Override
     public boolean equals(Object object) {
         if (object == this)
@@ -56,6 +96,12 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
         return idVeiculoLeve == veiculoLeve.idVeiculoLeve;
     }
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idVeiculoLeve, cor);
+    }
+
     // ====== IMPRESSÃO ====== 
     @Override
     public String toString() {
@@ -65,5 +111,6 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
                     "   ====> Cor: " + getCor() + "\n";
         return print;
     }
+
 
 }
