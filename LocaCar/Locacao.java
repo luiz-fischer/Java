@@ -1,113 +1,140 @@
 package LocaCar;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Locacao {
     protected int idLocacao;
-    protected static int idCliente;
-    protected static String dataDeLocacao;
-    protected static String dataDeDevolucao;
-    static Cliente cliente;
-    ArrayList<Locacao> veiculosLocados;
+    protected int idCliente;
+    protected String dataDeLocacao;
+    protected String dataDeDevolucao;
+    protected int idVeiculoLeve;
+    Cliente cliente;
+    VeiculoLeve veiculoLeve;
+    ArrayList<Cliente> clientes;
+    ArrayList<VeiculosLocados> veiculosLocados;
+    ArrayList<VeiculoLeve> veiculosLeves;
 
     public static ArrayList<Locacao> locacoes = new ArrayList<>();
 
+   
     public Locacao() {
 
     }
 
-    protected Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao) {
-
+    public Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao) {
+        this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
         this.idLocacao = idLocacao;
-        Locacao.idCliente = idCliente;
-        Locacao.dataDeLocacao = dataDeLocacao;
-        Locacao.dataDeDevolucao = dataDeDevolucao;
+        this.idCliente = idCliente;
+        this.dataDeLocacao = dataDeLocacao;
+        this.dataDeDevolucao = dataDeDevolucao;
 
         this.veiculosLocados = new ArrayList<>();
-
-        cliente.locacoes.add(this);
 
         locacoes.add(this);
     }
 
+    public Locacao(int idLocacao) {
+        this.idLocacao = idLocacao;
+        this.veiculosLocados = new ArrayList<>();
+
+    }
+    
+
     // ======== SETS ========
+    public void setIdVeiculoLeve(int idVeiculoLeve) {
+        this.idVeiculoLeve = idVeiculoLeve;
+    }
+    public int getIdVeiculoLeve() {
+        return idVeiculoLeve;
+    }
+
+
     public void setIdLocacao(int idLocacao) {
         this.idLocacao = idLocacao;
 
     }
 
     public void setCliente(Cliente cliente) {
-        Locacao.cliente = cliente;
+        this.cliente = cliente;
     }
 
     public void setIdCliente(int idCliente) {
-        Locacao.idCliente = idCliente;
+        this.idCliente = idCliente;
 
     }
 
-    public void setVeiculosLocados(ArrayList<Locacao> veiculosLocados) {
+    public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
         this.veiculosLocados = veiculosLocados;
     }
 
     public void setDataDeLocacao(String dataDeLocacao) {
-        Locacao.dataDeLocacao = dataDeLocacao;
+        this.dataDeLocacao = dataDeLocacao;
 
     }
 
     public void setDataDeDevolucao(String dataDeDevolucao) {
-        Locacao.dataDeDevolucao = dataDeDevolucao;
+        this.dataDeDevolucao = dataDeDevolucao;
 
     }
+ 
 
     // ======== GETS ========
     public int getIdLocacao() {
         return this.idLocacao;
 
     }
-
-    public ArrayList<Locacao> getVeiculosLocados() {
-        return veiculosLocados;
+    public ArrayList<VeiculoLeve> getVeiculoLeve() {
+        return this.veiculosLeves;
+    }
+    public ArrayList<VeiculosLocados> getVeiculosLocados() {
+        return this.veiculosLocados;
     }
 
     public int getIdCliente() {
-        return Locacao.idCliente;
+        return idCliente;
 
     }
 
     public String getDataDeLocacao() {
-        return Locacao.dataDeLocacao;
+        return this.dataDeLocacao;
 
     }
 
     public String getDataDeDevolucao() {
-        return Locacao.dataDeDevolucao;
+        return this.dataDeDevolucao;
 
     }
 
-    public static Cliente getCliente() {
-        return Locacao.cliente;
+    public Cliente getCliente() {
+        return this.cliente;
     }
+   
 
     // ====== MÉTODOS ======
-    public static double valorTotalLocacao() {
-        double total = 0.0;
-        total = qtdDiasLocados() * Veiculo.valorLocacao;
-        
+    public int qtdVeiculosLocados() {
+        return locacoes.size();
+    }
+
+    public int qtdDiasLocados() {
+        int diasLocados = Data.diffDays(getDataDeLocacao(), getDataDeDevolucao());
+        return diasLocados;
+    }
+
+    public double valorTotalLocacao() {
+        double total = 0;
+        for (VeiculosLocados veiculosLocados : veiculosLocados) {
+            total += ((VeiculoLeve) veiculosLocados.veiculoLeve).getValorLocacao()
+                    + veiculosLocados.veiculoPesado.getValorLocacao();
+
+        }
         return total;
     }
 
-    public void imprimirValorTotal() {
-        System.out.println("Valor Total das Locações: " + valorTotalLocacao());
-    }
-
-    public void qtdVeiculosLocados() {
-        System.out.println("Veiculos Locados: " + locacoes.size());
-    }
-
-    public static int qtdDiasLocados() {
-        int diasLocados = Data.diffDays(Locacao.dataDeLocacao, Locacao.dataDeDevolucao);
-        return diasLocados;
+    //====== HASH ======
+    @Override
+    public int hashCode() {
+        return Objects.hash(idLocacao, idCliente);
     }
 
     // ====== EQUALS ======
@@ -118,20 +145,27 @@ public class Locacao {
         if (!(object instanceof Locacao))
             return false;
 
-        Locacao locacao = (Locacao) object;
+            Locacao locacao = (Locacao) object;
 
-        return idLocacao == locacao.idLocacao;
+        return idLocacao == this.idLocacao;
     }
 
     // ====== IMPRESSÃO ======
     @Override
     public String toString() {
-        String print = "Classe Locacao" + "\n" +
-                       "Data de Locação: " + getDataDeLocacao() + "\n" + 
-                        "Data de Devolução: " + getDataDeDevolucao() + "\n" +
-                         "Total de dias: " + qtdDiasLocados()
-                + "\n" + "Valor Total da Locação: " + valorTotalLocacao();
-        return print;
+        String print =
+                "           |--------Lista de Carros Alugados--------|" + "\n" +
+                // "I.D. Locacao:             "         + getIdLocacao() + "\n" +
+                // "I.D. Cliente:             "         + getIdCliente() + "\n" +
+                // // "Nome do Cliente:          "         + clientes.get(idCliente).getNome() +"\n"+
+                // "Data de Locação:          "         + getDataDeLocacao() + "\n" + 
+                // "Data de Devolução:        "         + getDataDeDevolucao() + "\n" +
+                // "Total de dias:            "         + qtdDiasLocados() + "\n" +
+                // VeiculoLeve.pesquisar(Integer.valueOf(idVeiculoLeve));
+                // Cliente.pesquisar(Integer.valueOf(idCliente));
+                "\n|-----------------------------------------------------------|\n";
+            return print;
     }
+
 
 }

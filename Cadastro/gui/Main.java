@@ -108,14 +108,14 @@ public class Main {
 	// =========== Método para pesquisar Usuários pelo nome ===========
 	private void pesquisar() {
 		try {
-			Scanner entrada = new Scanner(System.in);
+			// Scanner entrada = new Scanner(System.in);
 			System.out.print("Pesquisar por nome: ");
 			String nome = entrada.nextLine();
 
 			Cadastro.dao.UsuarioDAO.pesquisar(nome);
-			for (Usuario usuario : usuarios) {
-				System.out.println(usuario);
-			}
+			// for (Usuario usuario : usuarios) {
+			// 	System.out.println(usuario);
+			// }
 		} catch (SQLException exception) {
 			System.out.println("Erro ao Pesquisar: " + exception);
 		}

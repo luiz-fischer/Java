@@ -1,9 +1,8 @@
 package LocaCar;
 
 import java.util.ArrayList;
-import java.util.List;
  
-public class VeiculosLocados  extends Locacao {
+public class VeiculosLocados {
     protected int idVeiculoLocado;
     protected int idLocacao;
     protected int idVeiculoLeve;
@@ -11,84 +10,93 @@ public class VeiculosLocados  extends Locacao {
     Locacao locacao;
     VeiculoLeve veiculoLeve;
     VeiculoPesado veiculoPesado;
+    ArrayList<VeiculosLocados> locacoes;
+    
 
-    public ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
+    public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
     public VeiculosLocados() {
     }
 
-    public VeiculosLocados(Locacao locacao) {
-        this.idLocacao = locacao.getIdLocacao();
-        this.locacao = locacao;
+    // public VeiculosLocados(int idVeiculoLocado, Locacao locacao, VeiculoLeve veiculoLeve) {
+    //     this.idLocacao = locacao.idLocacao;
+    //     this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
+    //     this.idVeiculoLocado = idVeiculoLocado;
+    //     this.locacao = locacao;
+    //     this.locacoes = new ArrayList<>();
 
-        this.veiculosLocados.add(this);
+    //     // locacao.veiculosLocados.add(this);
+    //     // veiculoLeve.veiculosLocados.add(this);
+    //     locacoes.add(this);
 
+    //     veiculosLocados.add(this);
+
+    // }
+
+    public VeiculosLocados(int idVeiculoLocado, int idLocacao, int idVeiculoLeve) {
+        this.idVeiculoLocado = idVeiculoLocado;
+        this.idVeiculoLeve = veiculoLeve.idVeiculoLeve;
+        this.idLocacao = idLocacao;
+        this.idVeiculoLeve = idVeiculoLeve;
+        this.locacoes = new ArrayList<>();
+
+        locacoes.add(this);
         veiculosLocados.add(this);
     }
- 
 
-    
+
+    // public VeiculosLocados(int idVeiculoLocado, int idLocacao, int idVeiculoLeve, int idVeiculoPesado) {
+    //     this.idVeiculoLocado = idVeiculoLocado;
+    //     this.idLocacao = idLocacao;
+    //     this.idVeiculoLeve = idVeiculoLeve;
+    //     this.idVeiculoPesado = idVeiculoPesado;
+
+    //     locacao.veiculosLocados.add(this);
+    //     veiculosLocados.add(this);
+    // }
 
     
     // ======== SETS ========
-    // public void setIdLocacao(int idLocacao) {
-    //     this.idLocacao = idLocacao;
-
-    // }
-    // public void setIdCliente(int idCliente) {
-    //     this.idCliente = idCliente;
-    // }
-
-    // public void setIdVeiculoLeve(int idVeiculoLeve) {
-    //     this.idVeiculoLeve = VeiculoLeve.idVeiculoLeve;
-
-    // }
-
-  
-    
-    public void setVeiculoLeve(VeiculoLeve veiculoLeve) {
-        this.veiculoLeve = veiculoLeve;
-        // veiculoLeve.setVeiculoLeve(idVeiculoLeve);
+    public void setIdVeiculoLocado(int idVeiculoLocado) {
+        this.idVeiculoLocado = idVeiculoLocado;
     }
-    public void setIdveiculoPesado(int idVeiculoPesado) {
-        this.idVeiculoPesado = veiculoPesado.idVeiculoPesado;
+    public void setIdLocacao(int idLocacao) {
+        this.idLocacao = idLocacao;
 
     }
+    public void setIdVeiculoLeve(int idVeiculoLeve) {
+        this.idVeiculoLeve = idVeiculoLeve;
+
+    }
+    public void setIdVeiculoPesado(int idVeiculoPesado) {
+        this.idVeiculoPesado = idVeiculoPesado;
+    }
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
+    }
+    // public void setVeiculoLeve(VeiculoLeve veiculoleve) {
+    //     this.veiculoLeve = veiculoleve;
+    // }
    
 
     // ======== GETS ========
-    public void addLocacao(Locacao locacao) {
-        VeiculosLocados veiculosLocados = new VeiculosLocados(locacao);
-        // locacao.veiculosLocados.add(veiculosLocados);
-        // veiculoLeve.veiculosLocados.add(veiculosLocados);
-        // VeiculoLeve.veiculosLeves.add(veiculosLocados);
-        Locacao.locacoes.add(veiculosLocados);
-    }   
-    
- 
+    public int getIdVeiculoLocado() {
+        return this.idVeiculoLeve;
+    }
+    public Locacao getLocacao() {
+        return this.locacao;
+    }
     public int getIdLocacao() {
-        return locacao.idLocacao;
+        return this.idLocacao;
     }
     public int getIdVeiculoLeve() {
-        return this.idVeiculoLeve;
+        return idVeiculoLeve;
     }
     public int getIdVeiculoPesado() {
         return this.idVeiculoPesado;
 
     }
-
-    public Locacao getLocacao() {
-        return this.locacao;
-    }
-
-    public VeiculoLeve getVeiculoLeve() {
-        return this.veiculoLeve;
-    }
-
-    public VeiculoPesado getVeiculoPesado() {
-        return this.veiculoPesado;
-    }
-
+   
     // ====== EQUALS ======
     @Override
     public boolean equals(Object object) {
@@ -101,21 +109,24 @@ public class VeiculosLocados  extends Locacao {
 
         return idLocacao == veiculosLocados.idLocacao;
     }
+   
+
+    @Override
+	public int hashCode() {
+	    return (int) idVeiculoLocado * 7;
+	}
 
     // ====== IMPRESSÃO ======
     @Override
     public String toString() {
         String print =  
                         "Veiculos locados"  + "\n" +
+                        super.toString() + "\n" +
                        "ID locacao: " + getIdLocacao() + "\n" +
-                       "veiculo Leve: " + getIdVeiculoLeve();
+                           "veiculo Leve: " + getIdVeiculoLeve();
                        
 
         return print;
     }
-
-	public void setLocacao(Locacao locacao) {
-        this.locacao = locacao;
-	}
 
 }

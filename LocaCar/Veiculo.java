@@ -5,42 +5,45 @@ public abstract class Veiculo {
    protected String marca;
    protected String modelo;
    protected int ano;
-   protected static double valorLocacao;
+   protected double valorLocacao;
 
-   protected Veiculo() {
+   public Veiculo() {
 
    }
 
-    protected Veiculo(String marca, String modelo, int ano, double valorLocacao) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.ano = ano;
-        Veiculo.valorLocacao = valorLocacao;
+   public Veiculo(String marca, String modelo, int ano, double valorLocacao) {
+       this.marca = marca;
+       this.modelo = modelo;
+       this.ano = ano;
+       this.valorLocacao = valorLocacao;
 
-    }
+   }
 
+   // ======== SETS ========
+   public void setMarca(String marca) {
+       this.marca = marca;
 
-    // ======== SETS ========
-    public void setMarca(String marca) {
-        this.marca = marca;
+   }
 
-    }
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+   public void setModelo(String modelo) {
+       this.modelo = modelo;
 
-    }
-    public void setAno(int ano) {
-        this.ano = ano;
+   }
 
-    }
-    public void setValorLocacao(double valorLocacao) {
-        Veiculo.valorLocacao = valorLocacao;
+   public void setAno(int ano) {
+       this.ano = ano;
 
-    }
+   }
 
-    // ======== GETS ========
-    public String getMarca() {
-        return this.marca;
+   public void setValorLocacao(double valorLocacao) {
+       this.valorLocacao = valorLocacao;
+
+   }
+   
+
+   // ======== GETS ========
+   public String getMarca() {
+       return marca;
 
     }
     public String getModelo() {
@@ -52,7 +55,7 @@ public abstract class Veiculo {
 
     }
     public double getValorLocacao() {
-        return Veiculo.valorLocacao;
+        return this.valorLocacao;
 
     }
 
@@ -68,4 +71,5 @@ public abstract class Veiculo {
                     "Valor para Locação: " + getValorLocacao() + "\n";
         return print;
     }
+    
 }

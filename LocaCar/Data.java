@@ -16,31 +16,51 @@ public class Data {
 		}		
 		return vetor;
 	}
-	
-	public static int diffDays(String dateStart, String dateStop) {
-		
 
-		//HH converts hour in 24 hours format (0-23), day calculation
-//		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	public static int converterData(String date) {
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		Date dateOne = null;
+
+		try {
+			dateOne = formato.parse(date);
  
-		Date d1 = null;
-		Date d2 = null;
+			long conversao = dateOne.getTime();
+ 			
+			return Integer.parseInt(String.valueOf(conversao));
+			
+		}
+		catch (Exception exception) {
+			System.out.println("Erro de Data: " + exception);
+			exception.printStackTrace();
+		}
+		return 0;
+	}
+
+	public static int diffDays(String dateStart, String dateStop) {
+
+		//Inicia o Objeto com o tipo dd/MM/yyyy
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+ 
+		Date dateOne = null;
+		Date dateTwo = null;
  
 		try {
-			d1 = format.parse(dateStart);
-			d2 = format.parse(dateStop);
+			dateOne = formato.parse(dateStart);
+			dateTwo = formato.parse(dateStop);
  
 			//in milliseconds
-			long diff = d2.getTime() - d1.getTime();
+			long diff = dateTwo.getTime() - dateOne.getTime();
  			long diffDays = diff / (24 * 60 * 60 * 1000);
  			
 			return Integer.parseInt(String.valueOf(diffDays));
 			
 		}
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (Exception exception) {
+			System.out.println("Erro de Data: " + exception);
+			exception.printStackTrace();
 		}
 		return 0;
 	}
+
+	
 }

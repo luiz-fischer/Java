@@ -35,6 +35,13 @@ int: I.D. do Veículo Pesado
 
 Cada arquivo fonte de objeto deverá conter as suas propriedades e deverá respeitar os relacionamentos existentes entre si:
 
+Cliente - Locacao
+Locacao - VeiculosLocados
+
+Cliente[N] [1]Locacao
+Locacao[N] [1]VeiculosLocados
+
+
 Cliente possui relacionamento 1-N com Locação
 Locação possui relacionamento 1-N com Veículos Locados
 Veículos Leves possui relacionamento 1-N com Veículos Locados

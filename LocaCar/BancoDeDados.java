@@ -1,9 +1,10 @@
 package LocaCar;
 
 import java.util.ArrayList;
+import java.util.List;
 public class BancoDeDados<T> {
 
-    private ArrayList<T> banco = new ArrayList<>();
+    public ArrayList<T> banco = new ArrayList<>();
     public void insertValue(T valor) {
           this.banco.add(valor);
     }

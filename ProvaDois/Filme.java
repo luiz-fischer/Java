@@ -29,6 +29,7 @@ public class Filme {
         filmes.add(this);
     }	
 
+   
     public void addHeroi(Heroi heroi) {
         HeroiFilme heroiFilme = new HeroiFilme(this, heroi);
         heroi.filmes.add(heroiFilme);

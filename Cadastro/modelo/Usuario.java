@@ -6,7 +6,7 @@ public class Usuario {
     private static String cpf;
     private static String email;
     private static String telefone;
-    Usuario usuario;
+    // Usuario usuario;
 
     // ========= SETS =========
     public void setId(String id) {

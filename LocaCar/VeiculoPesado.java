@@ -1,14 +1,13 @@
 package LocaCar;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     protected int idVeiculoPesado;
     protected String restricao;
     ArrayList<VeiculosLocados> veiculosLocados;
 
-    public static List<VeiculoPesado> veiculosPesados = new ArrayList<>();
+    public static ArrayList<VeiculoPesado> veiculosPesados = new ArrayList<>();
 
     public VeiculoPesado() {
     }
@@ -74,10 +73,37 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
         return print;
     }
 
+
+
+
+    @Override
+    public int qtdLocacaoRealizada() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
     @Override
     public Veiculo getVeiculo(int id) throws Exception {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public static String pesquisar(int valorId) {
+        try {
+            if (veiculosPesados.size() == 0) {
+                System.out.println("Não há Veiculos Cadastrados!");
+            } else {
+                valorId--; // pq ao invés de começar o for de zero, começamos de 1, mas guardamos no
+                           // elemento 0 do array
+            }
+        } catch (Exception exception) {
+            System.out.println("ERRO: " + exception.getMessage());
+
+        } return "=> Valor Total  :         "   + veiculosPesados.get(valorId).getValorLocacao()        * Locacao.locacoes.get(valorId).qtdDiasLocados() + "\n" +
+                 " ==> Marca:               "   + veiculosPesados.get(valorId).getMarca() + "\n" +
+                 "   ====> Modelo:          "   + veiculosPesados.get(valorId).getModelo() + "\n" +
+                 "     ====> Restrição:     "   + veiculosPesados.get(valorId).getRestricao() + "\n";
+        
     }
 
 }
