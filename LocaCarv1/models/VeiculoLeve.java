@@ -3,6 +3,10 @@ package LocaCarv1.models;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import LocaCarv1.DAO.VeiculoLeveDAO;
+import LocaCarv1.views.Painel;
+import libs.Teclado;
+
 public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     private int idVeiculoLeve;
     private String cor;
@@ -101,5 +105,47 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
          // TODO Auto-generated method stub
          return 0;
      }
+
+     public static void cadastrarVeiculoLeve() throws Exception {
+		boolean efetuarCadastro = true;
+
+		while (efetuarCadastro) {
+			// veiculos = new ArrayList<Veiculo>();
+			// veiculosLeve = new ArrayList<VeiculoLeve>();
+			VeiculoLeve dados = new VeiculoLeve();
+
+			System.out.println(
+						"|------------------ URBANO ------------------|"
+					);
+					
+			System.out.print("Marca: ");
+			dados.setMarca(Teclado.StringInput());
+			System.out.print("Modelo: ");
+			dados.setModelo(Teclado.StringInput());
+			System.out.print("Ano: ");
+			dados.setAno(Teclado.IntInput());
+			System.out.print("Valor da Diária: ");
+			dados.setValorLocacao(Teclado.DoubleInput());
+			System.out.print("Cor: ");
+			dados.setCor(Teclado.StringInput());
+
+			VeiculoLeveDAO dao = new VeiculoLeveDAO();
+			dao.salvar(dados);
+
+			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
+			String continuarCadastro = Teclado.StringInput();
+
+			if (continuarCadastro.equalsIgnoreCase("N")) {
+				efetuarCadastro = false;
+				new Painel();
+			} else if (continuarCadastro.equalsIgnoreCase("s")) {
+
+			} else {
+				System.out.println("\n!!! -- SAIR -- !!! \n");
+				efetuarCadastro = false;
+
+			}
+		}
+    }
 
 }

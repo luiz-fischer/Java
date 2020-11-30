@@ -28,7 +28,7 @@ public class Painel {
 	}
 
 	// =========== Painel principal ===========
-	private Painel() {
+	public Painel() {
 		entrada = new Scanner(System.in);
 		execute = true;
 		
@@ -161,7 +161,7 @@ public class Painel {
 	}
 
 	// =========== Método para cadastrar novos clientes ===========
-	private void cadastrarCliente() throws SQLException {
+	static void cadastrarCliente() throws SQLException {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
@@ -241,7 +241,7 @@ public class Painel {
     }
     
      // =========== Método para cadastrar  Veículos Pesados  ===========
-	private void cadastrarVeiculoPesado() throws SQLException {
+	public static void cadastrarVeiculoPesado() throws SQLException {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {

@@ -1,7 +1,12 @@
 package LocaCarv1.models;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import LocaCarv1.DAO.ClienteDAO;
+import libs.Teclado;
 
 public class Cliente {
     private int idCliente;
@@ -97,12 +102,12 @@ public class Cliente {
 
     @Override
     public String toString() {
-        String print = "\n|---------------     Dados do Cliente        ---------------|" + "\n" + 
-                       "  Nome                          :            " + getNome() + "\n" +
-                       "  Data de Nascimento            :            " + getDataDeNascimento() + "\n" +
-                       "  CPF                           :            " + getCpf() + "\n" +
-                       "  Dias De Locação               :            " + getQtdDiasLocacao() + "\n" +
-                       "\n|-----------------------------------------------------------|\n";
+        String print = "\n|---------------     Dados do Cliente        ---------------|" + "\n\n" + 
+                       "  Nome                             :               " + getNome() + "\n" +
+                       "  Data de Nascimento  :               " + getDataDeNascimento() + "\n" +
+                       "  CPF                                :                " + getCpf() + "\n" +
+                       "  Dias De Locação        :                " + getQtdDiasLocacao() + "\n" +
+                       "\n|---------------------------------------------------------------|\n";
         return print;
     }
 
@@ -110,4 +115,39 @@ public class Cliente {
         return clientes.get(id);
      }
 
+    public static void cadastrarCliente() throws SQLException {
+		boolean efetuarCadastro = true;
+
+		while (efetuarCadastro) {
+			Cliente dados = new Cliente();
+
+			System.out.println(
+								"|------------------ Cadastro de Cliente ------------------|"
+							);
+
+			System.out.print("Nome: ");
+			dados.setNome(Teclado.StringInput());
+			System.out.print("CPF: ");
+			dados.setCpf(Teclado.StringInput());
+			System.out.print("Formato da Data - aaaa/MM/dd \n");
+			dados.setDataDeNascimento(Teclado.StringInput());
+			System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
+			dados.setQtdDiasLocacao(Teclado.IntInput());
+
+			ClienteDAO dao = new ClienteDAO();
+			dao.salvar(dados);
+			
+			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
+			String continuarCadastro = Teclado.StringInput();
+
+			if (continuarCadastro.equalsIgnoreCase("N")) {
+				efetuarCadastro = false;
+			} else if (continuarCadastro.equalsIgnoreCase("s")) {
+			} else {
+				System.out.println("\n!!! -- SAIR -- !!! \n");
+				efetuarCadastro = false;
+
+			}
+		}
+    }
 }
