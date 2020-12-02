@@ -7,15 +7,18 @@ import LocaCarv1.models.Cliente;
 
 public class ClienteTableModel extends AbstractTableModel {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     // aqui transformei em coluna cada propriedade de Funcionario
     // que eu quero que seja exibida na tabela
-    private String colunas[] = { "Marca", "Modelo", "Ano", "Cor", "Valor da Diária" };
+    private String colunas[] = { "I.D. do Cliente", "Nome", "CPF", "Data De Nascimento"};
     private ArrayList<Cliente> clientes;
-    private final int COLUNA_MARCA = 0;
-    private final int COLUNA_MODELO = 1;
-    private final int COLUNA_ANO = 2;
-    private final int COLUNA_COR = 3;
-    private final int COLUNA_VALOR_DIARIA = 4;
+    private final int COLUNA_ID_CLIENTE = 0;
+    private final int COLUNA_NOME = 1;
+    private final int COLUNA_CPF = 2;
+    private final int COLUNA_DT_NASCIMENTO = 3;
 
     public ClienteTableModel(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
@@ -47,16 +50,14 @@ public class ClienteTableModel extends AbstractTableModel {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
-            case COLUNA_MARCA:
-                return String.class;
-            case COLUNA_MODELO:
-                return String.class;
-            case COLUNA_ANO:
+            case COLUNA_ID_CLIENTE:
                 return Integer.class;
-            case COLUNA_COR:
+            case COLUNA_NOME:
                 return String.class;
-            case COLUNA_VALOR_DIARIA:
-                return Double.class;
+            case COLUNA_CPF:
+                return String.class;
+            case COLUNA_DT_NASCIMENTO:
+                return String.class;
             default:
                 return String.class;
         }
@@ -65,19 +66,17 @@ public class ClienteTableModel extends AbstractTableModel {
     //preenche cada célula da tabela
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente veiculoLeve = this.clientes.get(rowIndex);
+        Cliente cliente = this.clientes.get(rowIndex);
 
         switch (columnIndex) {
-            case COLUNA_MARCA:
-                return veiculoLeve.getMarca();
-            case COLUNA_MODELO:
-                return veiculoLeve.getModelo();
-            case COLUNA_ANO:
-                return veiculoLeve.getAno();
-            case COLUNA_COR:
-                return veiculoLeve.getCor();
-            case COLUNA_VALOR_DIARIA:
-                return veiculoLeve.getValorLocacao();
+            case COLUNA_ID_CLIENTE:
+                return cliente.getIdCliente();
+            case COLUNA_NOME:
+                return cliente.getNome();
+            case COLUNA_CPF:
+                return cliente.getCpf();
+            case COLUNA_DT_NASCIMENTO:
+                return cliente.getDataDeNascimento();
         }
         return null;
     }
@@ -87,23 +86,21 @@ public class ClienteTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         //o argumento recebido pelo método é do tipo Object
         //mas como nossa tabela é de funcionários, é seguro(e até recomendável) fazer o cast de suas propriedades
-        Cliente veiculoLeve = this.clientes.get(rowIndex);
+        Cliente cliente = this.clientes.get(rowIndex);
         //de acordo com a coluna, ele preenche a célula com o valor
         //respectivo do objeto de mesmo indice na lista
         switch (columnIndex) {
-            case COLUNA_MARCA:
-                veiculoLeve.setMarca(String.valueOf(aValue));
+            case COLUNA_ID_CLIENTE:
+                cliente.setIdCliente((Integer) (aValue));
                 break;
-            case COLUNA_MODELO:
-                veiculoLeve.setModelo(String.valueOf(aValue));
+            case COLUNA_NOME:
+                cliente.setNome(String.valueOf(aValue));
                 break;
-            case COLUNA_ANO:
-                veiculoLeve.setAno((int) aValue);
+            case COLUNA_CPF:
+                cliente.setCpf(String.valueOf(aValue));
                 break;
-            case COLUNA_COR:
-                veiculoLeve.setCor(String.valueOf(aValue));
-            case COLUNA_VALOR_DIARIA:
-                veiculoLeve.setValorLocacao((Double) aValue);
+            case COLUNA_DT_NASCIMENTO:
+                cliente.setDataDeNascimento(String.valueOf(aValue));
         }
         //este método é que notifica a tabela que houve alteração de dados
         fireTableDataChanged();

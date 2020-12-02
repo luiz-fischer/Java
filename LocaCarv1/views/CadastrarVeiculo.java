@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class CadastrarVeiculo extends JFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     JLabel locaCar = new JLabel("   Cadastro         Veículos        LocaCar    ");
 
     JButton cadastrarVeiculoLeve = new JButton("Cadastrar Veículo URBANO");

@@ -13,6 +13,10 @@ import LocaCarv1.models.VeiculoPesado;
 
 public class JtableVeiculoPesado extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private JTable tabela;
     private JScrollPane scrollPainel;
 
@@ -23,7 +27,7 @@ public class JtableVeiculoPesado extends JFrame {
     private void renderizarTela() throws SQLException {
 
         VeiculoPesadoDAO dao = new VeiculoPesadoDAO();
-        List<VeiculoPesado> veiculosPesado = dao.listarTodosCadastros();
+        List<VeiculoPesado> veiculosPesado = dao.listarTodosCadastrosVeiculoPesado();
 
         // cria um objeto do nosso model
         VeiculoPesadoTableModel model = new VeiculoPesadoTableModel((ArrayList<VeiculoPesado>) veiculosPesado);

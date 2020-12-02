@@ -12,6 +12,11 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class ListarVeiculo extends JFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     JLabel locaCar = new JLabel("   Listagem         Veículos        LocaCar    ");
 
     JButton listarVeiculoLeve = new JButton("Listar Veículo URBANO");

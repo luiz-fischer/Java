@@ -120,11 +120,11 @@ public class Painel {
 
 					switch (op) {
 						case 1:
-							LocaCarv1.DAO.VeiculosLocadosDAO.listarCadastrosVeiculoLeve();
+							LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoLeve();
 							break;
 
 						case 2:
-							LocaCarv1.DAO.VeiculosLocadosDAO.listarCadastrosVeiculoPesado();
+							LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoPesado();
 							break;
 
 						default:

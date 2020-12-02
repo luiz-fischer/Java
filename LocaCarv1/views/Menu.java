@@ -1,25 +1,26 @@
 package LocaCarv1.views;
 
 import java.awt.Container;
-import LocaCarv1.DAO.ClienteDAO;
-import LocaCarv1.models.Cliente;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Menu extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     JLabel locaCar = new JLabel("   Aluguel         Veicular        LocaCar    ");
 
     JButton cadastrarCliente = new JButton("Cadastrar Cliente");
-    ActionListener acaoClienteCadastrar = new ActionListener() {
+    ActionListener acaoCadastrarCliente = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             handleAction(e);
         }
@@ -37,7 +38,7 @@ public class Menu extends JFrame {
 
     ActionListener acaoClienteListar = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                handleListener(e);
+                handleListernetClient(e);
         }
     };
 
@@ -55,7 +56,7 @@ public class Menu extends JFrame {
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
         pane.add(locaCar);
         pane.add(cadastrarCliente);
-        cadastrarCliente.addActionListener(acaoClienteCadastrar);
+        cadastrarCliente.addActionListener(acaoCadastrarCliente);
         pane.add(cadastrarVeiculo);
         cadastrarVeiculo.addActionListener(acaoCadastrarVeiculo);
         pane.add(cadastrarLocacao);
@@ -80,23 +81,22 @@ public class Menu extends JFrame {
         }
     }
 
-    public void handleListener(ActionEvent e) {
-        try {
-            ClienteDAO dao = new ClienteDAO();
-            List<Cliente> clientes = dao.listarTodosCadastros();
-
-			for (Cliente cliente : clientes) {
-                JOptionPane.showMessageDialog(
-                    this,
-                    cliente,
-                    "-      -LocaCar-      -",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
-			}
-        } catch (SQLException e1) {
-            System.out.println("ERRO: " + e1.getMessage());
-            e1.printStackTrace();
-        }
+    public void handleListernetClient(ActionEvent e) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JtableCliente tb;
+                try {
+                    tb = new JtableCliente();
+                    tb.setLocationRelativeTo(null);
+                    tb.setVisible(true);
+                } catch (SQLException e) {
+                    System.out.println("ERRO:" + e);
+                    e.printStackTrace();
+                }
+                
+            }
+        });
     }
 
     

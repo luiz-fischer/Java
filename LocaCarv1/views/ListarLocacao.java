@@ -21,6 +21,11 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListarLocacao extends JFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     JLabel locaCar = new JLabel("   Listagem         Veículos        LocaCar    ");
 
     JButton listarVeiculoLeve = new JButton("Listar Veículo URBANO");

@@ -13,6 +13,10 @@ import LocaCarv1.models.Cliente;
 
 public class JtableCliente extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private JTable tabela;
     private JScrollPane scrollPainel;
 
@@ -23,7 +27,7 @@ public class JtableCliente extends JFrame {
     private void renderizarTela() throws SQLException {
 
         ClienteDAO dao = new ClienteDAO();
-        List<Cliente> clientes = dao.listarTodosCadastros();
+        List<Cliente> clientes = dao.listarTodosCadastrosCliente();
 
         // cria um objeto do nosso model
         ClienteTableModel model = new ClienteTableModel((ArrayList<Cliente>) clientes);
