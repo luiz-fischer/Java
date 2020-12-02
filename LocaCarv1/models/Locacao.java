@@ -8,7 +8,7 @@ public class Locacao {
     private static int idCliente;
     private static String dataDeDevolucao;
     private static String dataDeLocacao;
-    private static Cliente cliente;
+    private Cliente cliente;
     VeiculoLeve veiculosLeve;
     VeiculoPesado veiculosPesado;
 
@@ -23,13 +23,14 @@ public class Locacao {
         int idLocacao, 
         int idCliente, 
         String dataDeLocacao, 
-        String dataDeDevolucao
+        String dataDeDevolucao,
+        Cliente cliente
         ) {
             Locacao.idLocacao = idLocacao;
             Locacao.idCliente = idCliente;
             Locacao.dataDeLocacao = dataDeLocacao;
             Locacao.dataDeDevolucao = dataDeDevolucao;
-            Locacao.cliente = cliente;
+            this.cliente = cliente;
 
             locacoes.add(this);
     }
@@ -53,9 +54,9 @@ public class Locacao {
         Locacao.dataDeLocacao = dataDeLocacao;
     }
     
-    // public void setCliente(Cliente cliente) {
-    //     Locacao.cliente = cliente;
-    // }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     // public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
     // Locacao.veiculosLocados = veiculosLocados;
@@ -88,6 +89,9 @@ public class Locacao {
         return Locacao.dataDeDevolucao;
 
     }
+    public Cliente getCliente() {
+        return this.cliente;
+    }
 
 
     // public ArrayList<VeiculoLeve> getVeiculoLeve() {
@@ -97,19 +101,8 @@ public class Locacao {
     // return Locacao.veiculosLocados;
     // }
 
-    // public static String getDataDeLocacao() {
-    //     return Locacao.dataDeLocacao;
 
-    // }
-
-    // public static String getDataDeDevolucao() {
-    //     return Locacao.dataDeDevolucao;
-
-    // }
-
-    // public Cliente getCliente() {
-    //     return Locacao.cliente;
-    // }
+   
 
     // ====== MÉTODOS ======
     public int qtdVeiculosLocados() {
@@ -134,7 +127,7 @@ public class Locacao {
     // ====== HASH ======
     @Override
     public int hashCode() {
-        return Objects.hash(idCliente, idLocacao);
+        return Objects.hash(idCliente, idLocacao, dataDeLocacao, dataDeDevolucao);
     }
 
     // ====== EQUALS ======
@@ -151,7 +144,8 @@ public class Locacao {
             idCliente, Locacao.idCliente) && 
             Objects.equals(idLocacao, Locacao.idLocacao) && 
             Objects.equals(dataDeLocacao, Locacao.dataDeLocacao) && 
-            Objects.equals(dataDeLocacao, Locacao.dataDeLocacao);
+            Objects.equals(dataDeLocacao, Locacao.dataDeLocacao)
+        ;
     }
 
     // ====== IMPRESSÃO ======

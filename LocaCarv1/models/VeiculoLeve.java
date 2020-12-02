@@ -83,13 +83,20 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
 
         VeiculoLeve veiculoLeve = (VeiculoLeve) object;
 
-        return Objects.equals(idVeiculoLeve, this.idVeiculoLeve) && Objects.equals(marca, this.marca)
-                && Objects.equals(modelo, this.modelo) && Objects.equals(cor, this.cor);
+        return 
+            Objects.equals(idVeiculo, this.idVeiculo) && 
+            Objects.equals(idVeiculoLeve, this.idVeiculoLeve) && 
+            Objects.equals(marca, this.marca) && 
+            Objects.equals(modelo, this.modelo) && 
+            Objects.equals(ano, this.ano) && 
+            Objects.equals(valorLocacao, this.valorLocacao) && 
+            Objects.equals(cor, this.cor
+        );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idVeiculo, idVeiculoLeve, marca, modelo, cor);
+        return Objects.hash(idVeiculo, idVeiculoLeve, marca, modelo, cor, valorLocacao);
     }
 
     // ====== IMPRESSÃO ======

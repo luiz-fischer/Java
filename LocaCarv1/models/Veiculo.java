@@ -1,6 +1,7 @@
 package LocaCarv1.models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Veiculo {
     protected int idVeiculo;
@@ -79,6 +80,29 @@ public abstract class Veiculo {
     public double getValorLocacao() {
         return this.valorLocacao;
 
+    }
+
+    // ====== EQUALS ======
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Cliente)) {
+            return false;
+        }
+        Cliente cliente = (Cliente) o;
+        return 
+            Objects.equals(idVeiculo, this.idVeiculo) && 
+            Objects.equals(marca, this.marca) && 
+            Objects.equals(modelo, this.modelo) && 
+            Objects.equals(ano, this.ano) &&
+            Objects.equals(valorLocacao, this.valorLocacao);
+    }
+
+    // ====== HASH ======
+    @Override
+    public int hashCode() {
+        return Objects.hash(idVeiculo, marca, modelo, ano, valorLocacao);
     }
 
     // ====== IMPRESSÃO ======

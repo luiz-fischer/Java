@@ -2,6 +2,7 @@ package LocaCarv1.models;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import LocaCarv1.DAO.VeiculoPesadoDAO;
 import LocaCarv1.views.Painel;
@@ -75,12 +76,26 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     public boolean equals(Object object) {
         if (object == this)
             return true;
-        if (!(object instanceof VeiculoPesado))
+        if (!(object instanceof VeiculoLeve))
             return false;
 
-        VeiculoPesado veiculoPesado = (VeiculoPesado) object;
+        VeiculoLeve veiculoLeve = (VeiculoLeve) object;
 
-        return idVeiculoPesado == this.idVeiculoPesado;
+        return 
+            Objects.equals(idVeiculo, this.idVeiculo) && 
+            Objects.equals(idVeiculoPesado, this.idVeiculoPesado) && 
+            Objects.equals(marca, this.marca) && 
+            Objects.equals(modelo, this.modelo) && 
+            Objects.equals(restricao, this.restricao) &&
+            Objects.equals(valorLocacao, this.valorLocacao) &&
+            Objects.equals(ano, this.ano
+        );
+    }
+
+    // ====== HASH ======
+    @Override
+    public int hashCode() {
+        return Objects.hash(idVeiculo, idVeiculoPesado, marca, modelo, ano, restricao, valorLocacao);
     }
 
     // ====== IMPRESSÃO ======

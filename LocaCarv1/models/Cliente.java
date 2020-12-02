@@ -94,13 +94,17 @@ public class Cliente {
             return false;
         }
         Cliente cliente = (Cliente) o;
-        return Objects.equals(idCliente, this.idCliente) && Objects.equals(nome, this.nome)
-                && Objects.equals(cpf, this.cpf) && Objects.equals(dataDeNascimento, this.dataDeNascimento);
+        return 
+            Objects.equals(idCliente, this.idCliente) && 
+            Objects.equals(nome, this.nome) && 
+            Objects.equals(cpf, this.cpf) && 
+            Objects.equals(dataDeNascimento, this.dataDeNascimento
+        );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCliente, nome, cpf);
+        return Objects.hash(idCliente, nome, cpf, dataDeNascimento);
     }
 
     @Override

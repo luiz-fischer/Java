@@ -89,18 +89,20 @@ public class VeiculosLocados {
         }
         VeiculosLocados veiculosLocados = (VeiculosLocados) o;
 
-        return Objects.equals(
-            idVeiculoLocado, veiculosLocados.idVeiculoLocado) && 
+        return
+            Objects.equals(idVeiculoLocado, veiculosLocados.idVeiculoLocado) && 
             Objects.equals(idLocacao, veiculosLocados.idLocacao) && 
             Objects.equals(idVeiculoLeve, veiculosLocados.idVeiculoLeve) && 
             Objects.equals(idVeiculoPesado, veiculosLocados.idVeiculoPesado
         );
     }
 
+    // ====== HASH ======
     @Override
     public int hashCode() {
-        return Objects.hash(idVeiculoLocado, idLocacao, idVeiculoLeve, idVeiculoPesado);
+        return Objects.hash(idLocacao, idVeiculoLocado, idVeiculoPesado, idVeiculoLeve);
     }
+
 
     // ====== IMPRESSÃO ======
     @Override
