@@ -1,6 +1,7 @@
 package LocaCarv1.views;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.swing.JTable;
 
 import LocaCarv1.DAO.ClienteDAO;
 import LocaCarv1.models.Cliente;
+import frame.CellRenderer;
 
 public class JtableCliente extends JFrame {
 
@@ -35,6 +37,8 @@ public class JtableCliente extends JFrame {
         // instancia a tabela já com o model como argumento
         this.tabela = new JTable(model);
         this.scrollPainel = new JScrollPane(tabela);
+        this.tabela.setFont(new Font("Courier PLAIN", Font.BOLD, 13));
+        this.tabela.setDefaultRenderer(Object.class, new CellRenderer());
 
         this.add(scrollPainel);
         this.pack();
@@ -45,11 +49,11 @@ public class JtableCliente extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JtableCliente tb;
+                JtableCliente table;
                 try {
-                    tb = new JtableCliente();
-                    tb.setLocationRelativeTo(null);
-                    tb.setVisible(true);
+                    table = new JtableCliente();
+                    table.setLocationRelativeTo(null);
+                    table.setVisible(true);
                 } catch (SQLException e) {
                     System.out.println("ERRO:" + e);
                     e.printStackTrace();

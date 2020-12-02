@@ -4,7 +4,11 @@ import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SpringLayout;
 
+import frame.SpringUtilities;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -16,8 +20,9 @@ public class Menu extends JFrame {
      *
      */
     private static final long serialVersionUID = 1L;
-
-    JLabel locaCar = new JLabel("   Aluguel         Veicular        LocaCar    ");
+    JFrame frame = new JFrame("Aluguel         Veicular        LocaCar    ");
+    
+    
 
     JButton cadastrarCliente = new JButton("Cadastrar Cliente");
     ActionListener acaoCadastrarCliente = new ActionListener() {
@@ -53,8 +58,8 @@ public class Menu extends JFrame {
 
     public Menu() {
         Container pane = this.getContentPane();
-        pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(locaCar);
+        pane.setLayout(new SpringLayout());
+        // pane.add(frame);
         pane.add(cadastrarCliente);
         cadastrarCliente.addActionListener(acaoCadastrarCliente);
         pane.add(cadastrarVeiculo);
@@ -66,7 +71,11 @@ public class Menu extends JFrame {
         listarVeiculos.addActionListener(acaoListarVeiculo);   
         pane.add(listarLocacoes);
 
-        this.setSize(200, 300);
+        SpringUtilities.makeCompactGrid(pane, 1,
+                                        pane.getComponentCount(),
+                                        6, 6, 6, 6);
+
+        this.setSize(800, 75);
         this.setUndecorated(true);
         this.setBackground(new Color(0,0,0,90));
         this.setVisible(true);

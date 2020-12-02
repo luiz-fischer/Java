@@ -1,23 +1,14 @@
 package LocaCarv1.views;
 
 import java.awt.Container;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-
-import LocaCar.VeiculosLocados;
-import LocaCarv1.DAO.VeiculoLeveDAO;
-import LocaCarv1.DAO.VeiculoPesadoDAO;
-import LocaCarv1.DAO.VeiculosLocadosDAO;
-import LocaCarv1.models.VeiculoLeve;
-import LocaCarv1.models.VeiculoPesado;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListarLocacao extends JFrame {
@@ -29,14 +20,19 @@ public class ListarLocacao extends JFrame {
     JLabel locaCar = new JLabel("   Listagem         Veículos        LocaCar    ");
 
     JButton listarVeiculoLeve = new JButton("Listar Veículo URBANO");
-    ActionListener acaoListarLocacaoLeve = new ActionListener() {
+    ActionListener acaoListarVeiculoLeve = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            handleListenerLightVehicle(e);
+            try {
+                handleListenerLightVehicle(e);
+            } catch (SQLException e1) {
+                System.out.println(e1);
+                e1.printStackTrace();
+            }
         }
     };
 
     JButton listarVeiculoPesado = new JButton("Listar Veículo OFFROAD");
-    ActionListener acaoListarLocacaoPesado = new ActionListener() {
+    ActionListener acaoListarVeiculoPesado = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             handleListenerHeavyVehicle(e);
         }
@@ -44,51 +40,58 @@ public class ListarLocacao extends JFrame {
 
     public ListarLocacao() {
         Container pane = this.getContentPane();
-        pane.setLayout(new FlowLayout());
+        pane.setLayout(new FlowLayout(FlowLayout.CENTER));
         pane.add(locaCar);
         pane.add(listarVeiculoLeve);
-        listarVeiculoLeve.addActionListener(acaoListarLocacaoLeve);
+        listarVeiculoLeve.addActionListener(acaoListarVeiculoLeve);
         pane.add(listarVeiculoPesado);
-        listarVeiculoPesado.addActionListener(acaoListarLocacaoPesado);
+        listarVeiculoPesado.addActionListener(acaoListarVeiculoPesado);
 
-        this.setSize(250, 170);
+        this.setSize(200, 150);
+        this.setUndecorated(true);
+        this.setBackground(new Color(0, 0, 0, 90));
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    
 
-    public void handleListenerLightVehicle(ActionEvent e) {
-        try {
-            JOptionPane.showMessageDialog(
-                    this,
-                    LocaCarv1.DAO.VeiculosLocadosDAO.listarCadastrosVeiculoLeve(),
-                    "-      -LocaCar-      -",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
-        } catch (SQLException e1) {
-            System.out.println(e1);
-            e1.printStackTrace();
-        }
+    public void handleListenerLightVehicle(ActionEvent e) throws SQLException {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JTableVeiculoLeve tb;
+                try {
+                    tb = new JTableVeiculoLeve();
+                    tb.setLocationRelativeTo(null);
+                    tb.setVisible(true);
+                } catch (SQLException e) {
+                    System.out.println("ERRO:" + e);
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     public void handleListenerHeavyVehicle(ActionEvent e) {
-        // try {
-        //     VeiculosLocadosDAO vl;
-        //     String novo = vl.listarCadastrosVeiculoLeve();
-        //     JTextArea.setText(novo);
-        //     JOptionPane.showMessageDialog(
-        //             this,
-        //             LocaCarv1.DAO.VeiculosLocadosDAO.listarCadastrosVeiculoLeve(),
-        //             "-      -LocaCar-      -",
-        //             JOptionPane.INFORMATION_MESSAGE
-        //         );
-        // } catch (SQLException e1) {
-        //     System.out.println(e1);
-        //     e1.printStackTrace();
-        // }
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JtableVeiculoPesado tb;
+                try {
+                    tb = new JtableVeiculoPesado();
+                    tb.setLocationRelativeTo(null);
+                    tb.setVisible(true);
+                } catch (SQLException e) {
+                    System.out.println("ERRO:" + e);
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
-   
+
     public static void main(String[] args) {
         new ListarLocacao();
+
     }
 }
-
