@@ -69,7 +69,7 @@ public class Painel {
 
 				} else if (opcao.equalsIgnoreCase("4")) {
 					ClienteDAO dao = new ClienteDAO();
-					List<Cliente> clientes = dao.listarTodosCadastros();
+					List<Cliente> clientes = dao.listarTodosCadastrosCliente();
 
 					for (Cliente cliente : clientes) {
 						System.out.println(cliente);
@@ -87,7 +87,7 @@ public class Painel {
 					switch (op) {
 						case 1:
 						VeiculoLeveDAO veiculoLeveDao = new VeiculoLeveDAO();
-						List<VeiculoLeve> veiculosLeve = veiculoLeveDao.listarTodosCadastros();
+						List<VeiculoLeve> veiculosLeve = veiculoLeveDao.listarTodosCadastrosVeiculoLeve();
 
 						for (VeiculoLeve veiculoLeve : veiculosLeve) {
 							System.out.println(veiculoLeve);
@@ -96,7 +96,7 @@ public class Painel {
 
 						case 2:
 							VeiculoPesadoDAO dao = new VeiculoPesadoDAO();
-							List<VeiculoPesado> veiculosPesado = dao.listarTodosCadastros();
+							List<VeiculoPesado> veiculosPesado = dao.listarTodosCadastrosVeiculoPesado();
 
 							for (VeiculoPesado veiculoPesado : veiculosPesado) {
 								System.out.println(veiculoPesado);
@@ -181,7 +181,7 @@ public class Painel {
 			dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
-			dao.salvar(dados);
+			dao.salvarCliente(dados);
 			
 			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
 			String continuarCadastro = Teclado.StringInput();
@@ -222,7 +222,7 @@ public class Painel {
 			dados.setCor(Teclado.StringInput());
 
 			VeiculoLeveDAO dao = new VeiculoLeveDAO();
-			dao.salvar(dados);
+			dao.salvarVeiculoLeve(dados);
 
 			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
 			String continuarCadastro = Teclado.StringInput();
@@ -265,7 +265,7 @@ public class Painel {
 			dados.setRestricao(Teclado.StringInput());
 
 			VeiculoPesadoDAO dao = new VeiculoPesadoDAO();
-			dao.salvar(dados);
+			dao.salvarVeiculoPesado(dados);
 
 			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
 			String continuarCadastro = Teclado.StringInput();
@@ -305,7 +305,7 @@ public class Painel {
 				dados.setDataDeDevolucao(Teclado.StringInput());
 
 				LocacaoDAO dao = new LocacaoDAO();
-				dao.salvar(dados);
+				dao.salvarLocacao(dados);
 
 			int op;
 			System.out.println(
@@ -330,7 +330,7 @@ public class Painel {
 					dadosVeiculoLeve.setIdVeiculoLeve(Teclado.IntInput());
 
 					VeiculosLocadosDAO daoVeiculosLeve = new VeiculosLocadosDAO();
-					daoVeiculosLeve.salvarVeiculoLeve(dadosVeiculoLeve);
+					daoVeiculosLeve.salvarLocacaoVeiculoLeve(dadosVeiculoLeve);
 					break;
 
 				case 2:
@@ -346,7 +346,7 @@ public class Painel {
 					dadosVeiculoPesado.setIdVeiculoPesado(Teclado.IntInput());
 
 					VeiculosLocadosDAO daoVeiculosPesado = new VeiculosLocadosDAO();
-					daoVeiculosPesado.salvarVeiculoPesado(dadosVeiculoPesado);
+					daoVeiculosPesado.salvarLocacaoVeiculoPesado(dadosVeiculoPesado);
 					break;
 				
 				default:
