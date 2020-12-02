@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -51,7 +52,7 @@ public class Menu extends JFrame {
 
     public Menu() {
         Container pane = this.getContentPane();
-        pane.setLayout(new FlowLayout());
+        pane.setLayout(new FlowLayout(FlowLayout.CENTER));
         pane.add(locaCar);
         pane.add(cadastrarCliente);
         cadastrarCliente.addActionListener(acaoClienteCadastrar);
@@ -65,6 +66,8 @@ public class Menu extends JFrame {
         pane.add(listarLocacoes);
 
         this.setSize(200, 300);
+        this.setUndecorated(true);
+        this.setBackground(new Color(0,0,0,90));
         this.setVisible(true);
     }
 

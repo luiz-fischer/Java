@@ -15,16 +15,13 @@ public class Teste {
         // Locacao locacao3 = new Locacao(3, 2, "20/10/2020", "27/10/2020");
 
         // VeiculosLocados locados = new VeiculosLocados(1, locacao2, teste1);
-        // VeiculosLocados locados2 = new VeiculosLocados(2, 2, 1);
+        VeiculosLocados locados2 = new VeiculosLocados(2, 2, 1);
         // VeiculosLocados locados3 = new VeiculosLocados(3, 3, 1);
 
-        // locacao1.addVeiculoLeve(teste1);
-        // locados.addVeiculoLeve(teste1);
-        locacao1.imprimirVeiculos();
 
-        // System.out.println(cliente1);
+        System.out.println(cliente1);
         // System.out.println(cliente2);
-        // System.out.println(locacao1);
+        System.out.println(locacao1);
         // System.out.println(teste1);
         // System.out.println(teste2);
         // System.out.println(teste1.seloDaEmpresa());

@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import LocaCarv1.models.Cliente;
 
 public class ClienteDAO extends LocaCarv1.models.Cliente {
-    
-    public void salvar(Cliente cliente) throws SQLException {
+
+    public void salvarCliente(Cliente cliente) throws SQLException {
         Connection conn = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Cliente =========
@@ -29,10 +29,11 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(
-                                            null, "Cliente cadastrado com Sucesso", 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                        );
+                null, 
+                "Cliente cadastrado com Sucesso", 
+                "Mensagem do Sistema",
+                JOptionPane.WARNING_MESSAGE
+            );
 
         } catch (SQLException exception) {
             System.out.println("Erro ao incluir Cliente: " + exception.getMessage());
@@ -44,7 +45,7 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
     }
 
     // ========= Método para Listar todos os registros =========
-    public List<Cliente> listarTodosCadastros() throws SQLException {
+    public List<Cliente> listarTodosCadastrosCliente() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         String sql = "SELECT * FROM `LocaCar`.`cliente`";
@@ -53,30 +54,28 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
         List<Cliente> listaCliente = new ArrayList<Cliente>();
         ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
+        while (rs.next()) {
 
-                Cliente dadosCliente = new Cliente(); 
-                dadosCliente.setIdCliente(rs.getInt("idCliente"));
-                dadosCliente.setNome(rs.getString("nome"));
-                dadosCliente.setCpf(rs.getString("cpf"));
-                dadosCliente.setDataDeNascimento(rs.getString("data_de_nascimento"));
-                dadosCliente.setQtdDiasLocacao(rs.getInt("qtd_Dias")) ;  
-                
-                listaCliente.add(dadosCliente);
-            }
-            stmt.close();
-            con.close();
+            Cliente dadosCliente = new Cliente();
+            dadosCliente.setIdCliente(rs.getInt("idCliente"));
+            dadosCliente.setNome(rs.getString("nome"));
+            dadosCliente.setCpf(rs.getString("cpf"));
+            dadosCliente.setDataDeNascimento(rs.getString("data_de_nascimento"));
+            dadosCliente.setQtdDiasLocacao(rs.getInt("qtd_Dias"));
+
+            listaCliente.add(dadosCliente);
+        }
+        stmt.close();
+        con.close();
         return listaCliente;
-   
 
     }
 
-    public List<Cliente> pesquisar(String nome) throws SQLException {
+    public List<Cliente> pesquisarPorNome(String nome) throws SQLException {
         String url = "jdbc:mysql://sistema.c7nhpp0cg9j3.us-east-1.rds.amazonaws.com:3306/";
         String login = "admin";
         String password = "senac2020";
-        String sql = "SELECT * FROM `LocaCar`.`cliente`" +
-                     "WHERE nome like ?";
+        String sql = "SELECT * FROM `LocaCar`.`cliente`" + "WHERE nome like ?";
 
         Connection con = DriverManager.getConnection(url, login, password);
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -85,8 +84,8 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
         ResultSet rs = stmt.executeQuery();
 
         List<Cliente> listaClientes = new ArrayList<>();
-        
-        try {   
+
+        try {
             while (rs.next()) {
                 Cliente usuario = new Cliente();
 
@@ -97,17 +96,18 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
 
                 listaClientes.add(usuario);
 
-            } 
+
+            }
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "Erro ao Pesquisar Cliente: " + exception.getMessage(), 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                        );
+                null, 
+                "Erro ao Cadastrar Cliente: " + exception.getMessage(),
+                "Mensagem do Sistema", 
+                JOptionPane.WARNING_MESSAGE
+            );
 
-                System.out.println("Erro ao Pesquisar Cliente: " + exception.getMessage());
-        
+            System.out.println("Erro ao Pesquisar Cliente: " + exception.getMessage());
+
         } finally {
             stmt.close();
             con.close();

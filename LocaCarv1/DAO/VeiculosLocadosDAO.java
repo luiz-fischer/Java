@@ -4,15 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 import LocaCarv1.models.VeiculosLocados;
 
 public class VeiculosLocadosDAO {
-    // public static LocaCarv1.models.VeiculosLocados veiculosLocados;
     
-    public void salvarVeiculoLeve(VeiculosLocados veiculosLocados) throws SQLException {
+	public void salvarLocacaoVeiculoLeve(VeiculosLocados veiculosLocados) throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Usuario =========
@@ -47,7 +45,7 @@ public class VeiculosLocadosDAO {
         }
     }
 
-    public void salvarVeiculoPesado(VeiculosLocados veiculosLocados) throws SQLException {
+    public void salvarLocacaoVeiculoPesado(VeiculosLocados veiculosLocados) throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Usuario =========
@@ -85,7 +83,7 @@ public class VeiculosLocadosDAO {
     }
 
     // ========= Método para Listar todos os registros =========
-    public static void listarCadastrosVeiculoLeve() throws SQLException {
+    public static void listarLocacaoVeiculoLeve() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         String sql = "select * from veiculosAlugados" +
@@ -93,109 +91,97 @@ public class VeiculosLocadosDAO {
                      " natural left join aluguel" + 
                      " natural left join cliente;";
         
-        
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            int idCliente = rs.getInt("idCliente");
+            int idAluguel = rs.getInt("idAluguel");
+            int idVeiculoLeve = rs.getInt("idVeiculoLeve");
+            int valor_diaria = rs.getInt("valor_diaria");
+            int ano = rs.getInt("ano");
+            int idVeiculosLocados = rs.getInt("idVeiculosAlugados");
+            String nome = rs.getString("nome");
+            String cpf = rs.getString("cpf");
+            String marca = rs.getString("marca");
+            String modelo = rs.getString("modelo");
+            String cor = rs.getString("cor");
+            String dataDaLocacao = rs.getString("data_da_locacao");
+            String dataDaDevolucao = (rs.getString("data_da_devolucao"));
 
-            while (rs.next()) {
-
-                int idCliente = rs.getInt("idCliente");
-                int idAluguel = rs.getInt("idAluguel");
-                int idVeiculoLeve = rs.getInt("idVeiculoLeve");
-                int valor_diaria = rs.getInt("valor_diaria");
-                int ano = rs.getInt("ano");
-                int idVeiculosLocados = rs.getInt("idVeiculosAlugados");
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                String marca = rs.getString("marca");
-                String modelo = rs.getString("modelo");
-                String cor = rs.getString("cor");
-                String dataDaLocacao = rs.getString("data_da_locacao");
-                String dataDaDevolucao = rs.getString("data_da_devolucao");
-
-    
-                System.out.println( 
-                                   "|-------------------- Veiculos Alugados --------------------|" + "\n" +    
-                                   "I.D do Cliente            :                " + idCliente + "\n" + 
-                                   "I.D. do Aluguel           :                " + idAluguel + "\n" + 
-                                   "I.D da Locação do Veículo :                " + idVeiculosLocados + "\n" + 
-                                   "I.D. do Veículo           :                " + idVeiculoLeve + "\n" + 
-                                   "Nome                      :                " + nome + "\n" +
-                                   "CPF                       :                " + cpf + "\n" + 
-                                   "Data Da ocação            :                " + dataDaLocacao + "\n" +
-                                   "Data Da Devolução         :                " + dataDaDevolucao + "\n" +
-                                   "Marca                     :                " + marca + "\n" + 
-                                   "Modelo                    :                " + modelo + "\n" + 
-                                   "Ano de Fabricação         :                " + ano + "\n" + 
-                                   "Valor da Diária           :                " + valor_diaria + "\n" +
-                                   "Cor do Veículo            :                " + cor + "\n" +
-                                   "|-----------------------------------------------------------|" 
-                                );  
-
-                        //   // montando a data através do Calendar
-                        //   Calendar data = Calendar.getInstance();
-                        //   data.setTime(rs.getDate("dataNascimento"));
-                        //   contato.setDataNascimento(data);
-            
-            }
-            stmt.close();
-            con.close();
+            String print = 
+                               "|-------------------- Veiculos Alugados --------------------|" +"\n" +    
+                               "I.D do Cliente            :                " + idCliente + "\n" + 
+                               "I.D. do Aluguel           :                " + idAluguel + "\n" + 
+                               "I.D da Locação do Veículo :                " + idVeiculosLocados +"\n" + 
+                               "I.D. do Veículo           :                " + idVeiculoLeve + "\n"+ 
+                               "Nome                      :                " + nome + "\n" +
+                               "CPF                       :                " + cpf + "\n" + 
+                               "Data Da ocação            :                " + dataDaLocacao + "\n" +
+                               "Data Da Devolução         :                " + dataDaDevolucao +"\n" +
+                               "Marca                     :                " + marca + "\n" + 
+                               "Modelo                    :                " + modelo + "\n" + 
+                               "Ano de Fabricação         :                " + ano + "\n" + 
+                               "Valor da Diária           :                " + valor_diaria + "\n" +
+                               "Cor do Veículo            :                " + cor + "\n" +
+                               "|-----------------------------------------------------------|" ;
+                            
+                               System.out.println(print);
+                    //   // montando a data através do Calendar
+                    //   Calendar data = Calendar.getInstance();
+                    //   data.setTime(rs.getDate("dataNascimento"));
+                    //   contato.setDataNascimento(data);
+        }
+        stmt.close();
+        con.close();
     }
 
-    public static void listarCadastrosVeiculoPesado() throws SQLException {
+    public static void listarLocacaoVeiculoPesado() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
-
         String sql = "select * from veiculosAlugados" +
                      " natural left join veiculo_pesado" + 
                      " natural left join aluguel" + 
                      " natural left join cliente;";
         
-        
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            int idCliente = rs.getInt("idCliente");
+            int idAluguel = rs.getInt("idAluguel");
+            int idVeiculoPesado = rs.getInt("idVeiculoPesado");
+            int ano = rs.getInt("ano");
+            int valor_diaria = rs.getInt("valor_diaria");
+            int idVeiculosLocados = rs.getInt("idVeiculosAlugados");
+            String nome = rs.getString("nome");
+            String cpf = rs.getString("cpf");
+            String marca = rs.getString("marca");
+            String modelo = rs.getString("modelo");
+            String restricao = rs.getString("restricao");
+            String dataDaLocacao = rs.getString("data_da_locacao");
+            String dataDaDevolucao = rs.getString("data_da_devolucao");
 
-            while (rs.next()) {
-
-                int idCliente = rs.getInt("idCliente");
-                int idAluguel = rs.getInt("idAluguel");
-                int idVeiculoPesado = rs.getInt("idVeiculoPesado");
-                int ano = rs.getInt("ano");
-                int valor_diaria = rs.getInt("valor_diaria");
-                int idVeiculosLocados = rs.getInt("idVeiculosAlugados");
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                String marca = rs.getString("marca");
-                String modelo = rs.getString("modelo");
-                String restricao = rs.getString("restricao");
-                String dataDaLocacao = rs.getString("data_da_locacao");
-                String dataDaDevolucao = rs.getString("data_da_devolucao");
-
-    
-                System.out.println( 
-                                   "|-------------------- Veiculos Alugados --------------------|" + "\n" +    
-                                   "I.D do Cliente            :                " + idCliente + "\n" + 
-                                   "I.D. do Aluguel           :                " + idAluguel + "\n" + 
-                                   "I.D da Locação do Veículo :                " + idVeiculosLocados + "\n" + 
-                                   "I.D. do Veículo           :                " + idVeiculoPesado + "\n" +
-                                   "Nome                      :                " + nome + "\n" +
-                                   "CPF                       :                " + cpf + "\n" + 
-                                   "Data Da ocação            :                " + dataDaLocacao + "\n" +
-                                   "Data Da Devolução         :                " + dataDaDevolucao + "\n" +
-                                   "Marca                     :                " + marca + "\n" + 
-                                   "Modelo                    :                " + modelo + "\n" + 
-                                   "Ano de Fabricação         :                " + ano + "\n" + 
-                                   "Valor da Diária           :                " + valor_diaria + "\n" +
-                                   "Cor do Veículo            :                " + restricao + "\n" +
-                                   "|-----------------------------------------------------------|" 
-                                );  
-
-                        //   // montando a data através do Calendar
-                        //   Calendar data = Calendar.getInstance();
-                        //   data.setTime(rs.getDate("dataNascimento"));
-                        //   contato.setDataNascimento(data);
-            
-            }
-            stmt.close();
-            con.close();
+            String print = 
+                               "|-------------------- Veiculos Alugados --------------------|" +"\n" +    
+                               "I.D do Cliente            :                " + idCliente + "\n" + 
+                               "I.D. do Aluguel           :                " + idAluguel + "\n" + 
+                               "I.D da Locação do Veículo :                " + idVeiculosLocados +"\n" + 
+                               "I.D. do Veículo           :                " + idVeiculoPesado +"\n" +
+                               "Nome                      :                " + nome + "\n" +
+                               "CPF                       :                " + cpf + "\n" + 
+                               "Data Da ocação            :                " + dataDaLocacao + "\n" +
+                               "Data Da Devolução         :                " + dataDaDevolucao +"\n" +
+                               "Marca                     :                " + marca + "\n" + 
+                               "Modelo                    :                " + modelo + "\n" + 
+                               "Ano de Fabricação         :                " + ano + "\n" + 
+                               "Valor da Diária           :                " + valor_diaria + "\n" +
+                               "Cor do Veículo            :                " + restricao + "\n" +
+                               "|-----------------------------------------------------------|" ;
+                    System.out.println(print);
+                    //   // montando a data através do Calendar
+                    //   Calendar data = Calendar.getInstance();
+                    //   data.setTime(rs.getDate("dataNascimento"));
+                    //   contato.setDataNascimento(data);
+        }
+        stmt.close();
+        con.close();
     }
 }

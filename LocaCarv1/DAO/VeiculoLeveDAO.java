@@ -11,9 +11,8 @@ import javax.swing.JOptionPane;
 import LocaCarv1.models.VeiculoLeve;
 
 public class VeiculoLeveDAO {
-    // public LocaCarv1.models.VeiculoLeve veiculoLeve;
 
-    public void salvar(VeiculoLeve veiculoLeve) throws SQLException {
+    public void salvarVeiculoLeve(VeiculoLeve veiculoLeve) throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Usuario =========
@@ -30,14 +29,13 @@ public class VeiculoLeveDAO {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "URBANO Cadastrado com Sucesso", 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                        );
+                null, "Veículo URBANO Cadastrado com Sucesso", 
+                "Mensagem do Sistema",
+                JOptionPane.WARNING_MESSAGE
+            );
 
         } catch (SQLException exception) {
-            System.out.println("Erro ao incluir URBANO: " + exception.getMessage());
+            System.out.println("Erro ao incluir Veículo URBANO: " + exception.getMessage());
 
         } finally {
             con.close();
@@ -47,32 +45,30 @@ public class VeiculoLeveDAO {
     }
 
     // ========= Método para Listar todos os registros =========
-    public List<VeiculoLeve> listarTodosCadastros() throws SQLException {
+    public List<VeiculoLeve> listarTodosCadastrosVeiculoLeve() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         String sql = "SELECT * FROM `LocaCar`.`veiculo_leve`;";
-        
-        // "SELECT * FROM veiculo v, veiculo_leve vl WHERE v.idVeiculo = vl.pk_veiculo_idVeiculo;";
-        
+
         PreparedStatement stmt = con.prepareStatement(sql);
         List<VeiculoLeve> veiculosLeve = new ArrayList<VeiculoLeve>();
         ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+        while (rs.next()) {
 
-                VeiculoLeve dadosVeiculoLeve = new VeiculoLeve();
-                dadosVeiculoLeve.setIdVeiculoLeve(rs.getInt("idVeiculoLeve"));
-                dadosVeiculoLeve.setMarca(rs.getString("marca"));
-                dadosVeiculoLeve.setModelo(rs.getString("modelo"));
-                dadosVeiculoLeve.setAno(rs.getInt("ano"));
-                dadosVeiculoLeve.setValorLocacao(rs.getInt("valor_diaria"));
-                dadosVeiculoLeve.setCor(rs.getString("cor"));
-                
-                veiculosLeve.add(dadosVeiculoLeve);
-            
-            }
-            stmt.close();
-            con.close();
-        
+            VeiculoLeve dadosVeiculoLeve = new VeiculoLeve();
+            dadosVeiculoLeve.setIdVeiculoLeve(rs.getInt("idVeiculoLeve"));
+            dadosVeiculoLeve.setMarca(rs.getString("marca"));
+            dadosVeiculoLeve.setModelo(rs.getString("modelo"));
+            dadosVeiculoLeve.setAno(rs.getInt("ano"));
+            dadosVeiculoLeve.setValorLocacao(rs.getInt("valor_diaria"));
+            dadosVeiculoLeve.setCor(rs.getString("cor"));
+
+            veiculosLeve.add(dadosVeiculoLeve);
+
+        }
+        stmt.close();
+        con.close();
+
         return (veiculosLeve);
     }
 }

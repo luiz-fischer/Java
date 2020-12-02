@@ -10,6 +10,7 @@ public class Locacao {
     private static String dataDeLocacao;
     private static Cliente cliente;
     VeiculoLeve veiculosLeve;
+    VeiculoPesado veiculosPesado;
 
     private static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
@@ -18,13 +19,19 @@ public class Locacao {
     public Locacao() {
     }
 
-    public Locacao(int idLocacao, int idCliente, String dataDeLocacao, String dataDeDevolucao) {
-        Locacao.idLocacao = idLocacao;
-        Locacao.idCliente = idCliente;
-        Locacao.dataDeLocacao = dataDeLocacao;
-        Locacao.dataDeDevolucao = dataDeDevolucao;
+    public Locacao(
+        int idLocacao, 
+        int idCliente, 
+        String dataDeLocacao, 
+        String dataDeDevolucao
+        ) {
+            Locacao.idLocacao = idLocacao;
+            Locacao.idCliente = idCliente;
+            Locacao.dataDeLocacao = dataDeLocacao;
+            Locacao.dataDeDevolucao = dataDeDevolucao;
+            Locacao.cliente = cliente;
 
-        locacoes.add(this);
+            locacoes.add(this);
     }
 
     // ======== SETS ========
@@ -33,14 +40,22 @@ public class Locacao {
 
     }
 
-    public void setCliente(Cliente cliente) {
-        Locacao.cliente = cliente;
-    }
-
     public void setIdCliente(int idCliente) {
         Locacao.idCliente = idCliente;
 
     }
+
+    public void setDataDeDevolucao(String dataDeDevolucao) {
+        Locacao.dataDeDevolucao = dataDeDevolucao;
+	}
+
+	public void setDataDeLocacao(String dataDeLocacao) {
+        Locacao.dataDeLocacao = dataDeLocacao;
+    }
+    
+    // public void setCliente(Cliente cliente) {
+    //     Locacao.cliente = cliente;
+    // }
 
     // public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
     // Locacao.veiculosLocados = veiculosLocados;
@@ -59,8 +74,21 @@ public class Locacao {
     // ======== GETS ========
     public static int getIdLocacao() {
         return Locacao.idLocacao;
+    }
+
+    public static int getIdCliente() {
+        return idCliente;
+    }
+    public static String getDataDeLocacao() {
+        return Locacao.dataDeLocacao;
 
     }
+
+    public static String getDataDeDevolucao() {
+        return Locacao.dataDeDevolucao;
+
+    }
+
 
     // public ArrayList<VeiculoLeve> getVeiculoLeve() {
     // return Locacao.veiculosLeves;
@@ -68,11 +96,6 @@ public class Locacao {
     // public ArrayList<VeiculosLocados> getVeiculosLocados() {
     // return Locacao.veiculosLocados;
     // }
-
-    public static int getIdCliente() {
-        return idCliente;
-
-    }
 
     // public static String getDataDeLocacao() {
     //     return Locacao.dataDeLocacao;
@@ -84,9 +107,9 @@ public class Locacao {
 
     // }
 
-    public Cliente getCliente() {
-        return Locacao.cliente;
-    }
+    // public Cliente getCliente() {
+    //     return Locacao.cliente;
+    // }
 
     // ====== MÉTODOS ======
     public int qtdVeiculosLocados() {
@@ -100,10 +123,10 @@ public class Locacao {
 
     public double valorTotalLocacao() {
         double total = 0;
-        for (VeiculosLocados veiculosLocados : veiculosLocados) {
-            total += veiculosLeve.getValorLocacao()
-                    + veiculosLeve.getValorLocacao();
-
+        for (VeiculoLeve veiculoLeve : veiculosLeve.veiculosLeves) {
+            for (VeiculoPesado veiculoPesado : veiculosPesado.veiculosPesados) {
+                total += veiculoLeve.getValorLocacao() + veiculoPesado.getValorLocacao();
+            }
         }
         return total;
     }
@@ -124,43 +147,25 @@ public class Locacao {
         }
         Locacao locacao = (Locacao) o;
 
-        return Objects.equals(idCliente, Locacao.idCliente) && Objects.equals(idLocacao, Locacao.idLocacao)
-                && Objects.equals(dataDeLocacao, Locacao.dataDeLocacao)
-                && Objects.equals(dataDeLocacao, Locacao.dataDeLocacao);
+        return Objects.equals(
+            idCliente, Locacao.idCliente) && 
+            Objects.equals(idLocacao, Locacao.idLocacao) && 
+            Objects.equals(dataDeLocacao, Locacao.dataDeLocacao) && 
+            Objects.equals(dataDeLocacao, Locacao.dataDeLocacao);
     }
 
     // ====== IMPRESSÃO ======
     @Override
     public String toString() {
-        String print = "";
-            print = "           |--------Lista de Alugueis--------|" + "\n"
-                    + "I.D. Locacao      :                       " + getIdLocacao() + "\n"
-                    + "I.D. Cliente      :                       " + getIdCliente() + "\n"
-                    + "Data de Locação   :                       " + getDataDeLocacao() + "\n"
-                    + "Data de Devolução :                       " + getDataDeDevolucao() + "\n"
-                    + "Total de dias     :                       " + qtdDiasLocados() + "\n"
-                    + "\n|-----------------------------------------------------------|\n";
+        String print =  "           |--------Lista de Alugueis--------|" + "\n"
+                        + "I.D. Locacao      :                       " + getIdLocacao() + "\n"
+                        + "I.D. Cliente      :                       " + getIdCliente() + "\n"
+                        + "Data de Locação   :                       " + getDataDeLocacao() + "\n"
+                        + "Data de Devolução :                       " + getDataDeDevolucao() + "\n"
+                        + "Total de dias     :                       " + qtdDiasLocados() + "\n"
+                        + "\n|-----------------------------------------------------------|\n";
       
-            return print;
+        return print;
     }
-
-	public void setDataDeDevolucao(String dataDeDevolucao) {
-        Locacao.dataDeDevolucao = dataDeDevolucao;
-	}
-
-	public void setDataDeLocacao(String dataDeLocacao) {
-        Locacao.dataDeLocacao = dataDeLocacao;
-    }
-    
-    public static String getDataDeLocacao() {
-        return Locacao.dataDeLocacao;
-
-    }
-
-    public static String getDataDeDevolucao() {
-        return Locacao.dataDeDevolucao;
-
-    }
-
 
 }

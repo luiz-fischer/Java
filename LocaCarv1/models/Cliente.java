@@ -2,7 +2,6 @@ package LocaCarv1.models;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import LocaCarv1.DAO.ClienteDAO;
@@ -15,21 +14,27 @@ public class Cliente {
     private String cpf;
     private int qtdDiasLocacao;
 
-    public ArrayList<Locacao> locacoes = new ArrayList<>();
+    public ArrayList<Locacao> locacoes;
     public ArrayList<Cliente> clientes = new ArrayList<>();
 
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String nome, String dataDeNascimento, String
-    cpf, int qtdDiasLocacao) {
-        this.idCliente = idCliente;
-        this.nome = nome;
-        this.dataDeNascimento = dataDeNascimento;
-        this.cpf = cpf;
-        this.qtdDiasLocacao = qtdDiasLocacao;
+    public Cliente(
+        int idCliente, 
+        String nome, 
+        String dataDeNascimento, 
+        String cpf, 
+        int qtdDiasLocacao
+        ) {
+            this.idCliente = idCliente;
+            this.nome = nome;
+            this.dataDeNascimento = dataDeNascimento;
+            this.cpf = cpf;
+            this.qtdDiasLocacao = qtdDiasLocacao;
+            this.locacoes = new ArrayList<>();
 
-        clientes.add(this);
+            clientes.add(this);
 
     }
 
@@ -50,16 +55,14 @@ public class Cliente {
         this.cpf = cpf;
     }
 
+    public void setQtdDiasLocacao(int qtdDiasLocacao) {
+        this.qtdDiasLocacao = qtdDiasLocacao;
+    }
+
     public void setLocacoes(ArrayList<Locacao> locacoes) {
         this.locacoes = locacoes;
     }
-    public int setQtdDiasLocacao(int qtdDiasLocacao) {
-        if((qtdDiasLocacao == 5) && (qtdDiasLocacao == 10) && (qtdDiasLocacao == 15)) {
-            this.qtdDiasLocacao = qtdDiasLocacao;
-        } else {
-            this.qtdDiasLocacao = 0;
-        } return this.qtdDiasLocacao;
-    }
+    
 
     // ======== GETS ========
     public int getIdCliente() {
@@ -135,7 +138,7 @@ public class Cliente {
 			dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
-			dao.salvar(dados);
+			dao.salvarCliente(dados);
 			
 			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
 			String continuarCadastro = Teclado.StringInput();

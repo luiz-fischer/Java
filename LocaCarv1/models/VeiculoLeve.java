@@ -18,17 +18,23 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     public VeiculoLeve() {
     }
 
-    public VeiculoLeve(int idVeiculo, int idVeiculoLeve, String cor, String marca, String modelo, int ano, double valorLocacao) {
-        super(idVeiculo, marca, modelo, ano, valorLocacao);
-        this.idVeiculoLeve = idVeiculoLeve;
-        this.cor = cor;
+    public VeiculoLeve(
+        int idVeiculo, 
+        int idVeiculoLeve,
+        String cor,
+        String marca,
+        String modelo,
+        int ano,
+        double valorLocacao
+        ) {
+            super(idVeiculo, marca, modelo, ano, valorLocacao);
+            this.idVeiculoLeve = idVeiculoLeve;
+            this.cor = cor;
 
-        this.veiculosLocados = new ArrayList<>();
+            this.veiculosLocados = new ArrayList<>();
 
-        veiculosLeves.add(this);
+            veiculosLeves.add(this);
     }
-
-   
 
     // ======== SETS ========
     public void setIdVeiculoLeve(int idVeiculoLeve) {
@@ -49,21 +55,23 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
         return this.idVeiculoLeve;
 
     }
+
     // public int getIdVeiculo() {
-    //     return getIdVeiculo();
-    //    }
+    // return getIdVeiculo();
+    // }
     public double getValorLocacao() {
         return this.valorLocacao;
 
     }
+
     public String getCor() {
         return this.cor;
 
     }
+
     public ArrayList<VeiculosLocados> getVeiculosLocados() {
         return this.veiculosLocados;
     }
-    
 
     // ====== EQUALS ======
     @Override
@@ -75,77 +83,70 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
 
         VeiculoLeve veiculoLeve = (VeiculoLeve) object;
 
-        return Objects.equals(idVeiculoLeve, this.idVeiculoLeve) && Objects.equals(marca, this.marca)&& Objects.equals(modelo, this.modelo)&& Objects.equals(cor, this.cor);
+        return Objects.equals(idVeiculoLeve, this.idVeiculoLeve) && Objects.equals(marca, this.marca)
+                && Objects.equals(modelo, this.modelo) && Objects.equals(cor, this.cor);
     }
-
 
     @Override
     public int hashCode() {
         return Objects.hash(idVeiculo, idVeiculoLeve, marca, modelo, cor);
     }
 
-    // ====== IMPRESSÃO ====== 
+    // ====== IMPRESSÃO ======
     @Override
     public String toString() {
-        String print = "\n\n" + seloDaEmpresa() + "\n\n" +
-                       "\n\n|---------------     Dados do Veículo        ---------------|" + "\n" + 
-                       "  => Ano             :                        " + super.getAno() + "\n" +
-                       "  ==> Cor            :                        " + this.getCor() + "\n" +
-                       "  ===> Marca         :                        " + super.getMarca() + "\n" +
-                       "  ====> Modelo       :                        " + super.getModelo() + "\n" +
-                       "  =====> Valor Diária:                        " + super.getValorLocacao() + "\n" +
-                       "\n|-----------------------------------------------------------|\n";
+        String print = "\n\n" + seloDaEmpresa() + "\n\n"
+                + "\n\n|---------------     Dados do Veículo        ---------------|" + "\n"
+                + "  => Ano             :                        " + super.getAno() + "\n"
+                + "  ==> Cor            :                        " + this.getCor() + "\n"
+                + "  ===> Marca         :                        " + super.getMarca() + "\n"
+                + "  ====> Modelo       :                        " + super.getModelo() + "\n"
+                + "  =====> Valor Diária:                        " + super.getValorLocacao() + "\n"
+                + "\n|-----------------------------------------------------------|\n";
         return print;
     }
 
-    
+    public static void cadastrarVeiculoLeve() throws Exception {
+        boolean efetuarCadastro = true;
+        while (efetuarCadastro) {
+            VeiculoLeve dados = new VeiculoLeve();
 
-     @Override
-     public int qtdLocacaoRealizada() {
-         // TODO Auto-generated method stub
-         return 0;
-     }
+            System.out.println("|------------------ URBANO ------------------|");
 
-     public static void cadastrarVeiculoLeve() throws Exception {
-		boolean efetuarCadastro = true;
+            System.out.print("Marca: ");
+            dados.setMarca(Teclado.StringInput());
+            System.out.print("Modelo: ");
+            dados.setModelo(Teclado.StringInput());
+            System.out.print("Ano: ");
+            dados.setAno(Teclado.IntInput());
+            System.out.print("Valor da Diária: ");
+            dados.setValorLocacao(Teclado.DoubleInput());
+            System.out.print("Cor: ");
+            dados.setCor(Teclado.StringInput());
 
-		while (efetuarCadastro) {
-			// veiculos = new ArrayList<Veiculo>();
-			// veiculosLeve = new ArrayList<VeiculoLeve>();
-			VeiculoLeve dados = new VeiculoLeve();
+            VeiculoLeveDAO dao = new VeiculoLeveDAO();
+            dao.salvarVeiculoLeve(dados);
 
-			System.out.println(
-						"|------------------ URBANO ------------------|"
-					);
-					
-			System.out.print("Marca: ");
-			dados.setMarca(Teclado.StringInput());
-			System.out.print("Modelo: ");
-			dados.setModelo(Teclado.StringInput());
-			System.out.print("Ano: ");
-			dados.setAno(Teclado.IntInput());
-			System.out.print("Valor da Diária: ");
-			dados.setValorLocacao(Teclado.DoubleInput());
-			System.out.print("Cor: ");
-			dados.setCor(Teclado.StringInput());
+            System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
+            String continuarCadastro = Teclado.StringInput();
 
-			VeiculoLeveDAO dao = new VeiculoLeveDAO();
-			dao.salvar(dados);
+            if (continuarCadastro.equalsIgnoreCase("N")) {
+                efetuarCadastro = false;
+                new Painel();
+            } else if (continuarCadastro.equalsIgnoreCase("s")) {
 
-			System.out.println("!!! -- Continuar Cadastrando (S/N) -- !!!");
-			String continuarCadastro = Teclado.StringInput();
+            } else {
+                System.out.println("\n!!! -- SAIR -- !!! \n");
+                efetuarCadastro = false;
 
-			if (continuarCadastro.equalsIgnoreCase("N")) {
-				efetuarCadastro = false;
-				new Painel();
-			} else if (continuarCadastro.equalsIgnoreCase("s")) {
-
-			} else {
-				System.out.println("\n!!! -- SAIR -- !!! \n");
-				efetuarCadastro = false;
-
-			}
-		}
+            }
+        }
     }
+
+	@Override
+	public int qtdLocacaoRealizada() {
+		int locacoes = this.veiculosLocados.size();
+		return locacoes;
+	}
 
 }

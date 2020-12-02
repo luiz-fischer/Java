@@ -11,9 +11,8 @@ import javax.swing.JOptionPane;
 import LocaCarv1.models.Locacao;
 
 public class LocacaoDAO extends LocaCarv1.models.Locacao {
-    // static LocaCarv1.models.Locacao locacao;
 
-    public void salvar(Locacao locacaoes) throws SQLException {
+    public void salvarLocacao(Locacao locacaoes) throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Usuario =========
@@ -28,19 +27,19 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "Cadastrado Locação com Sucesso", 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                         );
+                null, 
+                "Cadastrado Locação com Sucesso", 
+                "Mensagem do Sistema",
+                JOptionPane.WARNING_MESSAGE
+            );
 
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "Erro ao incluir Locação: " + exception.getMessage(), 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                         );
+                null, 
+                "Erro ao incluir Locação: " + exception.getMessage(),
+                "Mensagem do Sistema", 
+                JOptionPane.WARNING_MESSAGE
+            );
             System.out.println("Erro ao incluir: " + exception.getMessage());
 
         } finally {
@@ -59,25 +58,21 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
         PreparedStatement stmt = conn.prepareStatement(sql);
         List<Locacao> listaLocacao = new ArrayList<Locacao>();
         ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+        while (rs.next()) {
 
-                Locacao dadosLocacao = new Locacao();
-                dadosLocacao.setIdLocacao(rs.getInt("IdAluguel"));
-                dadosLocacao.setIdCliente(rs.getInt("fk_cliente_IdCliente"));
-                dadosLocacao.setDataDeLocacao(rs.getString("data_da_locacao"));
-                dadosLocacao.setDataDeDevolucao(rs.getString("data_da_devolucao"));
+            Locacao dadosLocacao = new Locacao();
+            dadosLocacao.setIdLocacao(rs.getInt("IdAluguel"));
+            dadosLocacao.setIdCliente(rs.getInt("fk_cliente_IdCliente"));
+            dadosLocacao.setDataDeLocacao(rs.getString("data_da_locacao"));
+            dadosLocacao.setDataDeDevolucao(rs.getString("data_da_devolucao"));
 
-                listaLocacao.add(dadosLocacao);
+            listaLocacao.add(dadosLocacao);
 
-
-            }
-            stmt.close();
-            conn.close();
+        }
+        stmt.close();
+        conn.close();
 
         return (listaLocacao);
 
     }
-}        
-
-
-
+}

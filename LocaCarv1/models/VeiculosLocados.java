@@ -11,7 +11,6 @@ public class VeiculosLocados {
     Locacao locacao;
     VeiculoLeve veiculoLeve;
     VeiculoPesado veiculoPesado;
-    // ArrayList<VeiculosLocados> locacoes = new ArrayList<>();;
 
     public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
@@ -90,7 +89,12 @@ public class VeiculosLocados {
         }
         VeiculosLocados veiculosLocados = (VeiculosLocados) o;
 
-        return Objects.equals(idVeiculoLocado, veiculosLocados.idVeiculoLocado) && Objects.equals(idLocacao, veiculosLocados.idLocacao) && Objects.equals(idVeiculoLeve, veiculosLocados.idVeiculoLeve) && Objects.equals(idVeiculoPesado, veiculosLocados.idVeiculoPesado);
+        return Objects.equals(
+            idVeiculoLocado, veiculosLocados.idVeiculoLocado) && 
+            Objects.equals(idLocacao, veiculosLocados.idLocacao) && 
+            Objects.equals(idVeiculoLeve, veiculosLocados.idVeiculoLeve) && 
+            Objects.equals(idVeiculoPesado, veiculosLocados.idVeiculoPesado
+        );
     }
 
     @Override
@@ -102,10 +106,10 @@ public class VeiculosLocados {
     @Override
     public String toString() {
         String print =  
-                        "Veiculos locados"  + "\n" +
-                        super.toString() + "\n" +
+                       "Veiculos locados"  + "\n" +
+                       super.toString() + "\n" +
                        "ID locacao: " + getIdLocacao() + "\n" +
-                           "veiculo Leve: " + getIdVeiculoLeve();
+                       "veiculo Leve: " + getIdVeiculoLeve();
                        
 
         return print;
