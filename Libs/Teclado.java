@@ -1,4 +1,4 @@
-package libs;
+package Libs;
 
 import java.io.*;
 import java.text.ParseException;

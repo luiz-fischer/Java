@@ -3,12 +3,10 @@ package LocaCarv1.views;
 import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 
 import frame.SpringUtilities;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -41,7 +39,7 @@ public class Menu extends JFrame {
     JButton cadastrarLocacao = new JButton("Cadastrar Locacao");
     JButton listarClientes = new JButton("Listar Cliente");
 
-    ActionListener acaoClienteListar = new ActionListener() {
+    ActionListener acaoListarCliente = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 handleListernetClient(e);
         }
@@ -55,6 +53,11 @@ public class Menu extends JFrame {
     };
 
     JButton listarLocacoes = new JButton("Listar Locações");
+    ActionListener acaoListarLocacao = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            handleLIstenerRent(e);
+        }
+    };
 
     public Menu() {
         Container pane = this.getContentPane();
@@ -66,9 +69,10 @@ public class Menu extends JFrame {
         cadastrarVeiculo.addActionListener(acaoCadastrarVeiculo);
         pane.add(cadastrarLocacao);
         pane.add(listarClientes);
-        listarClientes.addActionListener(acaoClienteListar);
+        listarClientes.addActionListener(acaoListarCliente);
         pane.add(listarVeiculos);    
-        listarVeiculos.addActionListener(acaoListarVeiculo);   
+        listarVeiculos.addActionListener(acaoListarVeiculo);  
+        listarLocacoes.addActionListener(acaoListarLocacao); 
         pane.add(listarLocacoes);
 
         SpringUtilities.makeCompactGrid(pane, 1,
@@ -94,11 +98,11 @@ public class Menu extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JtableCliente tb;
+                JtableCliente table;
                 try {
-                    tb = new JtableCliente();
-                    tb.setLocationRelativeTo(null);
-                    tb.setVisible(true);
+                    table = new JtableCliente();
+                    table.setLocationRelativeTo(null);
+                    table.setVisible(true);
                 } catch (SQLException e) {
                     System.out.println("ERRO:" + e);
                     e.printStackTrace();
@@ -114,7 +118,10 @@ public class Menu extends JFrame {
     }
     public void handleListenerVehicle(ActionEvent e) {
         new ListarVeiculo();
-      }
+    }
+    public void handleLIstenerRent(ActionEvent e) {
+        new ListarVeiculo();
+    }
 
     public static void main(String[] args) {
         new Menu();

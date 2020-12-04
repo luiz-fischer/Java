@@ -12,18 +12,19 @@ import LocaCarv1.models.Locacao;
 
 public class LocacaoDAO extends LocaCarv1.models.Locacao {
 
-    public void salvarLocacao(Locacao locacaoes) throws SQLException {
+    public void salvarLocacao(Locacao locacao) throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
         // ========= Inserção de Dados a tabela Usuario =========
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO `LocaCar`.`aluguel` (idCliente, data_da_locacao, data_da_devolucao) VALUES (?,?,?)";
+        String sql =  "INSERT INTO `LocaCar`.`aluguel` (fk_idCliente, data_da_locacao, data_da_devolucao) VALUES (?,?,?)";
+       
 
         try {
             stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, getIdCliente());
-            stmt.setString(2, getDataDeLocacao());
-            stmt.setString(3, getDataDeDevolucao());
+            stmt.setInt(1, locacao.getIdCliente());
+            stmt.setString(2, Locacao.getDataDeLocacao());
+            stmt.setString(3, Locacao.getDataDeDevolucao());
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(
@@ -49,6 +50,7 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
         }
     }
 
+
     // ========= Método para Listar todos os registros =========
     public List<Locacao> listarTodosCadastros() throws SQLException {
         Connection conn = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
@@ -62,7 +64,7 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
 
             Locacao dadosLocacao = new Locacao();
             dadosLocacao.setIdLocacao(rs.getInt("IdAluguel"));
-            dadosLocacao.setIdCliente(rs.getInt("fk_cliente_IdCliente"));
+            dadosLocacao.setIdCliente(rs.getInt("fk_IdCliente"));
             dadosLocacao.setDataDeLocacao(rs.getString("data_da_locacao"));
             dadosLocacao.setDataDeDevolucao(rs.getString("data_da_devolucao"));
 

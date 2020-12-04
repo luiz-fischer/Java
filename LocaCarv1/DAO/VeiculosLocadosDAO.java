@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 import LocaCarv1.models.VeiculosLocados;
@@ -61,19 +62,19 @@ public class VeiculosLocadosDAO {
             dadosVeiculosLocados.executeUpdate();
 
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "Veículo OFFROAD cadastrado com Sucesso", 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                        );
+                null, 
+                "Veículo OFFROAD cadastrado com Sucesso", 
+                "Mensagem do Sistema",
+                JOptionPane.WARNING_MESSAGE
+            );
 
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(
-                                            null, 
-                                            "Veículo OFFROAD ERRO" + exception.getMessage(), 
-                                            "Mensagem do Sistema",
-                                            JOptionPane.WARNING_MESSAGE
-                                        );
+                null, 
+                "Veículo OFFROAD ERRO" + exception.getMessage(), 
+                "Mensagem do Sistema",
+                JOptionPane.WARNING_MESSAGE
+            );
             System.out.println("Erro ao incluir Veículo OFFROAD: " + exception.getMessage());
 
         } finally {
@@ -135,14 +136,14 @@ public class VeiculosLocadosDAO {
         con.close();
     }
 
-    public static void listarLocacaoVeiculoPesado() throws SQLException {
+    public static void  listarLocacaoVeiculoPesado() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
         String sql = "select * from veiculosAlugados" +
                      " natural left join veiculo_pesado" + 
                      " natural left join aluguel" + 
                      " natural left join cliente;";
-        
         PreparedStatement stmt = con.prepareStatement(sql);
+
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             int idCliente = rs.getInt("idCliente");

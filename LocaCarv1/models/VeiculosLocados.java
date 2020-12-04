@@ -14,10 +14,12 @@ public class VeiculosLocados {
 
     public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
+
     public VeiculosLocados() {
     }
 
-    public VeiculosLocados(int idVeiculoLocado, int idVeiculoLeve, int idVeiculoPesado) {
+    public VeiculosLocados(int idLocacao, int idVeiculoLocado, int idVeiculoLeve, int idVeiculoPesado) {
+        this.idLocacao = idLocacao;
         this.idVeiculoLocado = idVeiculoLocado;
         this.idVeiculoLeve = idVeiculoLeve;
         this.idVeiculoPesado = idVeiculoPesado;
@@ -108,10 +110,11 @@ public class VeiculosLocados {
     @Override
     public String toString() {
         String print =  
-                       "Veiculos locados"  + "\n" +
-                       super.toString() + "\n" +
-                       "ID locacao: " + getIdLocacao() + "\n" +
-                       "veiculo Leve: " + getIdVeiculoLeve();
+                       "\n|---------------     Dados do Cliente        ---------------|" + "\n\n" +
+                       "I.D. da Locação         :               " + getIdLocacao() + "\n" +
+                       "I.D. Veículo Leve       :               " + getIdVeiculoLeve() + "\n" +
+                       "Valor Total da Locação  :               " + Locacao.valorTotalLocacao() + "\n" +
+                       "\n|---------------------------------------------------------------|\n";
                        
 
         return print;

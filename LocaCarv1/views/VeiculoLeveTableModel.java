@@ -7,7 +7,11 @@ import LocaCarv1.models.VeiculoLeve;
 
 public class VeiculoLeveTableModel extends AbstractTableModel {
 
-    //aqui transformei em coluna cada propriedade de Funcionario
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    // aqui transformei em coluna cada propriedade de Funcionario
     //que eu quero que seja exibida na tabela  
     private String colunas[] = {"Marca", "Modelo", "Ano", "Cor", "Valor da Diária"};
     private ArrayList<VeiculoLeve> veiculosLeve;

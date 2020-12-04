@@ -37,7 +37,7 @@ public class ListarLocacao extends JFrame {
             handleListenerHeavyVehicle(e);
         }
     };
-
+\
     public ListarLocacao() {
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -47,7 +47,7 @@ public class ListarLocacao extends JFrame {
         pane.add(listarVeiculoPesado);
         listarVeiculoPesado.addActionListener(acaoListarVeiculoPesado);
 
-        this.setSize(200, 150);
+        this.setSize(155, 105);
         this.setUndecorated(true);
         this.setBackground(new Color(0, 0, 0, 90));
         this.setLocationRelativeTo(null);

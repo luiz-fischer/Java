@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import LocaCarv1.DAO.ClienteDAO;
-import libs.Teclado;
+import Libs.Teclado;
 
 public class Cliente {
     private int idCliente;
@@ -13,6 +13,7 @@ public class Cliente {
     private String dataDeNascimento;
     private String cpf;
     private int qtdDiasLocacao;
+    Locacao locacao;
 
     public ArrayList<Locacao> locacoes;
     public ArrayList<Cliente> clientes = new ArrayList<>();
@@ -24,14 +25,13 @@ public class Cliente {
         int idCliente, 
         String nome, 
         String dataDeNascimento, 
-        String cpf, 
-        int qtdDiasLocacao
+        String cpf
         ) {
             this.idCliente = idCliente;
             this.nome = nome;
             this.dataDeNascimento = dataDeNascimento;
             this.cpf = cpf;
-            this.qtdDiasLocacao = qtdDiasLocacao;
+            
             this.locacoes = new ArrayList<>();
 
             clientes.add(this);
@@ -84,6 +84,9 @@ public class Cliente {
     public int getQtdDiasLocacao() {
         return this.qtdDiasLocacao;
     }
+    public ArrayList<Locacao> getLocacoes() {
+        return this.locacoes;
+    }
 
     // ====== EQUALS ======
     @Override
@@ -110,10 +113,10 @@ public class Cliente {
     @Override
     public String toString() {
         String print = "\n|---------------     Dados do Cliente        ---------------|" + "\n\n" + 
-                       "  Nome                             :               " + getNome() + "\n" +
+                       "  Nome                :               " + getNome() + "\n" +
                        "  Data de Nascimento  :               " + getDataDeNascimento() + "\n" +
-                       "  CPF                                :                " + getCpf() + "\n" +
-                       "  Dias De Locação        :                " + getQtdDiasLocacao() + "\n" +
+                       "  CPF                 :               " + getCpf() + "\n" +
+                       "  Dias De Locação     :               " + Locacao.totalDeDiasLocados() + "\n" +
                        "\n|---------------------------------------------------------------|\n";
         return print;
     }
@@ -122,7 +125,7 @@ public class Cliente {
         return clientes.get(id);
      }
 
-    public static void cadastrarCliente() throws SQLException {
+     public static void cadastrarCliente() throws SQLException {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
@@ -138,8 +141,8 @@ public class Cliente {
 			dados.setCpf(Teclado.StringInput());
 			System.out.print("Formato da Data - aaaa/MM/dd \n");
 			dados.setDataDeNascimento(Teclado.StringInput());
-			System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
-			dados.setQtdDiasLocacao(Teclado.IntInput());
+			// System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
+			// dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
 			dao.salvarCliente(dados);
@@ -155,6 +158,7 @@ public class Cliente {
 				efetuarCadastro = false;
 
 			}
-		}
+        }
     }
-}
+
+}			

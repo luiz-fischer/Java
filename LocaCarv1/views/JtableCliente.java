@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import LocaCarv1.DAO.ClienteDAO;
 import LocaCarv1.models.Cliente;
 import frame.CellRenderer;
-
 public class JtableCliente extends JFrame {
 
     /**

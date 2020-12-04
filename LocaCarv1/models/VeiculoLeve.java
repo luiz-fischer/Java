@@ -3,9 +3,9 @@ package LocaCarv1.models;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import Libs.Teclado;
 import LocaCarv1.DAO.VeiculoLeveDAO;
 import LocaCarv1.views.Painel;
-import libs.Teclado;
 
 public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     private int idVeiculoLeve;
@@ -13,7 +13,7 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     Veiculo veiculo;
     ArrayList<VeiculosLocados> veiculosLocados;
 
-    public ArrayList<VeiculoLeve> veiculosLeves = new ArrayList<VeiculoLeve>();
+    public static ArrayList<VeiculoLeve> veiculosLeves = new ArrayList<VeiculoLeve>();
 
     public VeiculoLeve() {
     }
@@ -56,9 +56,9 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
 
     }
 
-    // public int getIdVeiculo() {
-    // return getIdVeiculo();
-    // }
+    public int getIdVeiculo() {
+        return this.idVeiculo;
+    }
     public double getValorLocacao() {
         return this.valorLocacao;
 
@@ -151,9 +151,11 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
     }
 
 	@Override
-	public int qtdLocacaoRealizada() {
-		int locacoes = this.veiculosLocados.size();
-		return locacoes;
-	}
+	public void qtdLocacaoRealizada() {
+        System.out.println(
+            "--- Quantidade de Locações         :           " + Locacao.locacoes.size() + "\n" +
+            "------- Valor Total das Locações   :           " + Locacao.valorTotalLocacao()
+        );
+    }
 
 }

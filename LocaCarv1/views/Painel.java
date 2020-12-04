@@ -15,7 +15,7 @@ import LocaCarv1.models.Locacao;
 import LocaCarv1.models.VeiculoLeve;
 import LocaCarv1.models.VeiculoPesado;
 import LocaCarv1.models.VeiculosLocados;
-import libs.Teclado;
+import Libs.Teclado;
 
 public class Painel {
 
@@ -91,6 +91,7 @@ public class Painel {
 
 						for (VeiculoLeve veiculoLeve : veiculosLeve) {
 							System.out.println(veiculoLeve);
+							veiculoLeve.qtdLocacaoRealizada();
 						}
 							break;
 
@@ -100,6 +101,7 @@ public class Painel {
 
 							for (VeiculoPesado veiculoPesado : veiculosPesado) {
 								System.out.println(veiculoPesado);
+								veiculoPesado.qtdLocacaoRealizada();
 							}
 							
 							break;
@@ -146,6 +148,7 @@ public class Painel {
 		}
 	}
 
+
 	// =========== Método para o menu principal===========
 	private String menu() {
 		System.out.println("Selecione a opção:");
@@ -177,8 +180,8 @@ public class Painel {
 			dados.setCpf(Teclado.StringInput());
 			System.out.print("Formato da Data - aaaa/MM/dd \n");
 			dados.setDataDeNascimento(Teclado.StringInput());
-			System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
-			dados.setQtdDiasLocacao(Teclado.IntInput());
+			// System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
+			// dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
 			dao.salvarCliente(dados);
@@ -202,7 +205,6 @@ public class Painel {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
-			// veiculos = new ArrayList<Veiculo>();
 			// veiculosLeve = new ArrayList<VeiculoLeve>();
 			VeiculoLeve dados = new VeiculoLeve();
 
@@ -289,7 +291,9 @@ public class Painel {
 
 		while (efetuarCadastro) {
 			System.out.println("Cadastro de locação");
-			Locacao dados = new Locacao();
+			int idLocacao = 0,idCliente= 0;
+			String dataDeDevolucao = "";
+			Locacao dados = new Locacao(idLocacao, idCliente, dataDeDevolucao);
 
 			System.out.println(
 						"|------------------ LOCAÇÃO ------------------|"
@@ -299,10 +303,11 @@ public class Painel {
 				dados.setIdCliente(Teclado.IntInput());
 				System.out.print("Formato da Data - dd/MM/aaaa \n");
 				System.out.print("Data da Locação: ");
-				dados.setDataDeLocacao(Teclado.StringInput());
-				System.out.print("Formato da Data - dd/MM/aaaa \n");
-				System.out.print("Data da Devolução: ");
+				// dados.setDataDeLocacao(Teclado.StringInput());
+				// System.out.print("Formato da Data - dd/MM/aaaa \n");
 				dados.setDataDeDevolucao(Teclado.StringInput());
+				// System.out.print("Dias para a Devolução: ");
+				// dados.setPlusDay(Teclado.IntInput());
 
 				LocacaoDAO dao = new LocacaoDAO();
 				dao.salvarLocacao(dados);

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import LocaCarv1.DAO.VeiculoPesadoDAO;
 import LocaCarv1.views.Painel;
-import libs.Teclado;
+import Libs.Teclado;
 
 public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     protected int idVeiculoPesado;
@@ -148,9 +148,11 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
         }
     }
     @Override
-    public int qtdLocacaoRealizada() {
-        int locacoes = this.veiculosLocados.size();
-        return locacoes;
+    public void qtdLocacaoRealizada() {
+        System.out.println(
+            "--- Quantidade de Locações         :           " + Locacao.locacoes.size() + "\n" +
+            "------- Valor Total das Locações   :           " + Locacao.valorTotalLocacao()
+        );
     }
 
 }

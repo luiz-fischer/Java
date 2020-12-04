@@ -18,14 +18,14 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
 
         // ========= Inserção de Dados a tabela Cliente =========
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO `LocaCar`.`cliente` (nome, CPF, data_de_nascimento, qtd_Dias) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO `LocaCar`.`cliente` (nome, CPF, data_de_nascimento) VALUES (?,?,?)";
 
         try {
             stmt = (PreparedStatement) conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getDataDeNascimento());
-            stmt.setInt(4, cliente.getQtdDiasLocacao());
+            // stmt.setInt(4, cliente.getQtdDiasLocacao());
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(
@@ -61,7 +61,7 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
             dadosCliente.setNome(rs.getString("nome"));
             dadosCliente.setCpf(rs.getString("cpf"));
             dadosCliente.setDataDeNascimento(rs.getString("data_de_nascimento"));
-            dadosCliente.setQtdDiasLocacao(rs.getInt("qtd_Dias"));
+            // dadosCliente.setQtdDiasLocacao(rs.getInt("qtd_Dias"));
 
             listaCliente.add(dadosCliente);
         }
