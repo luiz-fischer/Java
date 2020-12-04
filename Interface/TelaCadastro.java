@@ -1,15 +1,10 @@
 package Interface;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-/**
- *
- * @author aluno
- */
 public class TelaCadastro extends javax.swing.JFrame {
 
     /**
@@ -33,12 +28,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new JLabel();
+        jLabel2 = new JLabel();
+        jTextField1 = new JTextField();
+        jButton1 = new JButton();
+        jPasswordField1 = new JPasswordField();
+        jLabel3 = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +109,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         String senha = jPasswordField1.getText();
         if (email.equals("email@email.com") && senha.equals("123")){
             new TelaSucesso().setVisible(true);
+            new LocaCarv1.views.Menu();
         } else new TelaErro().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

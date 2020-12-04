@@ -20,7 +20,6 @@ public class Menu extends JFrame {
     private static final long serialVersionUID = 1L;
     JFrame frame = new JFrame("Aluguel         Veicular        LocaCar    ");
     
-    
 
     JButton cadastrarCliente = new JButton("Cadastrar Cliente");
     ActionListener acaoCadastrarCliente = new ActionListener() {
@@ -111,7 +110,6 @@ public class Menu extends JFrame {
             }
         });
     }
-
     
     public void handleActionVehicle(ActionEvent e) {
       new CadastrarVeiculo();

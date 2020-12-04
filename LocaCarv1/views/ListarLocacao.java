@@ -2,6 +2,7 @@ package LocaCarv1.views;
 
 import java.awt.Container;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,9 +18,9 @@ public class ListarLocacao extends JFrame {
      */
     private static final long serialVersionUID = 1L;
 
-    JLabel locaCar = new JLabel("   Listagem         Veículos        LocaCar    ");
+    JLabel locaCar = new JLabel("   Listagem Alugueis LocaCar    ");
 
-    JButton listarVeiculoLeve = new JButton("Listar Veículo URBANO");
+    JButton listarVeiculoLeve = new JButton(" Listar Alugueis de Veículos URBANO ");
     ActionListener acaoListarVeiculoLeve = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             try {
@@ -31,13 +32,13 @@ public class ListarLocacao extends JFrame {
         }
     };
 
-    JButton listarVeiculoPesado = new JButton("Listar Veículo OFFROAD");
+    JButton listarVeiculoPesado = new JButton("Listar Alugueis de Veículos OFFROAD");
     ActionListener acaoListarVeiculoPesado = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             handleListenerHeavyVehicle(e);
         }
     };
-\
+
     public ListarLocacao() {
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -47,10 +48,20 @@ public class ListarLocacao extends JFrame {
         pane.add(listarVeiculoPesado);
         listarVeiculoPesado.addActionListener(acaoListarVeiculoPesado);
 
-        this.setSize(155, 105);
+        listarVeiculoLeve.setToolTipText("LISTAGEM DOS ALUGUEIS DE VEICULOS URBANOS");
+        listarVeiculoLeve.setOpaque(true);
+        listarVeiculoLeve.setBackground(Color.ORANGE);
+
+        listarVeiculoPesado.setToolTipText("LISTAGEM DOS ALUGUEIS DE VEICULOS OFFROAD");
+        listarVeiculoPesado.setOpaque(true);
+        listarVeiculoPesado.setBackground(Color.ORANGE);
+
+        this.setSize(270, 115);
         this.setUndecorated(true);
-        this.setBackground(new Color(0, 0, 0, 90));
+        this.setBackground(new Color(153,153,153,100));
         this.setLocationRelativeTo(null);
+
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.LIGHT_GRAY));
         this.setVisible(true);
     }
 
@@ -58,16 +69,15 @@ public class ListarLocacao extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JTableVeiculoLeve tb;
+                JTableVeiculoLeve table;
                 try {
-                    tb = new JTableVeiculoLeve();
-                    tb.setLocationRelativeTo(null);
-                    tb.setVisible(true);
+                    table = new JTableVeiculoLeve();
+                    table.setLocationRelativeTo(null);
+                    table.setVisible(true);
                 } catch (SQLException e) {
                     System.out.println("ERRO:" + e);
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -76,11 +86,11 @@ public class ListarLocacao extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JtableVeiculoPesado tb;
+                JtableVeiculoPesado table;
                 try {
-                    tb = new JtableVeiculoPesado();
-                    tb.setLocationRelativeTo(null);
-                    tb.setVisible(true);
+                    table = new JtableVeiculoPesado();
+                    table.setLocationRelativeTo(null);
+                    table.setVisible(true);
                 } catch (SQLException e) {
                     System.out.println("ERRO:" + e);
                     e.printStackTrace();

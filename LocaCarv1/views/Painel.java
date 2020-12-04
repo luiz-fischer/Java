@@ -168,7 +168,9 @@ public class Painel {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
-			Cliente dados = new Cliente();
+			int idCliente=0;
+			String nome="",dataDeNascimento="",cpf="";
+			Cliente dados = new Cliente(idCliente, nome, dataDeNascimento, cpf);
 
 			System.out.println(
 								"|------------------ Cadastro de Cliente ------------------|"
@@ -180,8 +182,6 @@ public class Painel {
 			dados.setCpf(Teclado.StringInput());
 			System.out.print("Formato da Data - aaaa/MM/dd \n");
 			dados.setDataDeNascimento(Teclado.StringInput());
-			// System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
-			// dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
 			dao.salvarCliente(dados);
@@ -191,6 +191,7 @@ public class Painel {
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
 				efetuarCadastro = false;
+				new Painel();
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
 			} else {
 				System.out.println("\n!!! -- SAIR -- !!! \n");
@@ -204,9 +205,11 @@ public class Painel {
 	private void cadastrarVeiculoLeve() throws Exception {
 		boolean efetuarCadastro = true;
 
+		int idVeiculo=0, idVeiculoLeve=0,ano=0;
+		double valorLocacao = 0.0;
+		String cor="",marca="",modelo="";
 		while (efetuarCadastro) {
-			// veiculosLeve = new ArrayList<VeiculoLeve>();
-			VeiculoLeve dados = new VeiculoLeve();
+			VeiculoLeve dados = new VeiculoLeve(idVeiculo, idVeiculoLeve, cor, marca, modelo, ano, valorLocacao);
 
 			System.out.println(
 						"|------------------ URBANO ------------------|"
@@ -230,7 +233,7 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
-				efetuarCadastro = false;
+				// efetuarCadastro = false;
 				new Painel();
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
 
@@ -247,8 +250,6 @@ public class Painel {
 		boolean efetuarCadastro = true;
 
 		while (efetuarCadastro) {
-			// veiculos = new ArrayList<Veiculo>();
-			// veiculosPesado = new ArrayList<VeiculoPesado>();
 			VeiculoPesado dados = new VeiculoPesado();
 
 			System.out.println(
@@ -273,7 +274,7 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
-				efetuarCadastro = false;
+				// efetuarCadastro = false;
 				new Painel();
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
 
@@ -302,7 +303,7 @@ public class Painel {
 				System.out.print("I.D. do Cliente: ");
 				dados.setIdCliente(Teclado.IntInput());
 				System.out.print("Formato da Data - dd/MM/aaaa \n");
-				System.out.print("Data da Locação: ");
+				System.out.print("Data da Devolução: ");
 				// dados.setDataDeLocacao(Teclado.StringInput());
 				// System.out.print("Formato da Data - dd/MM/aaaa \n");
 				dados.setDataDeDevolucao(Teclado.StringInput());
@@ -365,13 +366,15 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
-				efetuarCadastro = false;
 				new Painel();
+
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
+				new Painel();
 
 			} else {
 				System.out.println("\n!!! -- SAIR -- !!! \n");
 				efetuarCadastro = false;
+
 			}
 		}
 	}

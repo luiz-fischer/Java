@@ -114,6 +114,7 @@ public class Cliente {
     public String toString() {
         String print = "\n|---------------     Dados do Cliente        ---------------|" + "\n\n" + 
                        "  Nome                :               " + getNome() + "\n" +
+                       "  I.D. Cliente        :               " + getIdCliente() + "\n" +
                        "  Data de Nascimento  :               " + getDataDeNascimento() + "\n" +
                        "  CPF                 :               " + getCpf() + "\n" +
                        "  Dias De Locação     :               " + Locacao.totalDeDiasLocados() + "\n" +
