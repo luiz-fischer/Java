@@ -89,9 +89,16 @@ public class Painel {
 						VeiculoLeveDAO veiculoLeveDao = new VeiculoLeveDAO();
 						List<VeiculoLeve> veiculosLeve = veiculoLeveDao.listarTodosCadastrosVeiculoLeve();
 
+						LocacaoDAO locacao = new LocacaoDAO();
+						List<Locacao> locacoes = locacao.listarTodosCadastros();
+
 						for (VeiculoLeve veiculoLeve : veiculosLeve) {
 							System.out.println(veiculoLeve);
 							veiculoLeve.qtdLocacaoRealizada();
+						}
+
+						for (Locacao locacaoRS : locacoes) {
+							System.out.println(locacaoRS);
 						}
 							break;
 
@@ -144,7 +151,7 @@ public class Painel {
 			System.out.println("ERRO MENU PRINCIPAL:        " + exception.getMessage());
 			exception.printStackTrace();
 		} finally {
-			entrada.close();
+			// entrada.close();
 		}
 	}
 
@@ -233,10 +240,9 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
-				// efetuarCadastro = false;
+				efetuarCadastro = false;
 				new Painel();
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
-
 			} else {
 				System.out.println("\n!!! -- SAIR -- !!! \n");
 				efetuarCadastro = false;
@@ -274,10 +280,9 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
-				// efetuarCadastro = false;
+				efetuarCadastro = false;
 				new Painel();
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
-
 			} else {
 				System.out.println("\n!!! -- SAIR -- !!! \n");
 				efetuarCadastro = false;
@@ -295,11 +300,13 @@ public class Painel {
 			int idLocacao = 0,idCliente= 0;
 			String dataDeDevolucao = "";
 			Locacao dados = new Locacao(idLocacao, idCliente, dataDeDevolucao);
-
+			VeiculoLeve vl = new VeiculoLeve();
 			System.out.println(
 						"|------------------ LOCAÇÃO ------------------|"
 					);
 
+				System.out.print("I.D. da Locacao: ");
+				dados.setIdLocacao(Teclado.IntInput());
 				System.out.print("I.D. do Cliente: ");
 				dados.setIdCliente(Teclado.IntInput());
 				System.out.print("Formato da Data - dd/MM/aaaa \n");
@@ -309,7 +316,6 @@ public class Painel {
 				dados.setDataDeDevolucao(Teclado.StringInput());
 				// System.out.print("Dias para a Devolução: ");
 				// dados.setPlusDay(Teclado.IntInput());
-
 				LocacaoDAO dao = new LocacaoDAO();
 				dao.salvarLocacao(dados);
 
@@ -324,7 +330,8 @@ public class Painel {
 			
 			switch (op) {
 				case 1: 
-					VeiculosLocados dadosVeiculoLeve = new VeiculosLocados();
+				int idVeiculoLocado=0, idVeiculoLeve=0, idVeiculoPesado=0;
+					VeiculosLocados dadosVeiculoLeve = new VeiculosLocados(idLocacao, idVeiculoLocado, idVeiculoLeve, idVeiculoPesado);
 					
 					System.out.println(
 										"			|----------- Veículo Urbano -----------|"
@@ -337,6 +344,7 @@ public class Painel {
 
 					VeiculosLocadosDAO daoVeiculosLeve = new VeiculosLocadosDAO();
 					daoVeiculosLeve.salvarLocacaoVeiculoLeve(dadosVeiculoLeve);
+
 					break;
 
 				case 2:
@@ -366,17 +374,15 @@ public class Painel {
 			String continuarCadastro = Teclado.StringInput();
 
 			if (continuarCadastro.equalsIgnoreCase("N")) {
+				efetuarCadastro = false;
 				new Painel();
-
 			} else if (continuarCadastro.equalsIgnoreCase("s")) {
-				new Painel();
-
 			} else {
 				System.out.println("\n!!! -- SAIR -- !!! \n");
 				efetuarCadastro = false;
 
 			}
 		}
-	}
 	
+	}
 }

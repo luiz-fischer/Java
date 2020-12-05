@@ -87,10 +87,10 @@ public class VeiculosLocadosDAO {
     public static void listarLocacaoVeiculoLeve() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
 
-        String sql = "select * from veiculosAlugados" +
-                     " natural left join veiculo_leve" + 
-                     " natural left join aluguel" + 
-                     " natural left join cliente;";
+        String sql = "select  * from veiculosAlugados va" +
+                    " join veiculo_leve vl on vl.idVeiculoLeve = va.idVeiculoLeve" +
+                    " join aluguel a on a.idAluguel = va.idAluguel" +
+                    " join cliente c on c.idCliente = a.fk_idCliente;"; 
         
         PreparedStatement stmt = con.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -138,10 +138,11 @@ public class VeiculosLocadosDAO {
 
     public static void  listarLocacaoVeiculoPesado() throws SQLException {
         Connection con = (Connection) LocaCarv1.factory.ConnectionFactory.getConnection();
-        String sql = "select * from veiculosAlugados" +
-                     " natural left join veiculo_pesado" + 
-                     " natural left join aluguel" + 
-                     " natural left join cliente;";
+        String sql = "select  * from veiculosAlugados va" +
+                     " join veiculo_pesado vp on vp.idVeiculoPesado = va.idVeiculoPesado" +
+                     " join aluguel a on a.idAluguel = va.idAluguel" +
+                     " join cliente c on c.idCliente = a.fk_idCliente;"; 
+
         PreparedStatement stmt = con.prepareStatement(sql);
 
         ResultSet rs = stmt.executeQuery();
@@ -177,10 +178,6 @@ public class VeiculosLocadosDAO {
                                "Cor do Veículo            :                " + restricao + "\n" +
                                "|-----------------------------------------------------------|" ;
                     System.out.println(print);
-                    //   // montando a data através do Calendar
-                    //   Calendar data = Calendar.getInstance();
-                    //   data.setTime(rs.getDate("dataNascimento"));
-                    //   contato.setDataNascimento(data);
         }
         stmt.close();
         con.close();

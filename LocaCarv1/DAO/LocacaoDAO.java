@@ -58,7 +58,7 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
         String sql = "SELECT * FROM `LocaCar`.`aluguel`";
 
         PreparedStatement stmt = conn.prepareStatement(sql);
-        List<Locacao> listaLocacao = new ArrayList<Locacao>();
+        List<Locacao> listaLocacao = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
 

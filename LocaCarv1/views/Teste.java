@@ -11,9 +11,10 @@ public class Teste {
         
         
         VeiculoLeve novo1 = new VeiculoLeve(1, 1, "cor", "marca", "modelo", 9999, 100.10);
-        Locacao locacao2 = new Locacao(1,1, "19/12/2020");
-        VeiculosLocados locados1 = new VeiculosLocados(1,1, 1, 0);
-        VeiculosLocados locados2 = new VeiculosLocados(1,1, 1, 0);
+        VeiculoLeve novo2 = new VeiculoLeve(2, 2, "cor", "marca", "modelo", 9999, 500.10);
+        Locacao locacao2 = new Locacao(1, 2, "19/12/2020");
+        // VeiculosLocados locados1 = new VeiculosLocados(1,1, 1, 0);
+        // VeiculosLocados locados2 = new VeiculosLocados(1,1, 1, 0);
         // String data = "10/12/2020";
         // Libs.Data.convDataBanco(data);
         // System.out.println(data);
@@ -26,7 +27,8 @@ public class Teste {
         //     System.out.println(ng);
         // }
         System.out.println(locacao2);
-        System.out.println(cliente);
+        System.out.println(novo1);
+        // System.out.println(cliente);
         // LocalDate data3 = LocalDate.now(); // ou LocalDate.now() para a data3 atual
         // // somar 1 dia = 4 de abril de 2019
         // data3 = data3.plusDays(1);
