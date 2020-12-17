@@ -3,7 +3,6 @@ package LocaCarv1.views;
 import LocaCarv1.models.Cliente;
 import LocaCarv1.models.Locacao;
 import LocaCarv1.models.VeiculoLeve;
-import LocaCarv1.models.VeiculosLocados;
 
 public class Teste {
     public static void main(String[] args) {
