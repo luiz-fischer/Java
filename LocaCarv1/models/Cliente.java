@@ -111,7 +111,7 @@ public class Cliente {
     }
 
     @Override
-    public String toString() {
+    public  String toString() {
         String print = "\n|---------------     Dados do Cliente        ---------------|" + "\n\n" + 
                        "  Nome                :               " + getNome() + "\n" +
                        "  I.D. Cliente        :               " + getIdCliente() + "\n" +

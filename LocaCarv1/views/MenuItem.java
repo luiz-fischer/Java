@@ -239,7 +239,7 @@ public class MenuItem {
         new ListarLocacao();
     } 
     public void handleLIstenerRentAll(ActionEvent e) {
-        new VeiculosLocadosTableModel(veiculosLocados)
+        new VeiculosLocadosTableModel();
     }
 
  

@@ -41,7 +41,6 @@ public class JtableCliente extends JFrame {
 
         this.add(scrollPainel);
         this.pack();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {

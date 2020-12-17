@@ -89,8 +89,6 @@ public class VeiculoLeveTableModel extends AbstractTableModel {
     //e notifica a alteração da tabela, para que ela seja atualizada na tela
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        //o argumento recebido pelo método é do tipo Object
-        //mas como nossa tabela é de funcionários, é seguro(e até recomendável) fazer o cast de suas propriedades
         VeiculoLeve veiculoLeve = this.veiculosLeve.get(rowIndex);
         //de acordo com a coluna, ele preenche a célula com o valor
         //respectivo do objeto de mesmo indice na lista

@@ -157,5 +157,7 @@ public class VeiculoLeve extends Veiculo implements BaseVeiculo {
             "------- Valor Total das Locações   :           " + Locacao.valorTotalLocacao()
         );
     }
+
+
 	
 }

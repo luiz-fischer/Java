@@ -3,11 +3,13 @@ package LocaCarv1.models;
 import java.util.ArrayList;
 import java.util.Objects;
  
-public class VeiculosLocados {
+public class VeiculosLocados extends Locacao {
     private int idVeiculoLocado;
     private int idLocacao;
     private int idVeiculoLeve;
     private int idVeiculoPesado;
+    private int getInt;
+    private String getString;
     Locacao locacao;
     VeiculoLeve veiculoLeve;
     VeiculoPesado veiculoPesado;
@@ -26,6 +28,9 @@ public class VeiculosLocados {
 
         veiculosLocados.add(this);
 
+    }
+
+    public VeiculosLocados(VeiculosLocados veiculosLocados2, VeiculoLeve veiculoLeve2) {
     }
 
     // ======== SETS ========
@@ -58,6 +63,12 @@ public class VeiculosLocados {
     // ======== GETS ========
     public int getIdVeiculoLocado() {
         return this.idVeiculoLeve;
+    }
+    public String getString() {
+        return this.getString;
+    }
+    public int getInt() {
+        return this.getInt;
     }
 
     // public Locacao getLocacao() {
@@ -119,5 +130,18 @@ public class VeiculosLocados {
 
         return print;
     }
+
+	public void add(int valor) {
+	}
+
+    // public void addHeroi(Heroi heroi) {
+    //     HeroiFilme heroiFilme = new HeroiFilme(this, heroi);
+    //     heroi.filmes.add(heroiFilme);
+    //     this.herois.add(heroiFilme); 
+                        
+    // }   
+
+
+
 
 }

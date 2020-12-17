@@ -133,7 +133,7 @@ public class Painel {
 							break;
 
 						case 2:
-							LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoPesado();
+							// LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoPesado();
 							break;
 
 						default:
