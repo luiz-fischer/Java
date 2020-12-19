@@ -9,11 +9,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
- 
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
  
 /* MenuLookDemo.java requires images/middle.gif. */
  
@@ -145,12 +146,6 @@ public class MenuItem {
         KeyEvent.VK_T);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_1, ActionEvent.ALT_MASK));
-        ActionListener acaoListarLocacao = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                handleLIstenerRent(e);
-        }
-
-        };
 
         menuBar.add(menu);
         menu.add(menuItem);
@@ -239,9 +234,13 @@ public class MenuItem {
         new ListarLocacao();
     } 
     public void handleLIstenerRentAll(ActionEvent e) {
-        new VeiculosLocadosTableModel();
     }
 
+    public void ajustaFundo(String arquivo) {
+		JLabel fundo = new JLabel(new ImageIcon(arquivo));
+		fundo.setLayout(new FlowLayout());
+		setContentPane(fundo);
+	}
  
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {

@@ -1,9 +1,10 @@
 package LocaCarv1.models;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
  
-public class VeiculosLocados extends Locacao {
+public class VeiculosLocados {
     private int idVeiculoLocado;
     private int idLocacao;
     private int idVeiculoLeve;
@@ -13,6 +14,7 @@ public class VeiculosLocados extends Locacao {
     Locacao locacao;
     VeiculoLeve veiculoLeve;
     VeiculoPesado veiculoPesado;
+    private List<Cliente> cliente = new ArrayList<>();
 
     public static ArrayList<VeiculosLocados> veiculosLocados = new ArrayList<>();
 
@@ -91,6 +93,9 @@ public class VeiculosLocados extends Locacao {
         return this.idVeiculoPesado;
 
     }
+    public List<Cliente> getListaCliente() {
+        return cliente;
+    }
 
     // ====== EQUALS ======
     @Override
@@ -131,7 +136,14 @@ public class VeiculosLocados extends Locacao {
         return print;
     }
 
-	public void add(int valor) {
+	// public void addLocacao(Locacao locacao) {
+    //     this.locacao.add(veiculosLocados);
+	// }
+
+	public void addVeiculoLeve(VeiculoLeve veiculosLeve) {
+	}
+
+	public void addVeiculoPesado(VeiculoPesado veiculosPesado) {
 	}
 
     // public void addHeroi(Heroi heroi) {

@@ -11,7 +11,7 @@ public class Locacao {
     private int idCliente;
     private static String dataDeDevolucao;
     private static String dataDeLocacao;
-    private Cliente cliente;
+    protected Cliente cliente;
     VeiculoLeve veiculosLeve;
     VeiculoPesado veiculosPesado;
     public ArrayList<VeiculosLocados> veiculosLocados;
@@ -54,10 +54,6 @@ public class Locacao {
 
     public void setDataDeLocacao(String dataDeLocacao) {
         Locacao.dataDeLocacao = dataDeLocacao;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public void setVeiculosLocados(ArrayList<VeiculosLocados> veiculosLocados) {
