@@ -1,4 +1,3 @@
-package Pizzaria;
 
 public class Pedido {
     private int idPedido;
