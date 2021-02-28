@@ -150,8 +150,8 @@ public class VeiculoPesado extends Veiculo implements BaseVeiculo {
     @Override
     public void qtdLocacaoRealizada() {
         System.out.println(
-            "--- Quantidade de Locações         :           " + Locacao.locacoes.size() + "\n" +
-            "------- Valor Total das Locações   :           " + Locacao.valorTotalLocacao()
+            // "--- Quantidade de Locações         :           " + Locacao.locacoes.size() + "\n" +
+            // "------- Valor Total das Locações   :           " + Locacao.valorTotalLocacao()
         );
     }
 

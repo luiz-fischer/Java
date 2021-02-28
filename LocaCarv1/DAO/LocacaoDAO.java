@@ -64,7 +64,7 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
 
             Locacao dadosLocacao = new Locacao();
             dadosLocacao.setIdLocacao(rs.getInt("IdAluguel"));
-            dadosLocacao.setIdCliente(rs.getInt("fk_IdCliente"));
+            dadosLocacao.setIdCliente(rs.getInt("IdCliente"));
             dadosLocacao.setDataDeLocacao(rs.getString("data_da_locacao"));
             dadosLocacao.setDataDeDevolucao(rs.getString("data_da_devolucao"));
 

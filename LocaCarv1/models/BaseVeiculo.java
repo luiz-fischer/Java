@@ -4,7 +4,7 @@ package LocaCarv1.models;
 public interface BaseVeiculo {
     public void qtdLocacaoRealizada();
 
-   default String seloDaEmpresa() {
+    default String seloDaEmpresa() {
         return 
         "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + "\n" +
         "@@@@@@::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::@@@@@@" + "\n" +

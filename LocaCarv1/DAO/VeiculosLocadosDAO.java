@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-import LocaCarv1.models.Locacao;
 import LocaCarv1.models.VeiculosLocados;
 
 public class VeiculosLocadosDAO {

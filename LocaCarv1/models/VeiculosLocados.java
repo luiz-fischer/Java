@@ -146,14 +146,4 @@ public class VeiculosLocados {
 	public void addVeiculoPesado(VeiculoPesado veiculosPesado) {
 	}
 
-    // public void addHeroi(Heroi heroi) {
-    //     HeroiFilme heroiFilme = new HeroiFilme(this, heroi);
-    //     heroi.filmes.add(heroiFilme);
-    //     this.herois.add(heroiFilme); 
-                        
-    // }   
-
-
-
-
 }

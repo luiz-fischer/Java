@@ -126,7 +126,6 @@ public class Locacao {
                         + "Data de Locação          :          " + getDataDeLocacao() + "\n"
                         + "Data de Devolução        :          " + getDataDeDevolucao() + "\n"
                         + "Total de dias            :          " + totalDeDiasLocados() + "\n"
-                        + "Valor Total das Locações :          " + valorTotalLocacao() + "\n"
                         + "\n|-----------------------------------------------------------|\n";
       
         return print;

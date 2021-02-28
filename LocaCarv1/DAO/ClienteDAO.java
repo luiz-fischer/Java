@@ -1,7 +1,6 @@
 package LocaCarv1.DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,49 +70,49 @@ public class ClienteDAO extends LocaCarv1.models.Cliente {
 
     }
 
-    public List<Cliente> pesquisarPorNome(String nome) throws SQLException {
-        String url = "jdbc:mysql://sistema.c7nhpp0cg9j3.us-east-1.rds.amazonaws.com:3306/";
-        String login = "admin";
-        String password = "senac2020";
-        String sql = "SELECT * FROM `LocaCar`.`cliente`" + "WHERE nome like ?";
+    // public List<Cliente> pesquisarPorNome(String nome) throws SQLException {
+    //     String url = "jdbc:mysql://sistema.c7nhpp0cg9j3.us-east-1.rds.amazonaws.com:3306/";
+    //     String login = "admin";
+    //     String password = "senac2020";
+    //     String sql = "SELECT * FROM `LocaCar`.`cliente`" + "WHERE nome like ?";
 
-        Connection con = DriverManager.getConnection(url, login, password);
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, nome + '%');
+    //     Connection con = DriverManager.getConnection(url, login, password);
+    //     PreparedStatement stmt = con.prepareStatement(sql);
+    //     stmt.setString(1, nome + '%');
 
-        ResultSet rs = stmt.executeQuery();
+    //     ResultSet rs = stmt.executeQuery();
 
-        List<Cliente> listaClientes = new ArrayList<>();
+    //     List<Cliente> listaClientes = new ArrayList<>();
 
-        try {
-            while (rs.next()) {
-                Cliente usuario = new Cliente();
+    //     try {
+    //         while (rs.next()) {
+    //             Cliente usuario = new Cliente();
 
-                usuario.setIdCliente(rs.getInt("idCliente"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setCpf(rs.getString("cpf"));
-                usuario.setDataDeNascimento(rs.getString("data_de_nascimento"));
+    //             usuario.setIdCliente(rs.getInt("idCliente"));
+    //             usuario.setNome(rs.getString("nome"));
+    //             usuario.setCpf(rs.getString("cpf"));
+    //             usuario.setDataDeNascimento(rs.getString("data_de_nascimento"));
 
-                listaClientes.add(usuario);
+    //             listaClientes.add(usuario);
 
 
-            }
-        } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(
-                null, 
-                "Erro ao Cadastrar Cliente: " + exception.getMessage(),
-                "Mensagem do Sistema", 
-                JOptionPane.WARNING_MESSAGE
-            );
+    //         }
+    //     } catch (SQLException exception) {
+    //         JOptionPane.showMessageDialog(
+    //             null, 
+    //             "Erro ao Cadastrar Cliente: " + exception.getMessage(),
+    //             "Mensagem do Sistema", 
+    //             JOptionPane.WARNING_MESSAGE
+    //         );
 
-            System.out.println("Erro ao Pesquisar Cliente: " + exception.getMessage());
+    //         System.out.println("Erro ao Pesquisar Cliente: " + exception.getMessage());
 
-        } finally {
-            stmt.close();
-            con.close();
-        }
+    //     } finally {
+    //         stmt.close();
+    //         con.close();
+    //     }
 
-        return (listaClientes);
-    }
+    //     return (listaClientes);
+    // }
 
 }
