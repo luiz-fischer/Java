@@ -1,7 +1,6 @@
 package LocaCarv1.views;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +20,7 @@ public class Painel {
 
 	private static Scanner entrada;
 	private boolean execute;
-	private ArrayList<Locacao> locacoes;
+	// private ArrayList<Locacao> locacoes;
 	
 	public static void main(String[] args) {
 		new Painel();
@@ -133,7 +132,7 @@ public class Painel {
 							break;
 
 						case 2:
-							// LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoPesado();
+							LocaCarv1.DAO.VeiculosLocadosDAO.listarLocacaoVeiculoPesado();
 							break;
 
 						default:
@@ -300,7 +299,6 @@ public class Painel {
 			int idLocacao = 0,idCliente= 0;
 			String dataDeDevolucao = "";
 			Locacao dados = new Locacao(idLocacao, idCliente, dataDeDevolucao);
-			VeiculoLeve vl = new VeiculoLeve();
 			System.out.println(
 						"|------------------ LOCAÇÃO ------------------|"
 					);
@@ -310,12 +308,11 @@ public class Painel {
 				System.out.print("I.D. do Cliente: ");
 				dados.setIdCliente(Teclado.IntInput());
 				System.out.print("Formato da Data - dd/MM/aaaa \n");
+				System.out.print("Data da Locação: ");
+				dados.setDataDeLocacao(Teclado.StringInput());
+				System.out.print("Formato da Data - dd/MM/aaaa \n");
 				System.out.print("Data da Devolução: ");
-				// dados.setDataDeLocacao(Teclado.StringInput());
-				// System.out.print("Formato da Data - dd/MM/aaaa \n");
 				dados.setDataDeDevolucao(Teclado.StringInput());
-				// System.out.print("Dias para a Devolução: ");
-				// dados.setPlusDay(Teclado.IntInput());
 				LocacaoDAO dao = new LocacaoDAO();
 				dao.salvarLocacao(dados);
 

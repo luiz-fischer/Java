@@ -11,8 +11,6 @@ public class ClienteTableModel extends AbstractTableModel {
      *
      */
     private static final long serialVersionUID = 1L;
-    // aqui transformei em coluna cada propriedade de Funcionario
-    // que eu quero que seja exibida na tabela
     private String colunas[] = { "I.D. do Cliente", "Nome", "CPF", "Data De Nascimento"};
     private ArrayList<Cliente> clientes;
     private final int COLUNA_ID_CLIENTE = 0;

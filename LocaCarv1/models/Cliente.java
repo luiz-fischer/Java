@@ -142,8 +142,6 @@ public class Cliente {
 			dados.setCpf(Teclado.StringInput());
 			System.out.print("Formato da Data - aaaa/MM/dd \n");
 			dados.setDataDeNascimento(Teclado.StringInput());
-			// System.out.print("Quantidade de dias para Locação:" +  "\n" + "[5] - [10] - [15]: ");
-			// dados.setQtdDiasLocacao(Teclado.IntInput());
 
 			ClienteDAO dao = new ClienteDAO();
 			dao.salvarCliente(dados);

@@ -12,9 +12,9 @@ public class ConnectionFactory {
 	
 	public static Connection getConnection() {
 		try {
-			String url = "jdbc:mysql://localhost/projetojava";
+			String url = "jdbc:mysql://localhost/test";
 			String login = "root";
-			String password = "123";
+			String password = "";
 			return DriverManager.getConnection(url, login, password);
 		} catch (SQLException excecao) {
 			throw new RuntimeException(excecao);

@@ -17,7 +17,7 @@ public class LocacaoDAO extends LocaCarv1.models.Locacao {
 
         // ========= Inserção de Dados a tabela Usuario =========
         PreparedStatement stmt = null;
-        String sql =  "INSERT INTO `LocaCar`.`aluguel` (fk_idCliente, data_da_locacao, data_da_devolucao) VALUES (?,?,?)";
+        String sql =  "INSERT INTO `LocaCar`.`aluguel` (idCliente, data_da_locacao, data_da_devolucao) VALUES (?,?,?)";
        
 
         try {

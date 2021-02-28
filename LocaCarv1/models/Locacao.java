@@ -30,7 +30,6 @@ public class Locacao {
         String dataFormatada = formato.format(new Date());
         Locacao.dataDeLocacao = dataFormatada;
         Locacao.dataDeDevolucao = dataDeDevolucao;
-        // this.cliente = cliente;
 
         locacoes.add(this);
     }

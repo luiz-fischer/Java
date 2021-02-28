@@ -239,7 +239,7 @@ public class MenuItem {
     public void ajustaFundo(String arquivo) {
 		JLabel fundo = new JLabel(new ImageIcon(arquivo));
 		fundo.setLayout(new FlowLayout());
-		setContentPane(fundo);
+		// setContentPane(fundo);
 	}
  
     public static void main(String[] args) {
